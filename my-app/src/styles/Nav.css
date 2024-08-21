@@ -11,7 +11,7 @@
     align-items: stretch;
     gap: 2rem;
     padding: 0 1rem;
-    border-bottom:  solid; ;
+    border-bottom:  solid; 
 }
 
 .nav ul{
@@ -21,6 +21,27 @@
     list-style: none;
     display: flex;
     gap: 1rem;
+}
+
+.nav .search-box{
+    margin-top: 0.7rem;
+}
+
+.nav .search-box input{
+    border: none;
+    padding: 10px;
+    font-size: large;
+    width: 20rem;
+    height: 2.5rem;
+}
+
+.nav .search-box .button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    width: 3rem;
+    height: 2.4rem;
+    margin-bottom: .5rem;
 }
 
 .nav a {
@@ -33,7 +54,44 @@
     font-size: 2rem;
 }
 
-.nav img {
+.nav .cartIcon {
+    margin-top: .7rem;
     cursor: pointer;
+    margin-right: 1rem;
 }
 
+.header{
+    background-color: aliceblue;
+    width: 100%;
+    padding: 5px 15px;
+    box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px;
+    
+}
+
+.header .container .nav-below{
+    margin-top: .5rem;
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+}
+
+.header .container .nav-below ul{
+    display: flex;
+}
+
+.header .container .nav-below ul li{
+    margin-left: 3rem;
+    list-style: none;
+}
+
+.header .container .nav-below ul li .link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.header .container .nav-below  .icon{
+    margin-left: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+}

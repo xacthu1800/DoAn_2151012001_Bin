@@ -19,10 +19,10 @@
 }
 
 .grid-newproduct .grid-container .grid-item{
-    color: black;
+    color: rgb(39, 36, 36);
     border-radius: 20px;
     min-width: 70px;
-    min-height: 450px;
+    max-height: 450px;
     background-color: aliceblue;
     overflow: hidden;
 }
@@ -44,10 +44,14 @@
     object-position:center;
 }
 
-.grid-newproduct .grid-container .grid-item  .productName, .productPrice {
-    font-size: 25px;
+.grid-newproduct .grid-container .grid-item  .productName {
+    font-size: 19px;
     padding: 5px  10px;
+    max-height: 4rem;
+    overflow:hidden;
 }
+
+
 
 .grid-newproduct .grid-container .grid-item  .productPrice {
     font-size: 25px;
@@ -59,13 +63,17 @@
 .grid-newproduct .grid-container .grid-item .discount{
     font-size: 25px;
     font-weight: 900;
-    padding-left: 190px;
+    position: relative;
+    top: -20px;
+    left: 180px;
 }
 
 .grid-newproduct .grid-container .grid-item .productPrice_discounted {
     font-size: 30px;
     font-weight: 700;
     padding-left: 55px;
+    position: relative;
+    top: -22px;
     color: red;
 }
 
