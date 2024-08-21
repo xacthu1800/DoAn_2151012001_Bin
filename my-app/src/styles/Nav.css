@@ -61,10 +61,10 @@
 }
 
 .header{
-    background-color: aliceblue;
+    background-color: white;
     width: 100%;
     padding: 5px 15px;
-    box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px ;
     
 }
 
@@ -77,6 +77,7 @@
 
 .header .container .nav-below ul{
     display: flex;
+    padding-left: 0px;
 }
 
 .header .container .nav-below ul li{
