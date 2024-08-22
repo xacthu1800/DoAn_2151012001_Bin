@@ -93,6 +93,10 @@
 
 .header .container .nav-below  .icon{
     margin-left: 1.5rem;
-    margin-right: 10px;
+    margin-right: 37px;
+    
     cursor: pointer;
+    color: #333;
 }
+
+

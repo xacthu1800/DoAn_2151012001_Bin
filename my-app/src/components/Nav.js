@@ -43,8 +43,13 @@ const Nav = () => {
               </li>
             </ul>
             <div className='auth'>
-              <CiLogin size={35} className='icon'/>
-              <CiLogout size={35} className='icon'/>
+              <Link to="/Login">
+                <CiLogin size={35} className='icon'/>
+              </Link>
+              <Link to="/Register">
+                <CiLogout size={35} className='icon'/>
+              </Link>
+           
             </div>
         </div>
       </div>

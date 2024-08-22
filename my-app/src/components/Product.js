@@ -3,10 +3,10 @@ import { IoEyeOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 
 
-const Product = () => {
+const Product = (props) => {
   return (
     <div className="grid-newproduct">
-        <Caption cap="Điện Thoại Nổi Bậc Nhất"/>
+        <Caption cap={props.cap}/>
         <div className="grid-container">
             <div className="grid-item">
                 <div className="image-container">

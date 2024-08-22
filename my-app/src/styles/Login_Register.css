@@ -37,7 +37,7 @@
 }
 
 .input-box input::placeholder{
-    color: #fff;
+    color: #333;
 
 }
 
@@ -58,7 +58,7 @@
 }
 
 .wrapper .remember-forgot label input{
-    accent-color: #fff;
+    accent-color: #333;
     margin-right: 4px;
 }
 
