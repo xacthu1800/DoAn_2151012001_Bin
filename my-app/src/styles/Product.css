@@ -3,18 +3,19 @@
     background-color: transparent;
 }
 
-.grid-newproduct .grid-container{
+ .grid-container{
     color: white;
     display: grid;
     padding: 20px;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 }
 
 
 
-.grid-newproduct .grid-container .grid-item{
+
+ .grid-container .grid-item{
     box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px;
     padding: 10px 20px;
     color: rgb(39, 36, 36);
@@ -26,15 +27,15 @@
     transition: .7s;
 }
 
-.grid-newproduct .grid-container .grid-item:hover{
+ .grid-container .grid-item:hover{
     transform: scale(1.1);
 }
 
-.grid-newproduct .grid-container .grid-item div{
+ .grid-container .grid-item div{
     display: block;
 }
 
-.grid-newproduct .grid-container .grid-item .image-container {
+ .grid-container .grid-item .image-container {
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -42,7 +43,7 @@
     position: relative
 }
 
-.grid-newproduct .grid-container .grid-item .image-container .icon {
+ .grid-container .grid-item .image-container .icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%); /* Căn giữa theo chiều dọc */
@@ -52,21 +53,21 @@
     left: -5px;
 }
 
-.grid-newproduct .grid-container .grid-item .image-container .icon li {
+ .grid-container .grid-item .image-container .icon li {
     opacity: 0; /* Ẩn đi ban đầu */
     visibility: hidden; /* Ẩn hoàn toàn */
     transition: opacity 0.3s ease, visibility 0.3s ease; /* Hiệu ứng mượt */
     list-style: none;
 }
 
-.grid-newproduct .grid-container .grid-item:hover .icon li {
+ .grid-container .grid-item:hover .icon li {
     opacity: 1; 
     visibility: visible; 
     cursor: pointer;
     transform: scale(1.3); 
 }
 
-.grid-newproduct .grid-container .grid-item .image-container img {
+ .grid-container .grid-item .image-container img {
     width: auto;
     height: 100%;
     object-fit: cover; 
@@ -74,7 +75,7 @@
     overflow: hidden;
 }
 
-.grid-newproduct .grid-container .grid-item  .productName {
+ .grid-container .grid-item  .productName {
     font-size: 19px;
     padding: 5px  10px;
     max-height: 4rem;
@@ -83,14 +84,14 @@
 
 
 
-.grid-newproduct .grid-container .grid-item  .productPrice {
+ .grid-container .grid-item  .productPrice {
     font-size: 25px;
     font-weight: 700;
     padding: 5px  20px;
     color: rgb(0, 0, 0);
 }
 
-.grid-newproduct .grid-container .grid-item .discount{
+ .grid-container .grid-item .discount{
     font-size: 25px;
     font-weight: 900;
     position: relative;
@@ -98,7 +99,7 @@
     left: 150px;
 }
 
-.grid-newproduct .grid-container .grid-item .productPrice_discounted {
+ .grid-container .grid-item .productPrice_discounted {
     font-size: 25px;
     font-weight: 700;
     padding-left: 29px;
@@ -115,34 +116,35 @@
 }
 
 @media (max-width: 768px) {
-    .grid-newproduct .grid-container {
+     .grid-container {
         grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột trên 1 dòng */
     }
 }
 
 @media (max-width: 768px) {
-   
-    .grid-newproduct .grid-container .grid-item .productName {
+    
+     .grid-container .grid-item .productName {
         font-size: 16px; /* Giảm kích thước chữ */
         padding: 3px  5px; /* Điều chỉnh padding */
         max-height: 3rem;
     }
 
-    .grid-newproduct .grid-container .grid-item .productPrice {
+     .grid-container .grid-item .productPrice {
         font-size: 20px; /* Giảm kích thước chữ */
         padding: 5px  30px; /* Điều chỉnh padding */
     }
 
-    .grid-newproduct .grid-container .grid-item .discount {
+     .grid-container .grid-item .discount {
         font-size: 20px; /* Giảm kích thước chữ */
         left: 100px; /* Điều chỉnh vị trí */
     }
 
-    .grid-newproduct .grid-container .grid-item .productPrice_discounted {
+     .grid-container .grid-item .productPrice_discounted {
         font-size: 25px; /* Giảm kích thước chữ */
         padding-left: 30px; /* Điều chỉnh padding */
         top: -15px; /* Điều chỉnh vị trí */
     }
+  
 }
 
 

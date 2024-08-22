@@ -5,6 +5,7 @@
 @import "./styles/Banner.css";
 @import "./styles/ProductType.css";
 @import "./styles/Footer.css";
+@import "./styles/Categories.css";
 
 *{
     padding: 0;
