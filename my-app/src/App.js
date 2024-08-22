@@ -7,7 +7,7 @@ import  Product from './components/Product'
 import  Banner from './components/Banner'
 import  ProductType from './components/ProductType'
 import  Footer from './components/Footer';
-import  Home from './components/Home'
+import  Home from './components/Pages/Home'
 import Login from './components/LoginForm'
 import Register from './components/RegisterForm'
 

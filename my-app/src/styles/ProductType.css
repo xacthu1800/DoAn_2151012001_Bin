@@ -21,6 +21,7 @@
     border-radius: 50%;
     background-color: #e8f4ff;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .product_type .container .box .icon_box .icon{
@@ -29,10 +30,10 @@
     position: relative;
     top: 50px;
     left: 52px;
-    transition: 0.4s;
+    transition: 0.3s ;
 }
 
-.product_type .container .box .icon_box .icon:hover{
+.product_type .container .box .icon_box:hover .icon{
    transform: scale(1.3);
 }
 

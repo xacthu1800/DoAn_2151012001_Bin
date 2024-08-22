@@ -1,6 +1,6 @@
-import  ProductType from './ProductType'
-import  Product from './Product'
-import  Footer from './Footer';
+import  ProductType from '../ProductType'
+import  Product from '../Product'
+import  Footer from '../Footer';
 
 export default function Home() {
   return (

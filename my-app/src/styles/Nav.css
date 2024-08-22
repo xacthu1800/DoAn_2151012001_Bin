@@ -99,4 +99,8 @@
     color: #333;
 }
 
+.header .container .nav-below .auth {
+    display: flex;
+    justify-content: center;
+}
 
