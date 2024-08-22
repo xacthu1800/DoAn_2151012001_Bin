@@ -1,6 +1,9 @@
 @import "./styles/Nav.css";
 @import "./styles/Login_Register.css";
-@import "./styles/Newproduct.css";
+@import "./styles/Product.css";
+@import "./styles/Caption.css";
+@import "./styles/Banner.css";
+@import "./styles/ProductType.css";
 
 *{
     padding: 0;

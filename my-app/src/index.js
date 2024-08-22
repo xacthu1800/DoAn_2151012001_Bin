@@ -5,8 +5,6 @@ import './index.css'
 
 
 import App from './App';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,0 +1,40 @@
+.product_type{
+    padding: 30px 40px;
+    width: 100%;
+}
+
+.product_type .container{
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_type .container .box {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+.product_type .container .box .icon_box{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: #e8f4ff;
+    overflow: hidden;
+}
+
+.product_type .container .box .icon_box .icon{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 50px;
+    left: 52px;
+    transition: 0.4s;
+}
+
+.product_type .container .box .icon_box .icon:hover{
+   transform: scale(1.3);
+}
+
+
+
