@@ -1,7 +1,6 @@
 .grid-newproduct{
     height: auto;
-    background: rgb(228,222,255);
-    background: radial-gradient(circle, rgba(228,222,255,1) 0%, rgba(239,252,255,0.5966036072632177) 0%, rgba(166,162,180,1) 0%, rgba(213,225,228,1) 100%, rgba(5,3,3,0.6246148117450105) 100%);
+    background-color: transparent;
 }
 
 .grid-newproduct .grid-container{

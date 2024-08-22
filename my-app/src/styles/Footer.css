@@ -1,0 +1,45 @@
+.foot-container{
+    display: flex;
+    height: 30vh;
+    background-color: whitesmoke;
+    justify-content: space-between;
+    padding: 20px 4%;
+
+    box-shadow: rgba(0, 0, 0, .35) 0px -5px 15px ;
+}
+
+.foot-container .container-item{
+    max-width: 35%;
+    height: auto;
+    background-color: whitesmoke ;
+}
+
+.foot-container .col-shadow{
+    box-shadow: rgba(0, 0, 0, .35)  5px 0px 0px ;
+    padding: 3px;
+}
+
+.foot-container .container-item h4{
+    margin-top: 41px;
+}
+
+.foot-container .info-student-container{
+    padding-left: 60px;
+}
+
+.foot-container .container-item h5{
+    margin-top: 10px;
+    font-size: 25px;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+.foot-container .container-item .info-student{
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+.foot-container .container-item img{
+    width: 400px;
+}
+
