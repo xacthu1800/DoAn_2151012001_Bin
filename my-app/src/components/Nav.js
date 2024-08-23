@@ -1,4 +1,4 @@
-import {useState} from 'react'
+
 import { CiSearch } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
 import { CiUser } from "react-icons/ci";
@@ -8,8 +8,7 @@ import { CiLogout } from "react-icons/ci";
 
 
 
-const Nav = () => {
-  const [inputValue, setInput] = useState('');
+const Nav = (props) => {
 
   return (
     <>
@@ -17,7 +16,7 @@ const Nav = () => {
       <a href="" className="site-title">CellphoneB</a>
       <div className='search-box'>
         <CiSearch className='button'/>
-        <input  type='text' value={inputValue} placeholder='Enter The Product Name' onChange={e => setInput(e.target.value)} />
+        <input  type='text' value={props.inputValue} placeholder='Enter The Product Name' onChange={e => props.setInput(e.target.value)} />
       </div>
       <ul>
           <li >

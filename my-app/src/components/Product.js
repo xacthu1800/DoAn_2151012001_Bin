@@ -12,7 +12,7 @@ const Product = (props) => {
                 <div className="image-container">
                  <img src= {require("../resources/iphone-15-plus_1__1.webp")}/>
                  <div className="icon">
-                    <li><IoEyeOutline /></li>
+                    <li><IoEyeOutline onClick={()=>{props.setClose(!props.close)}}/></li>
                     <li><IoEyeOutline /></li>
                     <li><IoCartOutline /></li>
                     <li><IoCartOutline /></li>

@@ -1,16 +1,20 @@
 import  ProductType from '../ProductType'
 import  Product from '../Product'
-import  Footer from '../Footer';
 
-export default function Home() {
+
+export default function Home({close, setClose}) {
   return (
     <>
       <ProductType />
-      <Product cap="Phone"/>
-      <Product cap="Laptop"/>
-      <Product cap="Headphone"/>
-      <Product cap="Watch"/>
-      <Footer />
+      <Product cap="Phone"
+        close={close} setClose={setClose}/>
+      <Product cap="Laptop"
+        close={close} setClose={setClose}/>
+      <Product cap="Headphone"
+        close={close} setClose={setClose}/>
+      <Product cap="Watch"
+        close={close} setClose={setClose}/>
+      
     </>
   )
 }

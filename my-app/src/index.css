@@ -6,6 +6,8 @@
 @import "./styles/ProductType.css";
 @import "./styles/Footer.css";
 @import "./styles/Categories.css";
+@import "./styles/ProductDetail.css";
+
 
 *{
     padding: 0;
