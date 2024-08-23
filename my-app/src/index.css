@@ -20,6 +20,9 @@ body{
 }
 
 @media (max-width: 768px) {
+    .nav .search-box{
+        display: none;
+    }
     .hidden-on-mobile {
         display: none;
     }
