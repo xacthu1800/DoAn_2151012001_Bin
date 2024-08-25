@@ -33,11 +33,12 @@
     font-size: large;
     width: 20rem;
     height: 2.5rem;
+    background-color: inherit;
 }
 
 .nav .search-box .button{
     cursor: pointer;
-    background-color: white;
+    background-color: whitesmoke;
     border: none;
     width: 3rem;
     height: 2.4rem;

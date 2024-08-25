@@ -20,14 +20,14 @@
     padding: 10px 20px;
     color: rgb(39, 36, 36);
     border-radius: 20px;
-    min-width: 70px;
+    max-width: 318px;
     max-height: 450px;
     background-color: aliceblue;
     overflow: hidden;
     transition: .7s;
 }
 
- .grid-container .grid-item:hover{
+ .grid-container .grid-item:hover {
     transform: scale(1.1);
 }
 
@@ -45,26 +45,30 @@
 
  .grid-container .grid-item .image-container .icon {
     position: absolute;
-    top: 50%;
+    top: 200px;
     transform: translateY(-50%); /* Căn giữa theo chiều dọc */
     display: flex;
     flex-direction: column; /* Sắp xếp các thẻ li theo cột */
+    justify-content: space-between;
     gap: 10px; /* Khoảng cách giữa các thẻ li */
-    left: -5px;
+    left: -50px;
 }
 
  .grid-container .grid-item .image-container .icon li {
+    z-index: 10;
     opacity: 0; /* Ẩn đi ban đầu */
     visibility: hidden; /* Ẩn hoàn toàn */
     transition: opacity 0.3s ease, visibility 0.3s ease; /* Hiệu ứng mượt */
     list-style: none;
+    margin-left: 60px;
+    padding-top: 40px;
 }
 
  .grid-container .grid-item:hover .icon li {
     opacity: 1; 
     visibility: visible; 
     cursor: pointer;
-    transform: scale(1.3); 
+    transform: scale(2.0); 
 }
 
  .grid-container .grid-item .image-container img {

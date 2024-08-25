@@ -2,10 +2,11 @@ import Categories from '../Categories';
 
 
 
-export default function Products() {
+export default function Products({close, setClose}) {
   return (
     <>
-        <Categories />
+        <Categories 
+        close={close} setClose={setClose}/>
     </>
   )
 }

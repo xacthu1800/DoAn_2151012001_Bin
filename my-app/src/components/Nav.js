@@ -23,7 +23,9 @@ const Nav = (props) => {
             <a style={{display:"none"}}>Hi Bin</a>
           </li>
           <li>
-            <FiShoppingCart size={35} className='cartIcon'/>
+            <Link to="/Cart" >
+              <FiShoppingCart size={35} className='cartIcon'/>
+            </Link>
           </li>
       </ul>
      </nav>

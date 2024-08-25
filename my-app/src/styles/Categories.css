@@ -25,8 +25,10 @@
 }
 
 .Categories-box .box .box-left .cap-main{
-    padding: 10px 20px;
     font-size: 50px;
+    border-bottom: 3px solid;
+    margin-left: 20px;
+
 }
 
 .Categories-box .box .box-left .cap-product{
@@ -37,6 +39,7 @@
 .Categories-box .box .box-left .cap-normal{
     font-size: 50px;  
     margin-left: 20px;
+    border-bottom: 3px solid;
 }
 
 .Categories-box .box .box-left  .cap-norma2{
@@ -46,6 +49,7 @@
 }
 
 .Categories-box .box .box-left .price-up-down{
+    margin-top: 20px;
     display: flex;
     cursor: pointer;
     padding: 10px 60px;

@@ -7,6 +7,7 @@
 @import "./styles/Footer.css";
 @import "./styles/Categories.css";
 @import "./styles/ProductDetail.css";
+@import "./styles/Cart.css";
 
 
 *{
@@ -22,6 +23,18 @@ body{
 }
 
 @media (max-width: 768px) {
+    .productDetail .container{
+        transform: scale(.7);
+    }
+
+    .productDetail .container .container-wrap{
+        display: flex;
+        flex-direction: column;
+    }
+    .productDetail .container .con-right .icon button{
+        margin-top: 20px;
+        margin-right: 9rem;
+    }
     .nav .search-box{
         display: none;
     }

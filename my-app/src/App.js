@@ -10,12 +10,14 @@ import  Home from './components/Pages/Home'
 import  Login from './components/Pages/LoginForm'
 import  Register from './components/Pages/RegisterForm'
 import ProductDetail from './components/ProductDetail';
+import Cart from './components/Pages/Page.Cart'
+
 
 
 const App = () => {
   const [inputValue, setInput] = useState('');
   const [product,setProduct] = useState('')
-  const [close,setClose] = useState(true)
+  const [close,setClose] = useState(false)
 
   return (
     <>
@@ -32,6 +34,7 @@ const App = () => {
         <Route path='/Categories' element={<Products 
             close={close} setClose={setClose}
           />}/>
+        <Route path='/Cart' element={<Cart />}/>
         <Route path='/Login' element={<Login />}/>
         <Route path='/Register' element={<Register />}/>
       </Routes>
