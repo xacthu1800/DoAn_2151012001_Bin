@@ -8,13 +8,43 @@ function Checkout(props) {
       <div className='checkout-cont'>
         <div className='cont'> 
           <div className='cont-left'>
-            <h1>Checkout</h1>
-            <h2>Shipping information</h2>
+            <div>
+              <h1>Checkout</h1>
+            </div>
+            <div className="form-wrapping">
+              <form className="form-1">
+  
+                <div className="form-section">
+                 <label>Shipping information</label>  
+                </div>
 
-            <h3>Full Name</h3>
-            <h3>Address</h3>
-            <h3>Phone Number</h3>
-            <h3>Note</h3>
+                <div className="form-section">
+                  <label>Full Name</label>
+                  <input />
+                </div>
+
+                <div className="form-section">
+                  <label>Address</label>
+                  <input />
+                </div>
+                  
+                <div className="form-section">
+                  <label>Phone Number</label>
+                  <input />
+                </div>
+                  
+                <div className="form-section">
+                  <label>Note</label>
+                  <input />
+                </div>
+              
+              </form>
+
+              {/* <form className="form-2" style={{visibility:'none'}}>
+                
+               </form> */}
+            </div>
+           
           </div>
 
           
@@ -91,7 +121,22 @@ function Checkout(props) {
             </div>
 
             <div className='table-pricing box'>
-
+                <div className="subTotal table-section">
+                  <label className="font-1">subtotal</label>
+                  <div className="subTotal-value font-1">20.0000.000 Đ</div>
+                </div>
+                <div className="shipping table-section">
+                  <label className="font-1">shipping</label>
+                  <div className="shipping-value font-1">20.000 Đ</div>
+                </div>
+                <div className="coupon table-section">
+                  <label className="font-1">shipping</label>
+                  <div className="coupon-value font-1">10.000.000 Đ</div>
+                </div>
+                <div className="finalPrice table-section">
+                  <label className="font-2"> Total</label>
+                  <div className="finalPrice-value font-2">10.000.000 Đ</div>
+                </div>
             </div>
 
             <div className='order box'>

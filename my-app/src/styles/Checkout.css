@@ -1,7 +1,7 @@
 .checkout-cont{
     background-color: aqua;
     width: 100%;
-    height: 85vh;
+    height: auto;
     padding: 30px 40px
 }
 
@@ -20,13 +20,13 @@
 
 .checkout-cont .cont .cont-left {
     background-color: yellow;
-    width: 750px;
+    width: 50%;
     height: 650px;
 }
 
 .checkout-cont .cont .cont-right{
     background-color: greenyellow;
-    width: 750px;
+    width: 50%;
     height: 650px;
     display: flex;
     justify-content: center;
@@ -75,9 +75,8 @@
 }
 
 .cont-right .review-cont .list-item{
-    padding: 5px 10px;
-    border: 2px solid  ;
     height: 90%;
+    border-radius: 10px;
 }
 
 .cont-right .review-cont .list-item .item-cont{
@@ -88,6 +87,7 @@
 }
 
 .cont-right .review-cont .list-item .item-cont .item{
+    border-radius: 10px;
     margin-bottom: 10px;
     background-color: thistle;
     width: 100%;
@@ -165,3 +165,88 @@
 }
 
 /* ---------------------------discount-code end------------------------- */
+
+
+/* ---------------------------table-pricing start------------------------- */
+.table-pricing{
+    padding: 2px 4px;
+}
+
+.table-pricing .table-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1px 10px 1px 10px;
+
+}
+
+.table-pricing label{
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+}
+
+.table-pricing .finalPrice {
+    border-top: 2px solid;
+}
+
+.table-pricing  .font-1 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    
+}
+
+.table-pricing .finalPrice .font-2 {
+
+    font-size: 25px;
+    font-weight: 700;
+}
+/* ---------------------------table-pricing end------------------------- */
+
+/* ---------------------------order box start------------------------- */
+.order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .6s;
+}
+
+.order:hover{
+    transform: scale(1.1);
+}
+
+.order .submit-order{
+    width: 70%;
+    border-radius: 20px;
+    font-size: 25px;
+}
+/* ---------------------------order box end------------------------- */
+
+
+
+
+
+
+/* ----------------------------Left------------------------------ */
+
+.cont-left .form-wrapping{
+    padding: 10px 20px;
+    width: 100%;
+    height: 550px;
+    background-color: azure;
+}
+
+.cont-left .form-wrapping .form-1{
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.cont-left .form-wrapping .form-1 .form-section{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}

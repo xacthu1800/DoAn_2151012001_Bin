@@ -24,6 +24,16 @@ body{
 }
 
 @media (max-width: 768px) {
+    .checkout-cont .cont{
+        flex-direction: column;
+        width:auto;
+    }
+
+    .checkout-cont .cont .cont-left,
+    .checkout-cont .cont  .cont-right{
+        width: auto;;
+        height: auto;
+    }
     .productDetail .container{
         transform: scale(.7);
     }
