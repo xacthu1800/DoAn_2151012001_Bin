@@ -11,7 +11,7 @@ export default function Cart() {
             <div className="cont">
                 <div className="price-cont">
                     <div className="price-value">Total: 20.000.000 Đ </div>
-                    <Link className="icon" ><FaChevronRight  /> Checkout</Link>
+                    <Link to='/Checkout' className="icon" ><FaChevronRight  /> Checkout</Link>
                 </div>
 
                 <div className="list-item">

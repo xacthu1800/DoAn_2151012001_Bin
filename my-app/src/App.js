@@ -11,11 +11,16 @@ import  Login from './components/Pages/LoginForm'
 import  Register from './components/Pages/RegisterForm'
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Pages/Page.Cart'
+import Checkout from './components/Pages/Page.checkout'
 
 
 
 const App = () => {
+  /* Nav */ 
   const [inputValue, setInput] = useState('');
+  /* Checkout */
+  const [coupon,setCoupon] = useState('');
+
   const [product,setProduct] = useState('')
   const [close,setClose] = useState(false)
 
@@ -35,6 +40,9 @@ const App = () => {
             close={close} setClose={setClose}
           />}/>
         <Route path='/Cart' element={<Cart />}/>
+        <Route path='/Checkout' element={<Checkout 
+            coupon={coupon} setCoupon={setCoupon}
+          />}/>
         <Route path='/Login' element={<Login />}/>
         <Route path='/Register' element={<Register />}/>
       </Routes>

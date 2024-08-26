@@ -1,0 +1,167 @@
+.checkout-cont{
+    background-color: aqua;
+    width: 100%;
+    height: 85vh;
+    padding: 30px 40px
+}
+
+.checkout-cont .cont{
+    background-color: bisque;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.checkout-cont .cont .box{
+    margin: 5px;
+}
+
+.checkout-cont .cont .cont-left {
+    background-color: yellow;
+    width: 750px;
+    height: 650px;
+}
+
+.checkout-cont .cont .cont-right{
+    background-color: greenyellow;
+    width: 750px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.checkout-cont .cont .cont-right .review-cont{
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: 300px;
+}
+
+.checkout-cont .cont .cont-right .discount-code{
+    background-color: yellow;
+    width: 100%;
+    height: 70px;
+}
+
+.checkout-cont .cont .cont-right .table-pricing{
+    background-color: aquamarine;
+    width: 100%;
+    height: 150px;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkout-cont .cont .cont-right .order{
+    background-color: blueviolet;
+    width: 100%;
+    height: auto;
+}
+
+.checkout-cont .cont .cont-right .order button{
+    height: 40px;
+}
+
+/* ----------------------------Right------------------------------ */
+
+/* ---------------------------REVIEW SECTION start------------------------- */
+.cont-right .review-cont label{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.cont-right .review-cont .list-item{
+    padding: 5px 10px;
+    border: 2px solid  ;
+    height: 90%;
+}
+
+.cont-right .review-cont .list-item .item-cont{
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.cont-right .review-cont .list-item .item-cont .item{
+    margin-bottom: 10px;
+    background-color: thistle;
+    width: 100%;
+    height: 110px;
+    padding : 5px 10px ;
+    display: flex;
+}
+
+.cont-right .review-cont .list-item .item-cont .item img{
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+    
+}
+
+.cont-right .review-cont .list-item .item-cont .item .infor-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.cont-right .review-cont .list-item .item-cont .item .infor-wrapper .name{
+    font-size: 20px;
+}
+
+.cont-right .review-cont .list-item .item-cont .item .infor-wrapper .price-amount-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}   
+
+.cont-right .review-cont .list-item .item-cont .item .infor-wrapper .price-amount-wrapper .price{
+    font-size: 30px;
+}
+
+.cont-right .review-cont .list-item .item-cont .item .infor-wrapper .price-amount-wrapper .amount{
+    font-size: 30px;
+    word-spacing: 10px;
+}
+/* ---------------------------REVIEW SECTION end------------------------- */
+
+/* ---------------------------discount-code start------------------------- */
+.cont-right .discount-code{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-right .discount-code .coupon-icon{
+    font-size: 35px;
+    margin-right: 20px;
+}
+
+.cont-right .discount-code input{
+    border: none;
+    width: 300px;
+    height: 35px;
+    padding:10px 20px;
+}
+
+.cont-right .discount-code button{
+    border: none;
+    font-weight: bolder;
+    width: 90px     ;
+    height: 35px;
+    transition: .3s;
+}
+
+.cont-right .discount-code button:hover{
+    font-size: 20px;
+}
+
+/* ---------------------------discount-code end------------------------- */
