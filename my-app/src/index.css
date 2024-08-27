@@ -1,62 +1,65 @@
-@import "./styles/Nav.css";
-@import "./styles/Login_Register.css";
-@import "./styles/Product.css";
-@import "./styles/Caption.css";
-@import "./styles/Banner.css";
-@import "./styles/ProductType.css";
-@import "./styles/Footer.css";
-@import "./styles/Categories.css";
-@import "./styles/ProductDetail.css";
-@import "./styles/Cart.css";
-@import "./styles//Checkout.css";
+@import './styles/Nav.css';
+@import './styles/Login_Register.css';
+@import './styles/Product.css';
+@import './styles/Caption.css';
+@import './styles/Banner.css';
+@import './styles/ProductType.css';
+@import './styles/Footer.css';
+@import './styles/Categories.css';
+@import './styles/ProductDetail.css';
+@import './styles/Cart.css';
+@import './styles//Checkout.css';
 
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
-    background: rgb(228,222,255);
-    background: radial-gradient(circle, rgba(228,222,255,1) 0%, rgba(239,252,255,0.5966036072632177) 0%, rgba(166,162,180,1) 0%, rgba(213,225,228,1) 100%, rgba(5,3,3,0.6246148117450105) 100%);
-
+body {
+    background: rgb(228, 222, 255);
+    background: radial-gradient(
+        circle,
+        rgba(228, 222, 255, 1) 0%,
+        rgba(239, 252, 255, 0.5966036072632177) 0%,
+        rgba(166, 162, 180, 1) 0%,
+        rgba(213, 225, 228, 1) 100%,
+        rgba(5, 3, 3, 0.6246148117450105) 100%
+    );
 }
 
 @media (max-width: 768px) {
-    .checkout-cont .cont .cont-left{
+    .checkout-cont .cont .cont-left {
         border: none;
         border-bottom: 1px solid;
     }
 
-    .checkout-cont .cont{
+    .checkout-cont .cont {
         flex-direction: column;
-        width:auto;
+        width: auto;
     }
 
     .checkout-cont .cont .cont-left,
-    .checkout-cont .cont  .cont-right{
-        width: auto;;
+    .checkout-cont .cont .cont-right {
+        width: auto;
         height: auto;
     }
-    .productDetail .container{
-        transform: scale(.7);
+    .productDetail .container {
+        transform: scale(0.7);
     }
 
-    .productDetail .container .container-wrap{
+    .productDetail .container .container-wrap {
         display: flex;
         flex-direction: column;
     }
-    .productDetail .container .con-right .icon button{
+    .productDetail .container .con-right .icon button {
         margin-top: 20px;
         margin-right: 9rem;
     }
-    .nav .search-box{
+    .nav .search-box {
         display: none;
     }
     .hidden-on-mobile {
         display: none;
     }
 }
-
-
