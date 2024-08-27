@@ -24,6 +24,11 @@ body{
 }
 
 @media (max-width: 768px) {
+    .checkout-cont .cont .cont-left{
+        border: none;
+        border-bottom: 1px solid;
+    }
+
     .checkout-cont .cont{
         flex-direction: column;
         width:auto;

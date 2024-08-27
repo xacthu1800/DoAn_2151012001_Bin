@@ -1,8 +1,50 @@
 import { RiCoupon2Line } from "react-icons/ri";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
+import { useState } from "react";
 
 
 function Checkout(props) {
+  const [isForm2Visible, setForm2Visible] = useState(false);
+
+  // State để lưu trữ các giá trị của form-1
+  const [formData, setFormData] = useState({
+    fullName: '',
+    address: '',
+    phoneNumber: '',
+    note: '',
+  });
+
+  // Hàm để xử lý sự thay đổi của input
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Hàm để kiểm tra nếu tất cả các input đã được điền
+  const isForm1Complete = () => {
+    const { fullName, address, phoneNumber } = formData;
+    return fullName && address && phoneNumber;
+  };
+
+  // Hàm để xử lý khi nhấn nút
+  const handleButtonClick = () => {
+    if (isForm1Complete()) {
+      setForm2Visible(true);
+    } else {
+      alert('Please fill in all required fields');
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Ngăn không cho xuống hàng khi nhấn Enter
+    }
+  };
   return (
     <>
       <div className='checkout-cont'>
@@ -12,45 +54,111 @@ function Checkout(props) {
               <h1>Checkout</h1>
             </div>
             <div className="form-wrapping">
-              <form className="form-1">
-  
-                <div className="form-section">
-                 <label>Shipping information</label>  
-                </div>
+              {!isForm2Visible ? (
+                <form className="form-1">
+                  <div className="form-section head">
+                    <div>
+                      <label>Customer Information</label>
+                    </div>
+                  </div>
 
-                <div className="form-section">
-                  <label>Full Name</label>
-                  <input />
-                </div>
+                  <div className="form-section">
+                    <label>Full Name</label>
+                    <input name="fullName"
+                           value={formData.fullName}
+                           onChange={handleChange}
+                           maxLength={20}
+                           placeholder="Nguyen Van A" />
+                  </div>
 
-                <div className="form-section">
-                  <label>Address</label>
-                  <input />
-                </div>
+                  <div className="form-section">
+                    <label>Address</label>
+                    <input name="address"
+                           value={formData.address}
+                            onChange={handleChange}
+                            maxLength={100}
+                            placeholder="65B, distric 5" />
+                  </div>
+
+                  <div className="form-section">
+                    <label>Phone Number</label>
+                    <input name="phoneNumber" 
+                           value={formData.phoneNumber}
+                           onChange={handleChange}
+                           maxLength={20}
+                           placeholder="09********" />
+                  </div>
+
+                  <div className="form-section">
+                    <textarea name="note"
+                              value={formData.note}
+                               onChange={handleChange}
+                               maxLength={150}
+                               onKeyDown={handleKeyDown}
+                               placeholder="Note">Note</textarea>
+                  </div>
+
+                  {/* Nút để chuyển sang form-2 */}
+                  <div className="form-section button-form">
+                    <button type="button" onClick={handleButtonClick}>Next</button>
+                  </div>
+                </form>
+              ) : (
+                <form className="form-2">
+                  {/* Nội dung của form-2 (payment form) */}
+                  <div className="form-section head">
+                      <div>
+                        <label>Payment Information</label>
+                      </div>
+                      <div>
+                        <MdKeyboardArrowLeft className="icon" onClick={()=> setForm2Visible(false)}/>
+                      </div>
+                  </div>
+
+                  <div className="cus-infor-box">
+                    <div className="box">
+                      <div className="item">
+                        <label className="item-cate">Name</label>
+                        <label className="item-value">{formData.fullName}</label>
+                      </div>
+                      <div className="item">
+                        <label className="item-cate">Phone</label>
+                        <label className="item-value">{formData.phoneNumber}</label>
+                      </div>
+                      <div className="item note">
+                        <label className="item-cate">Address</label>
+                        <label className="item-value">{formData.address}</label>
+                      </div>
+                      <div className="item note">
+                        <label className="item-cate">Note</label>
+                        <label className="item-value">{formData.note}</label>
+                      </div>
+                    </div>
+                  </div>
                   
-                <div className="form-section">
-                  <label>Phone Number</label>
-                  <input />
-                </div>
-                  
-                <div className="form-section">
-                  <label>Note</label>
-                  <input />
-                </div>
-              
-              </form>
+                  <div className="type-payment">
+                     <select className="list-option" name="payment-toption">
+                      <option value="au">COD (Thanh toán khi nhận hàng)</option>
+                      <option value="ca">VNPay</option>
+                      <option value="usa">MoMo</option>
+                      </select>
+                  </div>
 
-              {/* <form className="form-2" style={{visibility:'none'}}>
+                  <div className="submit-button">
+                    <button>Submit</button>
+                  </div>
+
+                </form>
                 
-               </form> */}
+              )}
             </div>
-           
+                  
           </div>
 
           
           <div className='cont-right'>
             <div className='review-cont box'>
-              <label>Review your cart</label>
+              <h1>Review your cart</h1>
               <div className='list-item'>
                 <div className='item-cont'>
                   <div className='item'>
@@ -139,9 +247,9 @@ function Checkout(props) {
                 </div>
             </div>
 
-            <div className='order box'>
+            {/* <div className='order box'>
               <button className='submit-order'>Submit</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

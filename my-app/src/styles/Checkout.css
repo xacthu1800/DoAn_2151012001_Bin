@@ -1,17 +1,17 @@
 .checkout-cont{
-    background-color: aqua;
+    background-color: inherit;
     width: 100%;
     height: auto;
     padding: 30px 40px
 }
 
 .checkout-cont .cont{
-    background-color: bisque;
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    
 }
 
 .checkout-cont .cont .box{
@@ -19,13 +19,18 @@
 }
 
 .checkout-cont .cont .cont-left {
-    background-color: yellow;
+    background-color: whitesmoke;
     width: 50%;
     height: 650px;
+    border-right: 2px solid;
+}
+
+.checkout-cont .cont .cont-left div h1{
+    padding: 10px 20px;
 }
 
 .checkout-cont .cont .cont-right{
-    background-color: greenyellow;
+    background-color: whitesmoke    ;
     width: 50%;
     height: 650px;
     display: flex;
@@ -41,14 +46,20 @@
     min-height: 300px;
 }
 
+.checkout-cont .cont .cont-right  h1{
+    padding: 0px 20px;
+    margin-top: -15px;
+    margin-bottom: 17px;
+}
+
 .checkout-cont .cont .cont-right .discount-code{
-    background-color: yellow;
+    background-color: inherit    ;
     width: 100%;
     height: 70px;
 }
 
 .checkout-cont .cont .cont-right .table-pricing{
-    background-color: aquamarine;
+    background-color: inherit;
     width: 100%;
     height: 150px;
     
@@ -57,7 +68,7 @@
 }
 
 .checkout-cont .cont .cont-right .order{
-    background-color: blueviolet;
+    background-color: inherit;
     width: 100%;
     height: auto;
 }
@@ -65,6 +76,9 @@
 .checkout-cont .cont .cont-right .order button{
     height: 40px;
 }
+
+
+
 
 /* ----------------------------Right------------------------------ */
 
@@ -80,7 +94,7 @@
 }
 
 .cont-right .review-cont .list-item .item-cont{
-    background-color: aqua;
+    background-color: inherit;
     width: 100%;
     height: 100%;
     overflow-y: scroll;
@@ -89,7 +103,7 @@
 .cont-right .review-cont .list-item .item-cont .item{
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: thistle;
+    background-color:rgb(234, 230, 230);
     width: 100%;
     height: 110px;
     padding : 5px 10px ;
@@ -149,6 +163,7 @@
     border: none;
     width: 300px;
     height: 35px;
+    overflow: hidden;
     padding:10px 20px;
 }
 
@@ -233,7 +248,24 @@
     padding: 10px 20px;
     width: 100%;
     height: 550px;
-    background-color: azure;
+    background-color: whitesmoke    ;
+}
+
+.form-wrapping .head{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.form-wrapping .head div .icon{
+    cursor: pointer;
+    font-size: 40px;
+    transition: .7s;
+}
+
+.form-wrapping .head div .icon:hover{
+    transform: scale(1.8);
 }
 
 .cont-left .form-wrapping .form-1{
@@ -241,12 +273,126 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    
+/*     align-items: center;
+ */    
 }
+
+.cont-left .form-wrapping input{
+    background-color: inherit;
+    border: none;
+    border-bottom: 2px solid;
+    font-size: 17px;
+    padding: 10px 20px;
+}
+
+
 
 .cont-left .form-wrapping .form-1 .form-section{
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
 }
+
+.cont-left .form-wrapping .form-1 .form-section textarea{
+    width: 100%;
+    height: 120px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.cont-left .form-wrapping .form-1  .form-section button{
+    cursor: pointer;
+    width: 60%;
+    font-size: 20px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.cont-left .form-wrapping .form-1 .button-form{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-2 .cus-infor-box{
+    background-color: inherit;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-2 .cus-infor-box .box{
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-2 .cus-infor-box .box .item{
+    border-bottom: 1px solid;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-2 .cus-infor-box .box .item .item-cate{
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.form-2 .cus-infor-box .box .item .item-value{
+    font-weight: 800;
+}
+
+.form-2 .cus-infor-box .box .note{
+    flex-direction: column;
+}
+
+.form-2 .type-payment{
+    margin-top: 10px;
+    background-color: inherit;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.form-2 .type-payment .list-option{
+    width: 300px;
+    padding: 10px 20px;
+}
+
+
+.form-2 .submit-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.form-2 .submit-button button{
+    font-size: 25px;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.form-2 .submit-button button:hover{
+    transform: scale(1.1);
+}
+
+
+
