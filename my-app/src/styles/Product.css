@@ -1,22 +1,19 @@
-.grid-newproduct{
+.grid-newproduct {
     height: auto;
     background-color: transparent;
 }
 
- .grid-container{
+.grid-container {
     color: white;
     display: grid;
     padding: 20px;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 }
 
-
-
-
- .grid-container .grid-item{
-    box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px;
+.grid-container .grid-item {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 10px 20px;
     color: rgb(39, 36, 36);
     border-radius: 20px;
@@ -24,26 +21,26 @@
     max-height: 450px;
     background-color: aliceblue;
     overflow: hidden;
-    transition: .7s;
+    transition: 0.7s;
 }
 
- .grid-container .grid-item:hover {
+.grid-container .grid-item:hover {
     transform: scale(1.1);
 }
 
- .grid-container .grid-item div{
+.grid-container .grid-item div {
     display: block;
 }
 
- .grid-container .grid-item .image-container {
+.grid-container .grid-item .image-container {
     align-items: center;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e2e0e0;
-    position: relative
+    position: relative;
 }
 
- .grid-container .grid-item .image-container .icon {
+.grid-container .grid-item .image-container .icon {
     position: absolute;
     top: 200px;
     transform: translateY(-50%); /* Căn giữa theo chiều dọc */
@@ -54,7 +51,7 @@
     left: -50px;
 }
 
- .grid-container .grid-item .image-container .icon li {
+.grid-container .grid-item .image-container .icon li {
     z-index: 10;
     opacity: 0; /* Ẩn đi ban đầu */
     visibility: hidden; /* Ẩn hoàn toàn */
@@ -64,38 +61,36 @@
     padding-top: 40px;
 }
 
- .grid-container .grid-item:hover .icon li {
-    opacity: 1; 
-    visibility: visible; 
+.grid-container .grid-item:hover .icon li {
+    opacity: 1;
+    visibility: visible;
     cursor: pointer;
-    transform: scale(2.0); 
+    transform: scale(2);
 }
 
- .grid-container .grid-item .image-container img {
+.grid-container .grid-item .image-container img {
     width: auto;
     height: 100%;
-    object-fit: cover; 
-    object-position:center;
+    object-fit: cover;
+    object-position: center;
     overflow: hidden;
 }
 
- .grid-container .grid-item  .productName {
+.grid-container .grid-item .productName {
     font-size: 19px;
-    padding: 5px  10px;
+    padding: 5px 10px;
     max-height: 4rem;
-    overflow:hidden;
+    overflow: hidden;
 }
 
-
-
- .grid-container .grid-item  .productPrice {
+.grid-container .grid-item .productPrice {
     font-size: 25px;
     font-weight: 700;
-    padding: 5px  20px;
+    padding: 5px 20px;
     color: rgb(0, 0, 0);
 }
 
- .grid-container .grid-item .discount{
+.grid-container .grid-item .discount {
     font-size: 25px;
     font-weight: 900;
     position: relative;
@@ -103,7 +98,7 @@
     left: 150px;
 }
 
- .grid-container .grid-item .productPrice_discounted {
+.grid-container .grid-item .productPrice_discounted {
     font-size: 25px;
     font-weight: 700;
     padding-left: 29px;
@@ -120,36 +115,31 @@
 }
 
 @media (max-width: 768px) {
-     .grid-container {
+    .grid-container {
         grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột trên 1 dòng */
     }
 }
 
 @media (max-width: 768px) {
-    
-     .grid-container .grid-item .productName {
+    .grid-container .grid-item .productName {
         font-size: 16px; /* Giảm kích thước chữ */
-        padding: 3px  5px; /* Điều chỉnh padding */
+        padding: 3px 5px; /* Điều chỉnh padding */
         max-height: 3rem;
     }
 
-     .grid-container .grid-item .productPrice {
+    .grid-container .grid-item .productPrice {
         font-size: 20px; /* Giảm kích thước chữ */
-        padding: 5px  30px; /* Điều chỉnh padding */
+        padding: 5px 30px; /* Điều chỉnh padding */
     }
 
-     .grid-container .grid-item .discount {
+    .grid-container .grid-item .discount {
         font-size: 20px; /* Giảm kích thước chữ */
         left: 100px; /* Điều chỉnh vị trí */
     }
 
-     .grid-container .grid-item .productPrice_discounted {
+    .grid-container .grid-item .productPrice_discounted {
         font-size: 25px; /* Giảm kích thước chữ */
         padding-left: 30px; /* Điều chỉnh padding */
         top: -15px; /* Điều chỉnh vị trí */
     }
-  
 }
-
-
-

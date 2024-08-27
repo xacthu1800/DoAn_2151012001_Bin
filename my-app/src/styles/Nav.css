@@ -1,9 +1,9 @@
-.site-title{
+.site-title {
     font-size: 2rem;
     margin-left: 9rem;
 }
 
-.nav{
+.nav {
     background-color: whitesmoke;
     color: #333;
     display: flex;
@@ -11,10 +11,10 @@
     align-items: stretch;
     gap: 2rem;
     padding: 0 1rem;
-    border-bottom:  solid; 
+    border-bottom: solid;
 }
 
-.nav ul{
+.nav ul {
     padding: 0;
     margin: 0;
     margin-right: 6rem;
@@ -23,11 +23,11 @@
     gap: 1rem;
 }
 
-.nav .search-box{
+.nav .search-box {
     margin-top: 0.7rem;
 }
 
-.nav .search-box input{
+.nav .search-box input {
     border: none;
     padding: 10px;
     font-size: large;
@@ -36,13 +36,13 @@
     background-color: inherit;
 }
 
-.nav .search-box .button{
+.nav .search-box .button {
     cursor: pointer;
     background-color: whitesmoke;
     border: none;
     width: 3rem;
     height: 2.4rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 .nav a {
@@ -51,37 +51,36 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding: .25rem;
+    padding: 0.25rem;
     font-size: 2rem;
 }
 
 .nav .cartIcon {
-    margin-top: .7rem;
+    margin-top: 0.7rem;
     cursor: pointer;
     margin-right: 1rem;
 }
 
-.header{
+.header {
     background-color: whitesmoke;
     width: 100%;
     padding: 5px 15px;
-    box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px ;
-    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.header .container .nav-below{
-    margin-top: .5rem;
+.header .container .nav-below {
+    margin-top: 0.5rem;
     display: flex;
     max-width: 100%;
     justify-content: space-between;
 }
 
-.header .container .nav-below ul{
+.header .container .nav-below ul {
     display: flex;
     padding-left: 0px;
 }
 
-.header .container .nav-below ul li{
+.header .container .nav-below ul li {
     margin-left: 3rem;
     list-style: none;
 }
@@ -92,10 +91,10 @@
     font-size: 1.2rem;
 }
 
-.header .container .nav-below  .icon{
+.header .container .nav-below .icon {
     margin-left: 1.5rem;
     margin-right: 37px;
-    
+
     cursor: pointer;
     color: #333;
 }
@@ -104,4 +103,3 @@
     display: flex;
     justify-content: center;
 }
-

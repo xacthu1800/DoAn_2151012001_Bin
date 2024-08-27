@@ -1,9 +1,9 @@
-.product_type{
+.product_type {
     padding: 30px 40px;
     width: 100%;
 }
 
-.product_type .container{
+.product_type .container {
     max-width: 100%;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@
     margin-left: 10px;
 }
 
-.product_type .container .box .icon_box{
+.product_type .container .box .icon_box {
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -24,18 +24,15 @@
     cursor: pointer;
 }
 
-.product_type .container .box .icon_box .icon{
+.product_type .container .box .icon_box .icon {
     height: 100px;
     width: 100px;
     position: relative;
     top: 50px;
     left: 52px;
-    transition: 0.3s ;
+    transition: 0.3s;
 }
 
-.product_type .container .box .icon_box:hover .icon{
-   transform: scale(1.3);
+.product_type .container .box .icon_box:hover .icon {
+    transform: scale(1.3);
 }
-
-
-
