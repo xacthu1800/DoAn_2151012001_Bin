@@ -12,6 +12,7 @@ import Register from './components/Pages/RegisterForm';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Pages/Page.Cart';
 import Checkout from './components/Pages/Page.checkout';
+import User from './components/Pages/Page.User';
 
 const App = () => {
     /* Nav */
@@ -32,6 +33,8 @@ const App = () => {
                 <Route path="/Categories" element={<Products close={close} setClose={setClose} />} />
                 <Route path="/Cart" element={<Cart />} />
                 <Route path="/Checkout" element={<Checkout coupon={coupon} setCoupon={setCoupon} />} />
+                <Route path="/User" element={<User />} />
+
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Register" element={<Register />} />
             </Routes>

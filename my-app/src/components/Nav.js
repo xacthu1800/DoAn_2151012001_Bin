@@ -4,6 +4,7 @@ import { CiUser } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import { CiLogin } from 'react-icons/ci';
 import { CiLogout } from 'react-icons/ci';
+import { FaRegCircleUser } from 'react-icons/fa6';
 
 const Nav = (props) => {
     return (
@@ -25,7 +26,10 @@ const Nav = (props) => {
                     <li>
                         <a style={{ display: 'none' }}>Hi Bin</a>
                     </li>
-                    <li>
+                    <li className="nav-right-cont">
+                        <Link to="/User">
+                            <FaRegCircleUser size={35} className="userIcon" />
+                        </Link>
                         <Link to="/Cart">
                             <FiShoppingCart size={35} className="cartIcon" />
                         </Link>

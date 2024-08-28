@@ -9,6 +9,7 @@
 @import './styles/ProductDetail.css';
 @import './styles/Cart.css';
 @import './styles//Checkout.css';
+@import './styles//User.css';
 
 * {
     padding: 0;

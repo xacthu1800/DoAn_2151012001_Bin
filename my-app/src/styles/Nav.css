@@ -55,7 +55,8 @@
     font-size: 2rem;
 }
 
-.nav .cartIcon {
+.nav .cartIcon,
+.nav .userIcon {
     margin-top: 0.7rem;
     cursor: pointer;
     margin-right: 1rem;
@@ -89,6 +90,14 @@
     color: #333;
     text-decoration: none;
     font-size: 1.2rem;
+}
+
+.nav .nav-right-cont {
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header .container .nav-below .icon {
