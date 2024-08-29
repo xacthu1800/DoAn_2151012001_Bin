@@ -1,0 +1,87 @@
+/* Your Account --------------------------------------------------------------------------- */
+
+.YourAccount {
+    width: 100%;
+    height: auto;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+.YourAccount .infor-cont {
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: inherit;
+    width: 100%;
+    height: auto;
+}
+
+.YourAccount .infor-cont form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.YourAccount .infor-cont .cont-section {
+    display: block;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.YourAccount .infor-cont .main-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.YourAccount .infor-cont input {
+    border: none;
+    background-color: inherit;
+    width: 70%;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-bottom: 2px solid;
+
+    color: gray;
+}
+
+.YourAccount .infor-cont button {
+    color: #333;
+    background-color: whitesmoke;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 20px;
+    width: 70%;
+    border-radius: 10px;
+    border: none;
+}
+
+.YourAccount .infor-cont .update {
+    width: 70%;
+    border: 1px solid #333;
+    height: auto;
+    transition: 0.5s;
+    margin: 20px 0px;
+}
+
+.YourAccount .infor-cont .update:hover {
+    background-color: var(--grey1);
+}
+
+.YourAccount .infor-cont .cont-section .name {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.YourAccount .infor-cont .cont-section .name .icon {
+    margin-left: 20px;
+}

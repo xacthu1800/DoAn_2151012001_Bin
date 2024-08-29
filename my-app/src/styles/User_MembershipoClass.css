@@ -1,0 +1,172 @@
+.slider {
+    width: 100%;
+    pointer-events: none;
+    background: #666;
+    height: 2px;
+    border-radius: 5px;
+    transition: 2s;
+}
+
+.membership-class {
+    width: 100%;
+    height: auto;
+    background-color: var(--grey1);
+    border-radius: 10px;
+}
+
+.membership-class .section {
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.membership-class .user-infor {
+    background-color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.membership-class .user-infor h1 {
+    font-weight: bold;
+    color: purple;
+}
+.membership-class .user-infor h3 {
+}
+
+.membership-class .user-infor .rank {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 130px;
+    font-size: 40px;
+    border: 1px solid;
+    border-radius: 10px;
+    font-weight: 300;
+}
+
+.membership-class .class {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 20px;
+}
+
+.membership-class .class .block-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.membership-class .class .block-info .block-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.membership-class .class .block-info .block-left .name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.membership-class .class .block-info .block-left .culmilative-total {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.membership-class .class .block-ranking {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+}
+
+.membership-class .class .block-ranking input {
+    width: 70%;
+    height: 40px;
+}
+
+.class .block-right .rank {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.membership-class .rank-level {
+    margin-top: 50px;
+}
+
+.membership-class .section .rank-level {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.membership-class .section .rank-level .block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.membership-class .section .rank-level .block div {
+    font-weight: bolder;
+}
+
+.membership-class .section .rank-level .block .option {
+    cursor: pointer;
+}
+
+.membership-class .rank-list {
+    width: 100%;
+    height: auto;
+    background-color: whitesmoke;
+}
+
+.membership-class .rank-list form {
+    padding-top: 1px;
+}
+
+.membership-class .rank-list .cont-rank-list {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    padding: 10px 20px;
+}
+
+.membership-class .rank-list .cont-rank-list .state {
+    font-size: 40px;
+    color: #333;
+}
+
+.membership-class .rank-list .cont-rank-list .condition {
+    font-size: 25px;
+    font-weight: bold;
+    color: crimson;
+}
+
+.membership-class .section .condition-content {
+    width: 90%;
+    height: auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    column-gap: 20px;
+}
+
+.membership-class .section .condition-content .icon {
+    font-size: 30px;
+}
+
+.membership-class .section .condition-content .content {
+    font-size: 20px;
+}

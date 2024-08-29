@@ -11,6 +11,9 @@
 @import './styles//Checkout.css';
 @import './styles//User.css';
 @import './styles//User_HomePage.css';
+@import './styles/User_YourAccount.css';
+@import './styles/User_ChangePassword.css';
+@import './styles/User_MembershipoClass.css';
 
 * {
     padding: 0;
@@ -43,6 +46,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .YourAccount .infor-cont .cont-section .name {
+        row-gap: 20px;
+        flex-direction: column;
+    }
     .User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .name-dateOrder {
         flex-direction: column;
     }

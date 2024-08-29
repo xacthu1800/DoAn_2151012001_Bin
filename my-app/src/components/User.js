@@ -1,11 +1,14 @@
 import { IoHomeOutline } from 'react-icons/io5';
 import { MdOutlineManageAccounts } from 'react-icons/md';
+import { MdPassword } from 'react-icons/md';
 import { PiMedal, PiLink } from 'react-icons/pi';
 import { TbLogout2 } from 'react-icons/tb';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import HomePage from './User_HomePage.js';
 import YourAccount from './User_YourAccount.js';
+import ChangePassword from './User_ChangePassword.js';
+import Membershipclass from './User_MembershipoClass.js';
 // Import các component trang khác tương ứng nếu có
 
 export default function User() {
@@ -40,6 +43,12 @@ export default function User() {
                             </Link>
                         </div>
                         <div className="section">
+                            <MdPassword className="icon" />
+                            <Link to="Changepassword" className="linkFont">
+                                <h3>Change password</h3>
+                            </Link>
+                        </div>
+                        <div className="section">
                             <TbLogout2 className="icon" />
                             <Link to="Logout" className="linkFont">
                                 <h3>Logout</h3>
@@ -52,6 +61,8 @@ export default function User() {
                             <Route index element={<HomePage />} />
                             <Route path="Homepage" element={<HomePage />} />
                             <Route path="YourAccount" element={<YourAccount />} />
+                            <Route path="Changepassword" element={<ChangePassword />} />
+                            <Route path="Membershipclass" element={<Membershipclass />} />
                         </Routes>
                     </div>
                 </div>
