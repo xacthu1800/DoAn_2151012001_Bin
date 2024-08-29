@@ -13,8 +13,15 @@
 
 /* ------------------------ Left----------------------- */
 .User-background .section-wrapping .section-left {
+    height: auto;
     padding: 10px 20px;
-    background-color: aqua;
+    background-color: var(--grey1);
+    border-radius: 10px;
+}
+
+.User-background .section-wrapping .section-left .section .linkFont {
+    text-decoration: none !important;
+    color: #333;
 }
 
 .User-background .section-wrapping .section-left .section {
@@ -27,6 +34,10 @@
     font-size: large;
 }
 
+.User-background .section-wrapping .section-left .section .icon {
+    font-size: 30px;
+}
+
 .User-background .section-wrapping .section-left .section h3 {
     margin-left: 10px;
 }
@@ -35,34 +46,41 @@
 
 .User-background .section-wrapping .section-right {
     padding: 10px 20px;
-    background-color: aquamarine;
+    background-color: inherit;
+    border-radius: 10px;
+    margin-top: -10px;
 }
 
 /* Home Page --------------------------------------------------------------------------- */
 
-.User-background .section-wrapping .section-right .Homepage {
+.Homepage {
     width: 100%;
     height: auto;
-    background-color: whitesmoke;
+    background-color: var(--grey1);
+    border-radius: 10px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .section {
-    display: block;
+.Homepage .section {
     margin-bottom: 10px;
-    background-color: yellow;
+    background-color: inherit;
+    border-radius: 10px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .user-infor {
+.Homepage .user-infor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .user-infor h1 {
+.Homepage .user-infor h1 {
     font-weight: bold;
+    color: rgba(71, 108, 15, 0.711);
 }
-.User-background .section-wrapping .section-right .Homepage .user-infor h3 {
+.Homepage .user-infor h3 {
 }
 
-.User-background .section-wrapping .section-right .Homepage .user-infor .rank {
+.Homepage .user-infor .rank {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,15 +92,16 @@
     font-weight: 300;
 }
 
-.User-background .section-wrapping .section-right .Homepage .order-spend-wrapping {
+.Homepage .order-spend-wrapping {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background-color: whitesmoke;
 }
 
-.User-background .section-wrapping .section-right .Homepage .order-spend-wrapping .sec {
+.Homepage .order-spend-wrapping .sec {
     width: 100%;
     height: 120px;
     display: flex;
@@ -91,57 +110,60 @@
     align-items: center;
 }
 
-.User-background .section-wrapping .section-right .Homepage .order-spend-wrapping .spend-left {
+.Homepage .order-spend-wrapping .spend-left {
     border-right: 1px solid;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping {
+.Homepage .oder-wrapping {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item {
-    background-color: orange;
+.Homepage .oder-wrapping .oder-item {
+    background-color: whitesmoke;
     width: 100%;
+    border-radius: 10px;
     height: auto;
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .left-img {
+.Homepage .oder-wrapping .oder-item .left-img {
     width: 150px;
     height: 150px;
+    border-radius: inherit;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .left-img img {
+.Homepage .oder-wrapping .oder-item .left-img img {
     width: inherit;
     height: inherit;
     overflow: auto;
+    border-radius: inherit;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info {
+.Homepage .oder-wrapping .oder-item .item-info {
     width: inherit;
     padding: 10px 20px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .item-sec {
+.Homepage .oder-wrapping .oder-item .item-info .item-sec {
     margin-bottom: 10px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .name-dateOrder {
+.Homepage .oder-wrapping .oder-item .item-info .name-dateOrder {
     display: flex;
     width: inherit;
     justify-content: space-between;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .name-dateOrder .name {
+.Homepage .oder-wrapping .oder-item .item-info .name-dateOrder .name {
     font-size: 25px;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .stateOrder {
+.Homepage .oder-wrapping .oder-item .item-info .stateOrder {
     border: 1px solid;
     width: 120px;
     height: auto;
@@ -172,7 +194,7 @@
     color: red;
 }
 
-.User-background .section-wrapping .section-right .Homepage .oder-wrapping .oder-item .item-info .price {
+.Homepage .oder-wrapping .oder-item .item-info .price {
     font-weight: bold;
     color: red;
 }
