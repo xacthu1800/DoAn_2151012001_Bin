@@ -5,7 +5,7 @@ import { TbLogout2 } from 'react-icons/tb';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import HomePage from './User_HomePage.js';
-import Youraccount from './User_Youraccount.js';
+import YourAccount from './User_YourAccount.js';
 // Import các component trang khác tương ứng nếu có
 
 export default function User() {
@@ -23,7 +23,7 @@ export default function User() {
                         </div>
                         <div className="section">
                             <MdOutlineManageAccounts className="icon" />
-                            <Link to="Youraccount" className="linkFont">
+                            <Link to="YourAccount" className="linkFont">
                                 <h3>Your account</h3>
                             </Link>
                         </div>
@@ -51,7 +51,7 @@ export default function User() {
                         <Routes>
                             <Route index element={<HomePage />} />
                             <Route path="Homepage" element={<HomePage />} />
-                            <Route path="Youraccount" element={<Youraccount />} />
+                            <Route path="YourAccount" element={<YourAccount />} />
                         </Routes>
                     </div>
                 </div>

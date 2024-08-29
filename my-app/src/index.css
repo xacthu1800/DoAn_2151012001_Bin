@@ -10,6 +10,7 @@
 @import './styles/Cart.css';
 @import './styles//Checkout.css';
 @import './styles//User.css';
+@import './styles//User_HomePage.css';
 
 * {
     padding: 0;
