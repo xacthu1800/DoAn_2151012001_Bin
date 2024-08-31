@@ -1,6 +1,5 @@
 import { CiSearch } from 'react-icons/ci';
 import { FiShoppingCart } from 'react-icons/fi';
-import { CiUser } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import { CiLogin } from 'react-icons/ci';
 import { CiLogout } from 'react-icons/ci';
@@ -10,9 +9,9 @@ const Nav = (props) => {
     return (
         <>
             <nav className="nav">
-                <a href="" className="site-title">
+                <Link to="/Admin" className="site-title">
                     CellphoneB
-                </a>
+                </Link>
                 <div className="search-box">
                     <CiSearch className="button" />
                     <input
@@ -24,7 +23,7 @@ const Nav = (props) => {
                 </div>
                 <ul>
                     <li>
-                        <a style={{ display: 'none' }}>Hi Bin</a>
+                        <div style={{ display: 'none' }}>Hi Bin</div>
                     </li>
                     <li className="nav-right-cont">
                         <Link to="/User">

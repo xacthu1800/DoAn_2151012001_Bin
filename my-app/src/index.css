@@ -14,6 +14,7 @@
 @import './styles/User_YourAccount.css';
 @import './styles/User_ChangePassword.css';
 @import './styles/User_MembershipoClass.css';
+@import './styles/Admin.css';
 
 * {
     padding: 0;
