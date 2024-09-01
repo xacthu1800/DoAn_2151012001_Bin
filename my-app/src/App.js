@@ -5,15 +5,15 @@ import { useState } from 'react';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Products from './components/Pages/Products';
-import Home from './components/Pages/Home';
-import Login from './components/Pages/LoginForm';
-import Register from './components/Pages/RegisterForm';
+import Products from './components/Pages/user/Products';
+import Home from './components/Pages/user/Home';
+import Login from './components/Pages/user/LoginForm';
+import Register from './components/Pages/user/RegisterForm';
 import ProductDetail from './components/ProductDetail';
-import Cart from './components/Pages/Page.Cart';
-import Checkout from './components/Pages/Page.checkout';
-import User from './components/Pages/Page.User';
-import Admin from './components/Pages/Page.Admin';
+import Cart from './components/Pages/user/Page.Cart';
+import Checkout from './components/Pages/user/Page.checkout';
+import User from './components/Pages/user/Page.User';
+import Admin from './components/Pages/admin/Page.Admin';
 
 const App = () => {
     /* Nav */
@@ -37,7 +37,9 @@ const App = () => {
                     <Route path="Login" element={<Login />} />
                     <Route path="Register" element={<Register />} />
                 </Route>
-                <Route path="/Admin" element={<Admin />} />
+                <Route path="/Admin/*" element={<Admin />}>
+                    <Route index element={<Admin />} />
+                </Route>
             </Routes>
         </>
     );

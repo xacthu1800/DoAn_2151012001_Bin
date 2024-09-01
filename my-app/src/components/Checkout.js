@@ -44,6 +44,44 @@ function Checkout(props) {
             e.preventDefault(); // Ngăn không cho xuống hàng khi nhấn Enter
         }
     };
+
+    const items = [
+        {
+            name: 'Iphone 15',
+            price: '20.000.000 Đ',
+            amount: 2,
+            subtotal: '20.000.000 Đ',
+            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
+        },
+        {
+            name: 'Iphone 15',
+            price: '20.000.000 Đ',
+            amount: 2,
+            subtotal: '20.000.000 Đ',
+            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
+        },
+        {
+            name: 'Iphone 15',
+            price: '20.000.000 Đ',
+            amount: 2,
+            subtotal: '20.000.000 Đ',
+            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
+        },
+        {
+            name: 'Iphone 15',
+            price: '20.000.000 Đ',
+            amount: 2,
+            subtotal: '20.000.000 Đ',
+            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
+        },
+        {
+            name: 'Iphone 15',
+            price: '20.000.000 Đ',
+            amount: 2,
+            subtotal: '20.000.000 Đ',
+            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
+        },
+    ];
     return (
         <>
             <div className="checkout-cont">
@@ -170,57 +208,78 @@ function Checkout(props) {
                         <div className="review-cont box">
                             <h1>Review your cart</h1>
                             <div className="list-item">
+                                {/* <div className="item-cont">
+                                    <div className="item">
+                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
+                                        <div className="infor-wrapper">
+                                            <h3 className="name">Iphone 15</h3>
+                                            <div className="price-amount-wrapper">
+                                                <h3 className="price">20.000.000 Đ</h3>
+                                                <h3 className="amount">amount: 2</h3>
+                                            </div>
+                                            <h6>subtotal : 20.000.000 Đ</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
+                                        <div className="infor-wrapper">
+                                            <h3 className="name">Iphone 15</h3>
+                                            <div className="price-amount-wrapper">
+                                                <h3 className="price">20.000.000 Đ</h3>
+                                                <h3 className="amount">amount: 2</h3>
+                                            </div>
+                                            <h6>subtotal : 20.000.000 Đ</h6>
+                                        </div>
+                                    </div>
+                                    <div className="item">
+                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
+                                        <div className="infor-wrapper">
+                                            <h3 className="name">Iphone 15</h3>
+                                            <div className="price-amount-wrapper">
+                                                <h3 className="price">20.000.000 Đ</h3>
+                                                <h3 className="amount">amount: 2</h3>
+                                            </div>
+                                            <h6>subtotal : 20.000.000 Đ</h6>
+                                        </div>
+                                    </div>
+                                    <div className="item">
+                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
+                                        <div className="infor-wrapper">
+                                            <h3 className="name">Iphone 15</h3>
+                                            <div className="price-amount-wrapper">
+                                                <h3 className="price">20.000.000 Đ</h3>
+                                                <h3 className="amount">amount: 2</h3>
+                                            </div>
+                                            <h6>subtotal : 20.000.000 Đ</h6>
+                                        </div>
+                                    </div>
+                                    <div className="item">
+                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
+                                        <div className="infor-wrapper">
+                                            <h3 className="name">Iphone 15</h3>
+                                            <div className="price-amount-wrapper">
+                                                <h3 className="price">20.000.000 Đ</h3>
+                                                <h3 className="amount">amount: 2</h3>
+                                            </div>
+                                            <h6>subtotal : 20.000.000 Đ</h6>
+                                        </div>
+                                    </div>
+                                </div> */}
                                 <div className="item-cont">
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
+                                    {items.map((item, index) => (
+                                        <div className="item" key={index}>
+                                            <img src={item.imageSrc} alt={item.name} />
+                                            <div className="infor-wrapper">
+                                                <h3 className="name">{item.name}</h3>
+                                                <div className="price-amount-wrapper">
+                                                    <h3 className="price">{item.price}</h3>
+                                                    <h3 className="amount">amount: {item.amount}</h3>
+                                                </div>
+                                                <h6>subtotal : {item.subtotal}</h6>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
