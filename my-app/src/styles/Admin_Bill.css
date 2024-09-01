@@ -26,6 +26,13 @@
     font-size: 30px;
 }
 
+.bill-cont .title-cont .order-code {
+    color: white;
+    font-weight: 400;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
 .bill-cont .title-cont .list-state {
     width: 230px;
     height: auto;

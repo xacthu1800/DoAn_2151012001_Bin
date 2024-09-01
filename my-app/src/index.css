@@ -16,6 +16,7 @@
 @import './styles/User_MembershipoClass.css';
 @import './styles/Admin.css';
 @import './styles/Admin_Bill.css';
+@import './styles/Admin_Bill_Detail.css';
 
 * {
     padding: 0;
