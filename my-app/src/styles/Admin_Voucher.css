@@ -1,0 +1,75 @@
+.voucher-cont.voucher-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.voucher-cont .voucher-table th,
+.voucher-cont .voucher-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+    max-width: 140px;
+    height: auto;
+    word-wrap: break-word; /* Add this line */
+    word-break: break-all; /* Add this line */
+}
+
+.voucher-cont .voucher-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.voucher-cont .edit-btn {
+    background-color: #333; /* Orange */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.voucher-cont .edit-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.voucher-cont .delete-btn {
+    background-color: #333; /* Red */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.voucher-cont .edit-btn:hover,
+.voucher-cont .delete-btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+.add-btn {
+    background-color: white;
+    color: #333;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: 600;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.voucher-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    font-size: 21px;
+}

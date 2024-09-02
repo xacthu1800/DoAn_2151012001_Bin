@@ -19,6 +19,8 @@
 @import './styles/Admin_Bill_Detail.css';
 @import './styles/Admin_Product.css';
 @import './styles/Admin_product_Add.css';
+@import './styles/Admin_Voucher.css';
+@import './styles/Voucher_Add.css';
 
 * {
     padding: 0;

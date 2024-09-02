@@ -10,7 +10,6 @@ import Category from './Pages/admin/Category';
 import Bill from './Pages/admin/Bill';
 import Product from './Pages/admin/Product';
 import Voucher from './Pages/admin/Voucher';
-import Product_Add from './Pages/admin/Product_Add';
 
 const menuItems = [
     { icon: IoHomeOutline, text: 'Dashboard', path: '/Admin/Dashboard' },
@@ -42,7 +41,7 @@ export default function Admin() {
                         <Route path="Category" element={<Category />} />
                         <Route path="Bill/*" element={<Bill />} />
                         <Route path="Product/*" element={<Product />} />
-                        <Route path="Voucher" element={<Voucher />} />
+                        <Route path="Voucher/*" element={<Voucher />} />
                     </Routes>
                 </div>
             </div>
