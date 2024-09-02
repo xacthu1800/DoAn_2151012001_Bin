@@ -52,6 +52,11 @@ body {
     );
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media (max-width: 768px) {
     .YourAccount .infor-cont .cont-section .name {
         row-gap: 20px;
