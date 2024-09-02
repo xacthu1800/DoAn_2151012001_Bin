@@ -17,6 +17,8 @@
 @import './styles/Admin.css';
 @import './styles/Admin_Bill.css';
 @import './styles/Admin_Bill_Detail.css';
+@import './styles/Admin_Product.css';
+@import './styles/Admin_product_Add.css';
 
 * {
     padding: 0;
