@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
