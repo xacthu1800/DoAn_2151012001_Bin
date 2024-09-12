@@ -3,14 +3,15 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
+//components
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-
+import ProductDetail from './components/ProductDetail';
+//pages
 import Products from './Pages/user/Products';
 import Home from './Pages/user/Home';
 import Login from './Pages/user/LoginForm';
 import Register from './Pages/user/RegisterForm';
-import ProductDetail from './components/ProductDetail';
 import Cart from './Pages/user/Page.Cart';
 import Checkout from './Pages/user/Page.checkout';
 import User from './Pages/user/Page.User';
