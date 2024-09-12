@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 function Checkout(props) {
     const [isForm2Visible, setForm2Visible] = useState(false);
+    const [coupon, setCoupon] = useState('');
 
     // State để lưu trữ các giá trị của form-1
     const [formData, setFormData] = useState({
@@ -289,9 +290,9 @@ function Checkout(props) {
 
                             <input
                                 type="text"
-                                value={props.coupon}
+                                value={coupon}
                                 placeholder="Enter The Product Name"
-                                onChange={(e) => props.setCoupon(e.target.value.toUpperCase())}
+                                onChange={(e) => setCoupon(e.target.value.toUpperCase())}
                             ></input>
                             <button>Apply</button>
                         </div>
