@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Api } from '../../utils/Api';
+import { setToken, isLogin } from '../../utils/localstorage';
 import { RiLockPasswordLine } from 'react-icons/ri';
 
 const LoginForm = () => {
@@ -10,8 +11,21 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [alertShown, setAlertShown] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if (isLogin()) {
+            /* alert('you have Logged in');
+            console.log('logged');
+            setAlertShown(true); */
+            navigate('/'); // Nếu đã đăng nhập, điều hướng đến trang chính
+        }
+    }, [navigate]);
+
+    const handleSudmit = (e) => {
+        e.preventDefault();
+    };
     const _handleSubmit = useCallback(
         async (e) => {
             e.preventDefault(); // Prevent default form submission
@@ -26,15 +40,23 @@ const LoginForm = () => {
                     alert(data);
                     return;
                 }
-                alert(data);
-                navigate('/'); // Navigate to home page
+
+                console.log(data);
+                const { status, token } = JSON.parse(data);
+                if (status != 'ok') {
+                    alert('user name or password is wrong');
+                    return;
+                } else {
+                    setToken(token);
+                    navigate('/'); // Navigate to home page
+                }
             }
         },
         [userName, password, navigate],
     );
     return (
         <div className="wrapper">
-            <form action="" className="form-login">
+            <form action="" className="form-login" onSubmit={handleSudmit}>
                 <h1>Login</h1>
                 <div className="input-box">
                     <input

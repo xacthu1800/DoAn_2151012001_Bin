@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { checkPassword, newToken } = require('../utils/utility.function');
 
 const regisUser = async (req, res) => {
     const { userName, password } = req.body;
@@ -15,8 +16,12 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ userName });
     if (user) {
         if (user.password === password) {
-            console.log('success');
-            res.json({ message: 'success Login!!!' });
+            let token = newToken(user);
+            //console.log(token);
+            res.status(200).send({ status: 'ok', token });
+
+            /* console.log('success');
+            res.json({ message: 'success Login!!!' }); */
         } else {
             res.status(401).json({ message: 'Mật khẩu không đúng' });
         }
@@ -25,7 +30,12 @@ const loginUser = async (req, res) => {
     }
 };
 
+const getUser = async (req, res) => {
+    res.status(200).send({ user: req.user });
+};
+
 module.exports = {
     regisUser,
     loginUser,
+    getUser,
 };

@@ -25,8 +25,8 @@ const postRequest = async (path, body) => {
         const params = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' /* ,
-                Authorization: 'Bearer ' + getToken(), */,
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + getToken(),
             },
             body: JSON.stringify(body),
         };

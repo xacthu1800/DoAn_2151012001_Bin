@@ -1,0 +1,46 @@
+[
+    {
+        "productName": "iphone 12 128GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-12-128gb_2.png",
+        "productPrice": "13000000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone",
+        "chipset": "Apple A14 Bionic (5 nm)",
+        "ramCapacity": "4 GB",
+        "internalStorage": "128GB"
+    },
+    {
+        "productName": "iphone 13 256GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/1/11_3_12_2_1_6.jpg",
+        "productPrice": "17000000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A15",
+        "ramCapacity": "4 GB",
+        "internalStorage": "256GB"
+    },
+    {
+        "productName": "iphone 14 Pro 128GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png",
+        "productPrice": "22990000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A16",
+        "ramCapacity": "6 GB",
+        "internalStorage": "128GB"
+    },
+    {
+        "productName": "iPhone 15 Pro Max 1TB ",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-256gb_1.png",
+        "productPrice": "22990000",
+        "screenSize": "6.7 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A17 Pro 6-core",
+        "ramCapacity": "8 GB",
+        "internalStorage": "1TB"
+    }
+]

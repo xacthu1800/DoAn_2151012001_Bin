@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants/userContant';
+import * as actionTypes from '../constants/userConstant';
 export const USER_INITIAL_STATE = {
     userInfo: {
         isLogin: false,
