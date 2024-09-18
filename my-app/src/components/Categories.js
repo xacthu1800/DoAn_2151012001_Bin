@@ -54,8 +54,12 @@ export default function Categories(props) {
                         <div className="cap cap-product" onClick={() => filterPhone('LAPTOP')}>
                             Laptop
                         </div>
-                        <div className="cap cap-product">Headphone</div>
-                        <div className="cap cap-product">Watch</div>
+                        <div className="cap cap-product" onClick={() => filterPhone('HEADPHONE')}>
+                            Headphone
+                        </div>
+                        <div className="cap cap-product" onClick={() => filterPhone('WATCH')}>
+                            Watch
+                        </div>
                         <div className="cap-normal">Price </div>
                         <div className="price-up-down">
                             <FaArrowUp className="price-lowToUp" />
