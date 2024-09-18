@@ -42,5 +42,49 @@
         "chipset": "Apple A17 Pro 6-core",
         "ramCapacity": "8 GB",
         "internalStorage": "1TB"
+    },
+    {
+        "productName": "Laptop LG GRAM 2023 14ZD90R-G.AX52A5 ",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_5__2_4.png",
+        "productPrice": "19990000",
+        "screenSize": "14 inches",
+        "displayTech": "Màn hình chống chói, Độ sáng 350 nits, Tần số quét 60Hz, Độ phủ màu DCI-P3 99%",
+        "chipset": "Intel Core i5-1340P 1.9 GHz (up to 4.6 GHz, 12MB, 12 lõi/luồng)",
+        "ramCapacity": "LPDDR5 6000MHz",
+        "internalStorage": "256GB SSD NVMe Gen 4 (1 khe cắm SSD M.2 trống)"
+    },
+    {
+        "productName": "Laptop LG Gram 2023 16Z90R-G.AH76A5",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_8__2.png",
+        "productPrice": "35990000",
+        "screenSize": "16 inches",
+        "displayTech": "Màn hình chống chói, Độ sáng 350 nits, Độ phủ màu DCI-P3 99%",
+        "chipset": "Intel Core i7-1360P 2.2 GHz (up to 4.6 GHz, 18MB, 12 lõi/luồng)",
+        "ramCapacity": "LPDDR5 6000MHz",
+        "internalStorage": "512GB SSD NVMe Gen 4 (1 khe cắm SSD M.2 trống)"
+    },
+    {
+        "productName": "Laptop LG Gram 2024 17Z90S-G.AH78A5",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_5__2_1.png",
+        "productPrice": "48790000",
+        "screenSize": "17 inches",
+        "displayTech": "Tỉ lệ 16:10, Độ phủ màu DCI-P3 99%, Màn hình chống chói, Độ sáng 350 nit",
+        "chipset": "Intel Core Ultra U7-155H",
+        "ramCapacity": "LPDDR5X 7467MHz Onboard",
+        "internalStorage": "1TB M.2(2280) Dual SSD slots, Gen4"
+    },
+    {
+        "productName": "Laptop Vaio FE 14 VWNC51427-BL",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_16__1_51.png",
+        "productPrice": "13990000",
+        "screenSize": "14.1 inches",
+        "displayTech": "Tấm nền IPS, 1920 x 1080 pixels (FullHD)",
+        "chipset": "Intel Core i5 - 1235U Gen 12 (up to 4.4 GHz, 12 MB)",
+        "ramCapacity": "8GB",
+        "internalStorage": "512 GB"
     }
 ]

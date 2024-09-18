@@ -3,13 +3,22 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { IoCartOutline } from 'react-icons/io5';
 
 const Product = (props) => {
-    const { productData } = props;
+    const { productData, productType } = props;
+
+    const dataFilterType = productData
+        .filter((product) => {
+            return product.productType === productType;
+        })
+        .slice(0, 4);
+    console.log('Phone Data:');
+    console.log(dataFilterType);
+
     return (
         <div className="grid-newproduct">
             <Caption cap={props.cap} />
             <div className="grid-container">
-                {productData && productData.length > 0 ? (
-                    productData.map((product, index) => (
+                {dataFilterType && dataFilterType.length > 0 ? (
+                    dataFilterType.map((product, index) => (
                         <div
                             key={index}
                             className="grid-item"
