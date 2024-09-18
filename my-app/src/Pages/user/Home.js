@@ -32,7 +32,7 @@ export default function Home({ close, setClose }) {
     }, [dispatch]);
     return (
         <>
-            <ProductType />
+            <ProductType productData={products} />
             <Product cap="Phone" productType="PHONE" productData={products} close={close} setClose={setClose} />
             <Product cap="Laptop" productType="LAPTOP" productData={products} close={close} setClose={setClose} />
         </>
