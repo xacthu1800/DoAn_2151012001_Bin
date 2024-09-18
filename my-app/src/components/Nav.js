@@ -6,6 +6,10 @@ import { CiLogout } from 'react-icons/ci';
 import { FaRegCircleUser } from 'react-icons/fa6';
 
 const Nav = (props) => {
+    const clearLocalStorage = () => {
+        localStorage.clear();
+    };
+
     return (
         <>
             <nav className="nav">
@@ -49,7 +53,7 @@ const Nav = (props) => {
                                     Category
                                 </Link>
                             </li>
-                            <li>
+                            <li onClick={() => clearLocalStorage()}>
                                 <Link to="/" className="link">
                                     Contact
                                 </Link>

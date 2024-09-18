@@ -1,21 +1,38 @@
 import Caption from './Caption';
-import { IoEyeOutline } from 'react-icons/io5';
-import { IoCartOutline } from 'react-icons/io5';
+import { useState, useEffect } from 'react';
+import ProductDetail from './ProductDetail';
 
 const Product = (props) => {
+    const [close, setClose] = useState(false);
     const { productData, productType } = props;
+    const [productDetailData, setProductDetailData] = useState(null);
+    /* console.log('original data:');
+            console.log(productData); */
 
-    const dataFilterType = productData
+    let dataFilterType = productData
         .filter((product) => {
             return product.productType === productType;
         })
         .slice(0, 4);
-    console.log('Phone Data:');
-    console.log(dataFilterType);
+    /*console.log('Phone Data:');
+            console.log(dataFilterType); */
+
+    function setSateProduct(productId) {
+        const data = productData.filter((product) => {
+            return product._id === productId;
+        });
+        setProductDetailData(data[0]);
+    }
+
+    useEffect(() => {
+        setProductDetailData(null);
+    }, [props.productType]);
 
     return (
         <div className="grid-newproduct">
             <Caption cap={props.cap} />
+            <ProductDetail close={close} setClose={setClose} productDetailData={productDetailData} />
+
             <div className="grid-container">
                 {dataFilterType && dataFilterType.length > 0 ? (
                     dataFilterType.map((product, index) => (
@@ -23,7 +40,9 @@ const Product = (props) => {
                             key={index}
                             className="grid-item"
                             onClick={() => {
-                                props.setClose(!props.close);
+                                setSateProduct(product._id);
+
+                                setClose(!props.close);
                             }}
                         >
                             <div className="image-container">

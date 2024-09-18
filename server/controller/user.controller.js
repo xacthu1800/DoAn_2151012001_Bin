@@ -3,11 +3,11 @@ const { checkPassword, newToken } = require('../utils/utility.function');
 
 const regisUser = async (req, res) => {
     const { userName, password } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     await User.create({ userName, password });
     const data = await User.find();
-    console.log(data);
+    //console.log(data);
     res.json(data);
 };
 

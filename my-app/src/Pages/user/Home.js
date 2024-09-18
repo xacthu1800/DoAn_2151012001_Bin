@@ -5,6 +5,9 @@ import { isLogin } from '../../utils/localstorage';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+// Components
+import ProductDetail from '../../components/ProductDetail';
+
 //Action
 import { getProducts as listProducts } from '../../redux/actions/productAction';
 import { setUserDeatils } from '../../redux/actions/userAction';
@@ -18,21 +21,20 @@ export default function Home({ close, setClose }) {
     //console.log(products);
 
     useEffect(() => {
-        dispatch(listProducts());
-    }, [dispatch]);
-
-    useEffect(() => {
         if (isLogin()) {
             navigate('/');
         }
     }, [navigate]);
 
     useEffect(() => {
+        dispatch(listProducts());
+    }, [dispatch]);
+
+    useEffect(() => {
         dispatch(setUserDeatils());
     }, [dispatch]);
     return (
         <>
-            <ProductType productData={products} />
             <Product cap="Phone" productType="PHONE" productData={products} close={close} setClose={setClose} />
             <Product cap="Laptop" productType="LAPTOP" productData={products} close={close} setClose={setClose} />
         </>

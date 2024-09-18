@@ -1,20 +1,25 @@
 import { IoEyeOutline } from 'react-icons/io5';
 import { LiaCartPlusSolid } from 'react-icons/lia';
+import { useEffect } from 'react';
 
-export default function ProductDetail({ product, setProduct, close, setClose }) {
+export default function ProductDetail({ productDetailData, close, setClose }) {
+    console.log(productDetailData);
+    useEffect(() => {}, [productDetailData]);
     return (
         <>
-            {close ? (
+            {close && productDetailData ? (
                 <div className="productDetail">
                     <div className="container">
                         <div className="container-wrap">
                             <div className="con-left">
                                 <div className="img-wrap">
-                                    <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')} />
+                                    <img src={productDetailData.productImage} alt="NULL" />
                                 </div>
                                 <div className="name-price">
-                                    <div className="name">iphone 15</div>
-                                    <div className="price">10.000.000 USD</div>
+                                    <div className="name">{productDetailData.productName}</div>
+                                    <div className="price">
+                                        {new Intl.NumberFormat('vi-VN').format(productDetailData.productPrice)} đ
+                                    </div>
                                 </div>
                             </div>
 
@@ -36,111 +41,27 @@ export default function ProductDetail({ product, setProduct, close, setClose }) 
                                         </tr>
                                         <tr>
                                             <td>Model</td>
-                                            <td>XYZ Smartphone</td>
+                                            <td>{productDetailData.productName}</td>
                                         </tr>
                                         <tr>
-                                            <td>Màn hình</td>
-                                            <td>6.5 inch, OLED, 1080 x 2400 pixels</td>
+                                            <td>Screen Size</td>
+                                            <td>{productDetailData.screenSize}</td>
                                         </tr>
                                         <tr>
-                                            <td>Chipset</td>
-                                            <td>Snapdragon 888</td>
+                                            <td>Display Tech</td>
+                                            <td>{productDetailData.displayTech}</td>
                                         </tr>
                                         <tr>
-                                            <td>RAM</td>
-                                            <td>8GB</td>
+                                            <td>Chip set</td>
+                                            <td>{productDetailData.chipset}</td>
                                         </tr>
                                         <tr>
-                                            <td>Chipset</td>
-                                            <td>Snapdragon 888</td>
+                                            <td>Ram Capacity</td>
+                                            <td>{productDetailData.ramCapacity}</td>
                                         </tr>
                                         <tr>
-                                            <td>RAM</td>
-                                            <td>8GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ nhớ trong</td>
-                                            <td>128GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera chính</td>
-                                            <td>108 MP + 12 MP + 8 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ nhớ trong</td>
-                                            <td>128GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera chính</td>
-                                            <td>108 MP + 12 MP + 8 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ nhớ trong</td>
-                                            <td>128GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera chính</td>
-                                            <td>108 MP + 12 MP + 8 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ nhớ trong</td>
-                                            <td>128GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera chính</td>
-                                            <td>108 MP + 12 MP + 8 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ nhớ trong</td>
-                                            <td>128GB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera chính</td>
-                                            <td>108 MP + 12 MP + 8 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Camera trước</td>
-                                            <td>32 MP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pin</td>
-                                            <td>4500 mAh</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hệ điều hành</td>
-                                            <td>Android 12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kết nối</td>
-                                            <td>5G, Wi-Fi 6, Bluetooth 5.2</td>
+                                            <td>Internal Storage</td>
+                                            <td>{productDetailData.internalStorage}</td>
                                         </tr>
                                     </table>
                                 </div>

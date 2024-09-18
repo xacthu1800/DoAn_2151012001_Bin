@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //Action
 import { getProducts as listProducts } from '../../redux/actions/productAction';
-import { setUserDeatils } from '../../redux/actions/userAction';
 
 export default function Products({ close, setClose }) {
     const [hasLogged, setHasLogged] = useState(false);

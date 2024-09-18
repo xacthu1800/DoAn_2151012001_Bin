@@ -6,10 +6,15 @@ import { FaArrowDown } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+//Components
+import ProductDetail from './ProductDetail';
+
 export default function Categories(props) {
     //lấy thông tin được truyền trong state  của ProductType
+    const [close, setClose] = useState(false);
     const location = useLocation();
     const { data } = location.state || {};
+    const [productDetailData, setProductDetailData] = useState(null);
 
     const { productData } = props;
 
@@ -30,6 +35,12 @@ export default function Categories(props) {
         }
         setFilterData(filtered); // Cập nhật filterData
     }
+    function setSateProduct(productId) {
+        const data = productData.filter((product) => {
+            return product._id === productId;
+        });
+        setProductDetailData(data[0]);
+    }
 
     useEffect(() => {
         if (data) {
@@ -42,6 +53,7 @@ export default function Categories(props) {
     return (
         <>
             <div className="Categories-box">
+                <ProductDetail close={close} setClose={setClose} productDetailData={productDetailData} />
                 <div className="box">
                     <div className="box-left">
                         <div className=" cap-main">Categories</div>
@@ -88,7 +100,9 @@ export default function Categories(props) {
                                         key={index}
                                         className="grid-item"
                                         onClick={() => {
-                                            props.setClose(!props.close);
+                                            setSateProduct(product._id);
+
+                                            setClose(!close);
                                         }}
                                     >
                                         <div className="image-container">

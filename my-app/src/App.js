@@ -18,19 +18,12 @@ import User from './Pages/user/Page.User';
 import Admin from './Pages/admin/Page.Admin';
 
 const App = () => {
-    /* Nav */
-    const [inputValue, setInput] = useState('');
-    /* Checkout */
-    const [coupon, setCoupon] = useState('');
-    const [product, setProduct] = useState('');
-    const [close, setClose] = useState(false);
-
     return (
         <>
             <Routes>
-                <Route path="/" element={<MainLayout close={close} setClose={setClose} />}>
-                    <Route index element={<Home close={close} setClose={setClose} />} />
-                    <Route path="Categories" element={<Products close={close} setClose={setClose} />} />
+                <Route path="/" element={<MainLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path="Categories" element={<Products />} />
                     <Route path="Cart" element={<Cart />} />
                     <Route path="Checkout" element={<Checkout />} />
                     <Route path="Admin" element={<Admin />} />
@@ -46,11 +39,10 @@ const App = () => {
     );
 };
 
-const MainLayout = ({ close, setClose }) => {
+const MainLayout = () => {
     return (
         <>
             <Nav />
-            <ProductDetail close={close} setClose={setClose} />
             <Outlet />
             <Footer />
         </>
