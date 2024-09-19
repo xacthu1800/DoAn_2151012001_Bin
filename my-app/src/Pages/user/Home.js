@@ -1,4 +1,3 @@
-import ProductType from '../../components/ProductType';
 import Product from '../../components/Product';
 import React, { useState, useCallback, useEffect } from 'react';
 import { isLogin } from '../../utils/localstorage';
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import ProductDetail from '../../components/ProductDetail';
+import ProductType from '../../components/ProductType';
 
 //Action
 import { getProducts as listProducts } from '../../redux/actions/productAction';
@@ -35,6 +35,7 @@ export default function Home({ close, setClose }) {
     }, [dispatch]);
     return (
         <>
+            <ProductType productData={products} />
             <Product cap="Phone" productType="PHONE" productData={products} close={close} setClose={setClose} />
             <Product cap="Laptop" productType="LAPTOP" productData={products} close={close} setClose={setClose} />
         </>

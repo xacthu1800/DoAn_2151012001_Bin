@@ -35,6 +35,46 @@ export default function Categories(props) {
         }
         setFilterData(filtered); // Cập nhật filterData
     }
+
+    function filterPriceID(state) {
+        let filtered;
+        switch (state) {
+            case 'INCRREMENT':
+                filtered = [...productData].sort((a, b) => Number(a.productPrice) - Number(b.productPrice));
+                break;
+            case 'DECREMENT':
+                filtered = [...productData].sort((a, b) => Number(b.productPrice) - Number(a.productPrice));
+                break;
+            default:
+                filtered = productData;
+                break;
+        }
+
+        setFilterData(filtered); // Cập nhật filterData
+    }
+
+    function filterPrice(state) {
+        let filtered;
+        switch (state) {
+            case '0-5.000.000':
+                filtered = [...productData].filter((a, b) => Number(a.productPrice) <= 5000000);
+                break;
+            case '5.000.000-10.000.000':
+                filtered = [...productData].filter(
+                    (a, b) => Number(a.productPrice) >= 5000000 && Number(a.productPrice) <= 10000000,
+                );
+                break;
+            case 'over 10.000.000':
+                filtered = [...productData].filter((a, b) => Number(a.productPrice) >= 10000000);
+                break;
+            default:
+                filtered = productData;
+                break;
+        }
+
+        setFilterData(filtered); // Cập nhật filterData
+    }
+
     function setSateProduct(productId) {
         const data = productData.filter((product) => {
             return product._id === productId;
@@ -74,20 +114,36 @@ export default function Categories(props) {
                         </div>
                         <div className="cap-normal">Price </div>
                         <div className="price-up-down">
-                            <FaArrowUp className="price-lowToUp" />
-                            <FaArrowDown className="price-upToLow" />
+                            <FaArrowUp className="price-lowToUp" onClick={() => filterPriceID('INCRREMENT')} />
+                            <FaArrowDown className="price-upToLow" onClick={() => filterPriceID('DECREMENT')} />
                         </div>
                         <div className="option-container">
                             <div className="price-option">
-                                <input type="radio" value="1" name="Price1" />
+                                <input
+                                    type="radio"
+                                    value="1"
+                                    name="Price1"
+                                    onClick={() => filterPrice('0-5.000.000')}
+                                />
                                 <div className="cap-norma2">0 - 5.000.000Đ</div>
                             </div>
                             <div className="price-option">
-                                <input type="radio" value="1" name="Price1" />
+                                <input
+                                    type="radio"
+                                    value="1"
+                                    name="Price1"
+                                    onClick={() => filterPrice('5.000.000-10.000.000')}
+                                />
                                 <div className="cap-norma2">5.000.000 - 10.000.000Đ</div>
                             </div>
                             <div className="price-option">
-                                <input type="radio" value="1" name="Price1" />
+                                <input
+                                    type="radio"
+                                    value="1"
+                                    name="Price1"
+                                    onClick={() => filterPrice('over 10.000.000')}
+                                />
+
                                 <div className="cap-norma2"> over 10.000.000Đ</div>
                             </div>
                         </div>
