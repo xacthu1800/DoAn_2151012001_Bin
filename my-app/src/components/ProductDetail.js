@@ -1,10 +1,26 @@
 import { IoEyeOutline } from 'react-icons/io5';
 import { LiaCartPlusSolid } from 'react-icons/lia';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../redux/actions/cartAction';
+import { useState, useEffect } from 'react';
 
 export default function ProductDetail({ productDetailData, close, setClose }) {
-    console.log(productDetailData);
+    // console.log(productDetailData);
+    const [qty, setQty] = useState(1);
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
     useEffect(() => {}, [productDetailData]);
+
+    function addToCartHandler() {
+        if (user.userInfo.isLogin) {
+            dispatch(addToCart(productDetailData._id, qty));
+            return;
+        } else {
+            alert('You need to first login.');
+        }
+    }
+
     return (
         <>
             {close && productDetailData ? (
@@ -26,7 +42,7 @@ export default function ProductDetail({ productDetailData, close, setClose }) {
                             <div className="con-right">
                                 <div className="icon">
                                     <button>
-                                        <LiaCartPlusSolid />
+                                        <LiaCartPlusSolid onClick={addToCartHandler} />
                                     </button>
                                     <button onClick={() => setClose(false)} className="closebtn">
                                         <IoEyeOutline />

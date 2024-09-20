@@ -6,6 +6,21 @@ const getProduct = async (req, res) => {
     res.json(productList);
 };
 
+const getProductById = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+
+        console.log('getProductByID from server - Product controller');
+        console.log(product);
+
+        res.json(product);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 module.exports = {
     getProduct,
+    getProductById,
 };

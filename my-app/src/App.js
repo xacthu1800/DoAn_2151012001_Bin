@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 //components
 import Nav from './components/Nav';
@@ -16,8 +17,16 @@ import Cart from './Pages/user/Page.Cart';
 import Checkout from './Pages/user/Page.checkout';
 import User from './Pages/user/Page.User';
 import Admin from './Pages/admin/Page.Admin';
+import { fetchCart } from './redux/actions/cartAction';
+import { setUserDeatils } from './redux/actions/userAction';
 
 const App = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchCart());
+        dispatch(setUserDeatils());
+    }, [dispatch]);
+
     return (
         <>
             <Routes>
