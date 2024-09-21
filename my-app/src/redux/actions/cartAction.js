@@ -4,20 +4,39 @@ import { convertToCartData } from '../../utils/utils.function';
 
 export const addToCart = (id, qty) => async (dispatch) => {
     const { data } = await Api.getRequest(`/api/product/${id}`);
-    console.log('data from addToCart - client - Cart action');
     const product = JSON.parse(data);
+    /* const productString = JSON.stringify(product);
+    const productParse = JSON.parse(productString);
+    console.log('data from addToCart - client - Cart action');
+    console.log('Raw data:', data);
+    console.log('product with Stringify: ' + productString);
+    console.log('product with parse: ' + productParse.productName); */
+    // product = {_id,productName, productType,
+    //           productImage, productPrice,
+    //           screenSize, displayTech, chipset, ramCapacity, internalStorage, productCountInStock}
+
+    console.log('productName type: ' + typeof product.productName);
+    console.log('productPrice type: ' + typeof product.productPrice);
+    console.log('productImage type: ' + typeof product.productImage);
+    console.log('productCountInStock type: ' + typeof product.productCountInStock);
+
     dispatch({
         type: actionTypes.ADD_TO_CART,
+
         payload: {
-            product: product._id,
-            name: product.productName,
-            imageUrl: product.productImage,
-            price: product.productPrice,
-            qty,
+            _id: product._id,
+            userId: product.userId, // Thêm userId
+            productId: product.productId, // Thêm productId
+            count: qty, // Thêm count
+            productName: product.productName,
+            productImage: product.productImage,
+            productPrice: product.productPrice,
+            productType: product.productType,
+            productCountInStock: product.productCountInStock,
         },
     });
 
-    Api.postRequest('/api/cart', { productId: id, count: qty });
+    Api.postRequest('/api/cart', { productIdData: JSON.stringify(product), count: qty });
 };
 
 export const removeFromCart =
@@ -37,8 +56,10 @@ export const fetchCart = () => async (dispatch) => {
         // 2: const { data: strigifyData } = await Api.getRequest(`/api/cart/`);
         const { data: strigifyData } = await Api.getRequest(`/api/cart/`);
         const { carts } = JSON.parse(strigifyData);
+        console.log('carts from fetchCart - client - Cart action' + carts);
         dispatch({
             type: actionTypes.FETCH_MY_CART,
+
             payload: {
                 carts: convertToCartData(carts),
             },

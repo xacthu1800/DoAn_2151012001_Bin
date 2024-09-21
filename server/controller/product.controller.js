@@ -10,7 +10,7 @@ const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
 
-        console.log('getProductByID from server - Product controller');
+        console.log('getProductByID from server - api/product/:id');
         console.log(product);
 
         res.json(product);

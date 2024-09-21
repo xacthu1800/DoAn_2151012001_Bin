@@ -35,71 +35,33 @@ export default function Cart() {
                     </div>
 
                     <div className="list-item">
-                        <div className="item-block">
-                            <div className="block-cont">
-                                <div className="image-cont">
-                                    <img src={require('../resources/iphone-15-plus_1__1.webp')} />
-                                </div>
-                                <div className="infor-cont">
-                                    <div className="delete-btn-cont">
-                                        <MdOutlineDeleteOutline className="delete-btn" />
+                        {cartItems.map((item) => (
+                            <div className="item-block" key={item.product}>
+                                <div className="block-cont">
+                                    <div className="image-cont">
+                                        <img src={item.imageUrl} alt={item.name} />
                                     </div>
-                                    <div className="categories">PHONE</div>
-                                    <div className="product-name">Iphone 15</div>
-                                    <div className="product-price">Price: 20.000.000 Đ</div>
-                                    <div className="custom-item">
-                                        <CiCirclePlus className="item" />
-                                        <div className="custom-value item">1</div>
-                                        <CiCircleMinus className="item" />
+                                    <div className="infor-cont">
+                                        <div className="delete-btn-cont">
+                                            <MdOutlineDeleteOutline className="delete-btn" />
+                                        </div>
+                                        <div className="categories">{item.productType}</div>
+                                        <div className="product-name">{item.name}</div>
+                                        <div className="product-price">
+                                            Price: {Number(item.price).toLocaleString()} Đ
+                                        </div>
+                                        <div className="custom-item">
+                                            <CiCirclePlus className="item" />
+                                            <div className="custom-value item">{item.qty}</div>
+                                            <CiCircleMinus className="item" />
+                                        </div>
+                                        <div className="sub-price">
+                                            SUB TOTAL: {(Number(item.price) * item.qty).toLocaleString()} Đ
+                                        </div>
                                     </div>
-                                    <div className="sub-price">SUB TOTAL: 20.000.000</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="item-block">
-                            <div className="block-cont">
-                                <div className="image-cont">
-                                    <img src={require('../resources/iphone-15-plus_1__1.webp')} />
-                                </div>
-                                <div className="infor-cont">
-                                    <div className="delete-btn-cont">
-                                        <MdOutlineDeleteOutline className="delete-btn" />
-                                    </div>
-                                    <div className="categories">PHONE</div>
-                                    <div className="product-name">Iphone 15</div>
-                                    <div className="product-price">Price: 20.000.000 Đ</div>
-                                    <div className="custom-item">
-                                        <CiCirclePlus className="item" />
-                                        <div className="custom-value item">1</div>
-                                        <CiCircleMinus className="item" />
-                                    </div>
-                                    <div className="sub-price">SUB TOTAL: 20.000.000</div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="item-block">
-                            <div className="block-cont">
-                                <div className="image-cont">
-                                    <img src={require('../resources/iphone-15-plus_1__1.webp')} />
-                                </div>
-                                <div className="infor-cont">
-                                    <div className="delete-btn-cont">
-                                        <MdOutlineDeleteOutline className="delete-btn" />
-                                    </div>
-                                    <div className="categories">PHONE</div>
-                                    <div className="product-name">Iphone 15</div>
-                                    <div className="product-price">Price: 20.000.000 Đ</div>
-                                    <div className="custom-item">
-                                        <CiCirclePlus className="item" />
-                                        <div className="custom-value item">1</div>
-                                        <CiCircleMinus className="item" />
-                                    </div>
-                                    <div className="sub-price">SUB TOTAL: 20.000.000</div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
