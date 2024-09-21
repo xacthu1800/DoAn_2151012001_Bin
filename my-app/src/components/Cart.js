@@ -3,13 +3,21 @@ import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
 import { FaChevronRight } from 'react-icons/fa';
 
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchCart } from '../redux/actions/cartAction';
+import { useState, useEffect } from 'react';
+import { addToCart, removeFromCart } from '../redux/actions/cartAction';
+import { useSelector } from 'react-redux';
 
 export default function Cart() {
     const dispatch = useDispatch();
+
+    const cart = useSelector((state) => state.cart);
+
+    const { cartItems } = cart;
+
+    console.log(cartItems);
 
     useEffect(() => {
         dispatch(fetchCart());
