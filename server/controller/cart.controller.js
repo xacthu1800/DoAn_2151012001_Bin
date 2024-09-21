@@ -1,16 +1,22 @@
 const Cart = require('../models/cart');
 
+const sendResponseError = (statusCode, message, res) => {
+    res.status(statusCode).send({ status: 'error', message });
+};
+
 const getCartProducts = async (req, res) => {
     try {
         let carts = [];
+        console.log('carts 1 :' + carts);
         if (!req.user) {
             return sendResponseError(400, 'User not authenticated', res);
         }
-        carts = await Cart.find({ userId: req.user._id }).populate('productId');
+        carts = await Cart.find({ userId: req.user._id });
+
         if (!carts.length) {
             return res.status(200).send({ status: 'ok', carts: [] });
         }
-        //console.log(carts); //should be [] if user cart don't have any product
+        console.log('carts FETCHED  :' + carts);
         res.status(200).send({ status: 'ok', carts });
     } catch (err) {
         console.log(err);

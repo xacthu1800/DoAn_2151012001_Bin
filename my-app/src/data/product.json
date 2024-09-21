@@ -2,6 +2,7 @@
     {
         "productName": "iphone 12 128GB",
         "productType": "PHONE",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-12-128gb_2.png",
         "productPrice": "13000000",
         "screenSize": "6.1 inches",
@@ -13,6 +14,7 @@
     {
         "productName": "iphone 13 256GB",
         "productType": "PHONE",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/1/11_3_12_2_1_6.jpg",
         "productPrice": "17000000",
         "screenSize": "6.1 inches",
@@ -24,6 +26,7 @@
     {
         "productName": "iphone 14 Pro 128GB",
         "productType": "PHONE",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png",
         "productPrice": "22990000",
         "screenSize": "6.1 inches",
@@ -35,6 +38,7 @@
     {
         "productName": "iPhone 15 Pro Max 1TB ",
         "productType": "PHONE",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-256gb_1.png",
         "productPrice": "22990000",
         "screenSize": "6.7 inches",
@@ -46,6 +50,7 @@
     {
         "productName": "Laptop LG GRAM 2023 14ZD90R-G.AX52A5 ",
         "productType": "LAPTOP",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_5__2_4.png",
         "productPrice": "19990000",
         "screenSize": "14 inches",
@@ -57,6 +62,7 @@
     {
         "productName": "Laptop LG Gram 2023 16Z90R-G.AH76A5",
         "productType": "LAPTOP",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_8__2.png",
         "productPrice": "35990000",
         "screenSize": "16 inches",
@@ -68,6 +74,7 @@
     {
         "productName": "Laptop LG Gram 2024 17Z90S-G.AH78A5",
         "productType": "LAPTOP",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_5__2_1.png",
         "productPrice": "48790000",
         "screenSize": "17 inches",
@@ -79,6 +86,7 @@
     {
         "productName": "Laptop Vaio FE 14 VWNC51427-BL",
         "productType": "LAPTOP",
+        "productCountInStock": 10,
         "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_16__1_51.png",
         "productPrice": "13990000",
         "screenSize": "14.1 inches",

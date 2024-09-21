@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
     chipset: String,
     ramCapacity: String,
     internalStorage: String,
+    productCountInStock: Number,
 });
 
 const Product = mongoose.model('products', productSchema);

@@ -32,11 +32,11 @@ export const removeFromCart =
 
 export const fetchCart = () => async (dispatch) => {
     try {
+        // nhận dữ liệu trả từ API có 2 cách
+        // 1: const { data } = await Api.getRequest('/api/cart');
+        // 2: const { data: strigifyData } = await Api.getRequest(`/api/cart/`);
         const { data: strigifyData } = await Api.getRequest(`/api/cart/`);
-        // console.log({strigifyData})
         const { carts } = JSON.parse(strigifyData);
-        // console.log(carts)
-
         dispatch({
             type: actionTypes.FETCH_MY_CART,
             payload: {
