@@ -120,7 +120,8 @@ export default function Cart() {
                                                     />
                                                 </div>
                                                 <div className="sub-price">
-                                                    SUB TOTAL: {(Number(item.price) * item.qty).toLocaleString()} Đ
+                                                    {/* //<div>SUB TOTAL:</div> */}
+                                                    {(Number(item.price) * item.qty).toLocaleString()} Đ
                                                 </div>
                                             </div>
                                         </div>
