@@ -7,7 +7,6 @@ const sendResponseError = (statusCode, message, res) => {
 const getCartProducts = async (req, res) => {
     try {
         let carts = [];
-        console.log('carts 1 :' + carts);
         if (!req.user) {
             return sendResponseError(400, 'User not authenticated', res);
         }
@@ -16,7 +15,7 @@ const getCartProducts = async (req, res) => {
         if (!carts.length) {
             return res.status(200).send({ status: 'ok', carts: [] });
         }
-        console.log('carts FETCHED  :' + carts);
+        console.log('carts FETCHED - SUCCESS');
         res.status(200).send({ status: 'ok', carts });
     } catch (err) {
         console.log(err);
@@ -68,10 +67,24 @@ const addProductInCart = async (req, res) => {
 };
 
 const deleteProductInCart = async (req, res) => {
+    console.log('req.query.count: ' + req.query.count); // Sử dụng req.query để lấy count từ query string
+
     try {
-        await Cart.findByIdAndRemove(req.params.id);
-        res.status(200).send({ status: 'ok' });
-    } catch (e) {
+        const cart = await Cart.findOne({ userId: req.user._id, productId: req.params.id });
+        if (req.query.count == -1) {
+            // Sử dụng req.query.count
+            await Cart.findOneAndDelete({ userId: req.user._id, productId: req.params.id });
+            return res.status(200).send({ status: 'ok' });
+        }
+        if (cart.count > 1) {
+            cart.count -= 1;
+            await cart.save();
+            res.status(200).send({ status: 'ok', cart });
+        } else {
+            await Cart.findOneAndDelete({ userId: req.user._id, productId: req.params.id });
+            res.status(200).send({ status: 'ok' });
+        }
+    } catch (err) {
         console.log(err);
         sendResponseError(500, `Error ${err}`, res);
     }

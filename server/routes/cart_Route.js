@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route('/').get([verifyUser], getCartProducts).post([verifyUser], addProductInCart);
 
+router.route('/update/:id').post([verifyUser], deleteProductInCart);
 router.route('/:id').delete([verifyUser], deleteProductInCart);
 
 module.exports = router;

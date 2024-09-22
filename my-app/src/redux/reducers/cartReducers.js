@@ -22,13 +22,21 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
                     cartItems: [...state.cartItems, item],
                 };
             }
+        case actionTypes.UPDATE_CART_ITEM:
+            return {
+                ...state,
+                cartItems: state.cartItems.map((x) =>
+                    x.productId === action.payload.productId ? { ...x, count: action.payload.count } : x,
+                ),
+            };
         case actionTypes.REMOVE_FROM_CART:
             return {
                 ...state,
-                cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+                cartItems: state.cartItems.filter((x) => x.productId !== action.payload), // Use productId to match the dispatched payload
             };
         case actionTypes.FETCH_MY_CART:
             return {
+                ...state,
                 cartItems: [...action.payload.carts],
             };
         default:

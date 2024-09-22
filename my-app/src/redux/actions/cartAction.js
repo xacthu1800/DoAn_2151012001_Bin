@@ -5,6 +5,7 @@ import { convertToCartData } from '../../utils/utils.function';
 export const addToCart = (id, qty) => async (dispatch) => {
     const { data } = await Api.getRequest(`/api/product/${id}`);
     const product = JSON.parse(data);
+    //console.log('addToCart - client - Cart action');
     /* const productString = JSON.stringify(product);
     const productParse = JSON.parse(productString);
     console.log('data from addToCart - client - Cart action');
@@ -14,11 +15,6 @@ export const addToCart = (id, qty) => async (dispatch) => {
     // product = {_id,productName, productType,
     //           productImage, productPrice,
     //           screenSize, displayTech, chipset, ramCapacity, internalStorage, productCountInStock}
-
-    console.log('productName type: ' + typeof product.productName);
-    console.log('productPrice type: ' + typeof product.productPrice);
-    console.log('productImage type: ' + typeof product.productImage);
-    console.log('productCountInStock type: ' + typeof product.productCountInStock);
 
     dispatch({
         type: actionTypes.ADD_TO_CART,
@@ -39,15 +35,41 @@ export const addToCart = (id, qty) => async (dispatch) => {
     Api.postRequest('/api/cart', { productIdData: JSON.stringify(product), count: qty });
 };
 
-export const removeFromCart =
-    ({ pId, _id }) =>
-    (dispatch) => {
-        dispatch({
-            type: actionTypes.REMOVE_FROM_CART,
-            payload: pId,
-        });
-        Api.DeleteRequest('/api/cart/' + _id);
-    };
+export const removeFromCart = (id) => async (dispatch, getState) => {
+    const {
+        cart: { cartItems },
+    } = getState();
+    const item = cartItems.find((item) => item.product === id);
+
+    if (item) {
+        if (item.count > 1) {
+            dispatch({
+                type: actionTypes.UPDATE_CART_ITEM,
+                payload: {
+                    ...item,
+                    count: item.count - 1,
+                },
+            });
+            Api.postRequest(`/api/cart/update/${id}`, { count: item.count - 1 });
+        } else {
+            dispatch({
+                type: actionTypes.REMOVE_FROM_CART,
+                payload: id,
+            });
+            Api.DeleteRequest(`/api/cart/${id}`, { count: 1 });
+        }
+    }
+};
+
+export const deleteFromCart = (id) => async (dispatch, getState) => {
+    dispatch({
+        type: actionTypes.REMOVE_FROM_CART,
+        payload: id,
+    });
+    console.log('id from deleteFromCart - client - Cart action: BINNNNN:  ' + id);
+
+    Api.DeleteRequest(`/api/cart/${id}?count=-1`);
+};
 
 export const fetchCart = () => async (dispatch) => {
     try {
