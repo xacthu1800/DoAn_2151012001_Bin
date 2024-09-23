@@ -8,14 +8,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart } from '../redux/actions/cartAction';
 import { useState, useEffect } from 'react';
 import { addToCart, removeFromCart, deleteFromCart } from '../redux/actions/cartAction';
+import useLogin from '../utils/hooks/useLogin';
 
 export default function Cart() {
     const [sumPrice, setSumPrice] = useState(true);
     const [state, setState] = useState(0);
     const [isCartFetched, setIsCartFetched] = useState(false); // Thêm trạng thái mới
     const dispatch = useDispatch();
+
     const user = useSelector((state) => state.user);
     const cart = useSelector((state) => state.cart);
+
+    const { loginInfo } = useLogin();
     const { cartItems } = cart;
 
     //---------------------  USE EFFECT  ---------------------//
@@ -88,45 +92,49 @@ export default function Cart() {
                     </div>
 
                     <div className="list-item">
-                        {cartItems.map(
-                            (item) =>
-                                item.price && item.qty ? ( // Kiểm tra giá và số lượng
-                                    <div className="item-block" key={item.product}>
-                                        <div className="block-cont">
-                                            <div className="image-cont">
-                                                <img src={item.imageUrl} alt={item.name} />
-                                            </div>
-                                            <div className="infor-cont">
-                                                <div className="delete-btn-cont">
-                                                    <MdOutlineDeleteOutline
-                                                        className="delete-btn"
-                                                        onClick={() => handleRemove(item.product)}
-                                                    />
+                        {loginInfo.isLogin ? (
+                            cartItems.map(
+                                (item) =>
+                                    item.price && item.qty ? ( // Kiểm tra giá và số lượng
+                                        <div className="item-block" key={item.product}>
+                                            <div className="block-cont">
+                                                <div className="image-cont">
+                                                    <img src={item.imageUrl} alt={item.name} />
                                                 </div>
-                                                <div className="categories">{item.productType}</div>
-                                                <div className="product-name">{item.name}</div>
-                                                <div className="product-price">
-                                                    Price: {Number(item.price).toLocaleString()} Đ
-                                                </div>
-                                                <div className="custom-item">
-                                                    <CiCirclePlus
-                                                        className="item"
-                                                        onClick={() => handleAdd(item.product)}
-                                                    />
-                                                    <div className="custom-value item">{item.qty}</div>
-                                                    <CiCircleMinus
-                                                        className="item"
-                                                        onClick={() => handleDelete(item.product)}
-                                                    />
-                                                </div>
-                                                <div className="sub-price">
-                                                    {/* //<div>SUB TOTAL:</div> */}
-                                                    {(Number(item.price) * item.qty).toLocaleString()} Đ
+                                                <div className="infor-cont">
+                                                    <div className="delete-btn-cont">
+                                                        <MdOutlineDeleteOutline
+                                                            className="delete-btn"
+                                                            onClick={() => handleRemove(item.product)}
+                                                        />
+                                                    </div>
+                                                    <div className="categories">{item.productType}</div>
+                                                    <div className="product-name">{item.name}</div>
+                                                    <div className="product-price">
+                                                        Price: {Number(item.price).toLocaleString()} Đ
+                                                    </div>
+                                                    <div className="custom-item">
+                                                        <CiCirclePlus
+                                                            className="item"
+                                                            onClick={() => handleAdd(item.product)}
+                                                        />
+                                                        <div className="custom-value item">{item.qty}</div>
+                                                        <CiCircleMinus
+                                                            className="item"
+                                                            onClick={() => handleDelete(item.product)}
+                                                        />
+                                                    </div>
+                                                    <div className="sub-price">
+                                                        {/* //<div>SUB TOTAL:</div> */}
+                                                        {(Number(item.price) * item.qty).toLocaleString()} Đ
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ) : null, // Không hiển thị nếu không có giá hoặc số lượng
+                                    ) : null, // Không hiển thị nếu không có giá hoặc số lượng
+                            )
+                        ) : (
+                            <div>No items in cart</div>
                         )}
                     </div>
                 </div>

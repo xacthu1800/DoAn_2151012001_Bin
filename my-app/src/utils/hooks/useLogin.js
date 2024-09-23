@@ -1,29 +1,28 @@
-import React, {useCallback, useEffect, useState} from 'react'
-import {useSelector} from 'react-redux'
-import {useHistory} from 'react-router'
-import {Api} from '../Api'
-import {logout} from '../localstorage'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { Api } from '../Api';
+import { logout } from '../localstorage';
 
 function useLogin() {
-  const [loginInfo, setLoginInfo] = useState({
-    loading: true,
-    isLogin: false,
-  })
-  const {replace} = useHistory()
-  const checkLogin = useCallback(async () => {
-    const {statusCode, data} = await Api.getRequest(`/api/user/me`)
-    // console.log({statusCode, data})
-    if (statusCode === 400 || statusCode === 500) {
-      replace('/')
-      logout()
-      return
-    }
-    setLoginInfo({loading: false, isLogin: true})
-  }, [replace])
-  useEffect(() => {
-    checkLogin()
-  }, [checkLogin])
-  return {loginInfo}
+    const navigate = useNavigate(); // Changed from { replace } to navigate
+    const [loginInfo, setLoginInfo] = useState({
+        loading: true,
+        isLogin: false,
+    });
+    const checkLogin = useCallback(async () => {
+        const { statusCode, data } = await Api.getRequest(`/api/user/me`);
+        if (statusCode === 400 || statusCode === 500) {
+            navigate('/', { replace: true }); // Updated to use navigate with replace option
+            logout();
+            return;
+        }
+        setLoginInfo({ loading: false, isLogin: true });
+    }, [navigate]); // Updated dependency array
+    useEffect(() => {
+        checkLogin();
+    }, [checkLogin]);
+    return { loginInfo };
 }
 
-export default useLogin
+export default useLogin;
