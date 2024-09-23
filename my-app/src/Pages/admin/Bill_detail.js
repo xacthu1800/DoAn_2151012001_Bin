@@ -64,9 +64,7 @@ export default function Bill_detail() {
                         <div className="info-item item">
                             Địa chỉ: <strong>Xã Hùng Sơn, Huyện Hiệp Hòa, Tỉnh Bắc Giang</strong>
                         </div>
-                        <div className="info-item item">
-                            Địa chỉ giao hàng: <strong>Hẻm 51</strong>
-                        </div>
+
                         <div className="info-item item">
                             Số điện thoại: <strong>0336216546</strong>
                         </div>
@@ -81,7 +79,6 @@ export default function Bill_detail() {
                                 Trạng thái đơn hàng: <span className="status">pending</span>
                             </div>
                             <div>Ngày: 28/07/2024</div>
-                            <div>Email: admin@gmail.com</div>
                             <div>Tổng cộng: 58.180.000₫</div>
                             <div>
                                 Phương thức thanh toán:{' '}

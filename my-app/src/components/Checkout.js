@@ -2,33 +2,74 @@ import { RiCoupon2Line } from 'react-icons/ri';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { fetchCart } from '../redux/actions/cartAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Api } from '../utils/Api';
+
+import useLogin from '../utils/hooks/useLogin';
 
 function Checkout(props) {
     const [isForm2Visible, setForm2Visible] = useState(false);
+    const [sumPrice, setSumPrice] = useState(0);
     const [coupon, setCoupon] = useState('');
+    const [discount, setDiscount] = useState('0');
+    const [shipping, setShipping] = useState('20000');
 
-    // State để lưu trữ các giá trị của form-1
-    const [formData, setFormData] = useState({
-        fullName: '',
-        address: '',
-        phoneNumber: '',
-        note: '',
-    });
+    const [userFullname, setUserFullname] = useState('');
+    const [userAddress, setUserAddress] = useState('');
+    const [userPhoneNumber, setUserPhoneNumber] = useState('');
+    const [userNote, setUserNote] = useState('');
+    const [userPayment, setUserPayment] = useState('COD');
 
-    // Hàm để xử lý sự thay đổi của input
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.user);
+    const userId = user.userInfo.details._id;
+    const cart = useSelector((state) => state.cart);
+
+    const { loginInfo } = useLogin();
+    const { cartItems } = cart;
+
+    /*  Dữ liệu truyền đi trong form:
+        - userFullname
+        - userAddress
+        - userPhoneNumber
+        - userNote
+        - userPayment
+        - cartItems
+        - discount
+        - shipping
+    */
+
+    //-----------------------  USE EFFECT  -----------------------//
+    useEffect(() => {
+        console.log('everything still Ok');
+        console.log(user.userInfo.details._id);
+        sumCaculate();
+    }, [cartItems]);
+
+    //-----------------------  FUNCTION  ---------------------//
+
+    // hàm tính total price
+    function sumCaculate() {
+        let total = 0;
+        cartItems.forEach((item) => {
+            if (item.price && item.qty) {
+                // Kiểm tra giá và số lượng
+                total += Number(item.price) * Number(item.qty) + Number(shipping);
+            }
         });
+        setSumPrice(total);
+    }
+
+    const vi = () => {
+        console.log(userFullname, userAddress, userPhoneNumber, userNote, userPayment);
     };
 
     // Hàm để kiểm tra nếu tất cả các input đã được điền
     const isForm1Complete = () => {
-        const { fullName, address, phoneNumber } = formData;
-        return fullName && address && phoneNumber;
+        return userFullname && userAddress && userPhoneNumber;
     };
 
     // Hàm để xử lý khi nhấn nút
@@ -46,43 +87,30 @@ function Checkout(props) {
         }
     };
 
-    const items = [
-        {
-            name: 'Iphone 15',
-            price: '20.000.000 Đ',
-            amount: 2,
-            subtotal: '20.000.000 Đ',
-            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
-        },
-        {
-            name: 'Iphone 15',
-            price: '20.000.000 Đ',
-            amount: 2,
-            subtotal: '20.000.000 Đ',
-            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
-        },
-        {
-            name: 'Iphone 15',
-            price: '20.000.000 Đ',
-            amount: 2,
-            subtotal: '20.000.000 Đ',
-            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
-        },
-        {
-            name: 'Iphone 15',
-            price: '20.000.000 Đ',
-            amount: 2,
-            subtotal: '20.000.000 Đ',
-            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
-        },
-        {
-            name: 'Iphone 15',
-            price: '20.000.000 Đ',
-            amount: 2,
-            subtotal: '20.000.000 Đ',
-            imageSrc: require('../resources/Phone/iphone-15-plus_1__1.webp'),
-        },
-    ];
+    const handleSubmit = async () => {
+        // Đảm bảo userPayment có giá trị mặc định nếu chưa được chọn
+        const paymentMethod = userPayment || 'COD'; // Giá trị mặc định là "COD"
+
+        const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
+            userFullname: userFullname.toString(),
+            userAddress: userAddress.toString(),
+            userPhoneNumber: userPhoneNumber.toString(),
+            userNote: userNote.toString(),
+            userPayment: paymentMethod.toString(), // Sử dụng paymentMethod
+            discount: discount.toString(),
+            shipping: shipping.toString(),
+            cartItems,
+            sumPrice: sumPrice.toString(),
+        });
+        console.log(statusCode);
+        if (statusCode == 200) {
+            alert('Đặt hàng thành công');
+        } else {
+            alert('Đặt hàng thất bại');
+        }
+        navigate('/', { replace: true });
+    };
+
     return (
         <>
             <div className="checkout-cont">
@@ -104,8 +132,8 @@ function Checkout(props) {
                                         <label>Full Name</label>
                                         <input
                                             name="fullName"
-                                            value={formData.fullName}
-                                            onChange={handleChange}
+                                            value={userFullname}
+                                            onChange={(e) => setUserFullname(String(e.target.value))}
                                             maxLength={20}
                                             placeholder="Nguyen Van A"
                                         />
@@ -115,8 +143,8 @@ function Checkout(props) {
                                         <label>Address</label>
                                         <input
                                             name="address"
-                                            value={formData.address}
-                                            onChange={handleChange}
+                                            value={userAddress}
+                                            onChange={(e) => setUserAddress(String(e.target.value))}
                                             maxLength={100}
                                             placeholder="65B, distric 5"
                                         />
@@ -126,8 +154,8 @@ function Checkout(props) {
                                         <label>Phone Number</label>
                                         <input
                                             name="phoneNumber"
-                                            value={formData.phoneNumber}
-                                            onChange={handleChange}
+                                            value={userPhoneNumber}
+                                            onChange={(e) => setUserPhoneNumber(String(e.target.value))}
                                             maxLength={20}
                                             placeholder="09********"
                                         />
@@ -136,8 +164,8 @@ function Checkout(props) {
                                     <div className="form-section">
                                         <textarea
                                             name="note"
-                                            value={formData.note}
-                                            onChange={handleChange}
+                                            value={userNote}
+                                            onChange={(e) => setUserNote(String(e.target.value))}
                                             maxLength={150}
                                             onKeyDown={handleKeyDown}
                                             placeholder="Note"
@@ -172,33 +200,41 @@ function Checkout(props) {
                                         <div className="box">
                                             <div className="item">
                                                 <label className="item-cate">Name</label>
-                                                <label className="item-value">{formData.fullName}</label>
+                                                <label className="item-value">{userFullname}</label>
                                             </div>
                                             <div className="item">
                                                 <label className="item-cate">Phone</label>
-                                                <label className="item-value">{formData.phoneNumber}</label>
+                                                <label className="item-value">{userPhoneNumber}</label>
                                             </div>
                                             <div className="item note">
                                                 <label className="item-cate">Address</label>
-                                                <label className="item-value">{formData.address}</label>
+                                                <label className="item-value">{userAddress}</label>
                                             </div>
                                             <div className="item note">
                                                 <label className="item-cate">Note</label>
-                                                <label className="item-value">{formData.note}</label>
+                                                <label className="item-value">{userNote}</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="type-payment">
-                                        <select className="list-option" name="payment-toption">
-                                            <option value="au">COD (Thanh toán khi nhận hàng)</option>
-                                            <option value="ca">VNPay</option>
-                                            <option value="usa">MoMo</option>
+                                        <select
+                                            className="list-option"
+                                            name="payment-option"
+                                            onChange={(e) => setUserPayment(e.target.value)}
+                                        >
+                                            <option value="COD" selected>
+                                                COD (Thanh toán khi nhận hàng)
+                                            </option>
+                                            <option value="VNPay">VNPay</option>
+                                            <option value="MoMo">MoMo</option>
                                         </select>
                                     </div>
 
                                     <div className="submit-button">
-                                        <button>Submit</button>
+                                        <button type="button" onClick={handleSubmit}>
+                                            Submit
+                                        </button>
                                     </div>
                                 </form>
                             )}
@@ -209,75 +245,17 @@ function Checkout(props) {
                         <div className="review-cont box">
                             <h1>Review your cart</h1>
                             <div className="list-item">
-                                {/* <div className="item-cont">
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                            <h6>subtotal : 20.000.000 Đ</h6>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                            <h6>subtotal : 20.000.000 Đ</h6>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                            <h6>subtotal : 20.000.000 Đ</h6>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                            <h6>subtotal : 20.000.000 Đ</h6>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <img src={require('../resources/Phone/iphone-15-plus_1__1.webp')}></img>
-                                        <div className="infor-wrapper">
-                                            <h3 className="name">Iphone 15</h3>
-                                            <div className="price-amount-wrapper">
-                                                <h3 className="price">20.000.000 Đ</h3>
-                                                <h3 className="amount">amount: 2</h3>
-                                            </div>
-                                            <h6>subtotal : 20.000.000 Đ</h6>
-                                        </div>
-                                    </div>
-                                </div> */}
                                 <div className="item-cont">
-                                    {items.map((item, index) => (
+                                    {cartItems.map((item, index) => (
                                         <div className="item" key={index}>
-                                            <img src={item.imageSrc} alt={item.name} />
+                                            <img src={item.imageUrl} alt={item.name} />
                                             <div className="infor-wrapper">
                                                 <h3 className="name">{item.name}</h3>
                                                 <div className="price-amount-wrapper">
-                                                    <h3 className="price">{item.price}</h3>
-                                                    <h3 className="amount">amount: {item.amount}</h3>
+                                                    <h3 className="price">{Number(item.price).toLocaleString()} Đ</h3>
+                                                    <h3 className="amount">amount: {item.qty}</h3>
                                                 </div>
-                                                <h6>subtotal : {item.subtotal}</h6>
+                                                <h6>subtotal : {(Number(item.price) * item.qty).toLocaleString()} Đ</h6>
                                             </div>
                                         </div>
                                     ))}
@@ -294,25 +272,25 @@ function Checkout(props) {
                                 placeholder="Enter The Product Name"
                                 onChange={(e) => setCoupon(e.target.value.toUpperCase())}
                             ></input>
-                            <button>Apply</button>
+                            <button onClick={vi}>Apply</button>
                         </div>
 
                         <div className="table-pricing box">
                             <div className="subTotal table-section">
                                 <label className="font-1">subtotal</label>
-                                <div className="subTotal-value font-1">20.0000.000 Đ</div>
+                                <div className="subTotal-value font-1">{sumPrice.toLocaleString()} Đ</div>
                             </div>
                             <div className="shipping table-section">
                                 <label className="font-1">shipping</label>
                                 <div className="shipping-value font-1">20.000 Đ</div>
                             </div>
                             <div className="coupon table-section">
-                                <label className="font-1">shipping</label>
-                                <div className="coupon-value font-1">10.000.000 Đ</div>
+                                <label className="font-1">voucher</label>
+                                <div className="coupon-value font-1">-20%</div>
                             </div>
                             <div className="finalPrice table-section">
                                 <label className="font-2"> Total</label>
-                                <div className="finalPrice-value font-2">10.000.000 Đ</div>
+                                <div className="finalPrice-value font-2">{sumPrice.toLocaleString()} Đ</div>
                             </div>
                         </div>
 
