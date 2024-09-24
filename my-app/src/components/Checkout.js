@@ -20,7 +20,7 @@ function Checkout(props) {
     const [userFullname, setUserFullname] = useState('');
     const [userAddress, setUserAddress] = useState('');
     const [userPhoneNumber, setUserPhoneNumber] = useState('');
-    const [userNote, setUserNote] = useState('');
+    const [userNote, setUserNote] = useState('_');
     const [userPayment, setUserPayment] = useState('COD');
 
     const navigate = useNavigate();
@@ -57,9 +57,10 @@ function Checkout(props) {
         cartItems.forEach((item) => {
             if (item.price && item.qty) {
                 // Kiểm tra giá và số lượng
-                total += Number(item.price) * Number(item.qty) + Number(shipping);
+                total += Number(item.price) * Number(item.qty);
             }
         });
+        total = total + Number(shipping);
         setSumPrice(total);
     }
 
@@ -69,7 +70,7 @@ function Checkout(props) {
 
     // Hàm để kiểm tra nếu tất cả các input đã được điền
     const isForm1Complete = () => {
-        return userFullname && userAddress && userPhoneNumber;
+        return userFullname && userAddress && userPhoneNumber && userNote;
     };
 
     // Hàm để xử lý khi nhấn nút
