@@ -15,7 +15,8 @@ export default function User_HomePage() {
                     dataHTML.push(item2);
                 });
             });
-            setDataHTML(dataHTML);
+
+            setDataHTML(dataHTML.reverse());
 
             /* console.log('LIST: ', userOrderedList);
             console.log('USER: ', user[0]); */
