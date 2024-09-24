@@ -108,6 +108,8 @@
 
 .Homepage .oder-wrapping .oder-item .item-info .name-dateOrder .name {
     font-size: 25px;
+    max-width: 280px;
+    height: auto;
 }
 
 .Homepage .oder-wrapping .oder-item .item-info .stateOrder {

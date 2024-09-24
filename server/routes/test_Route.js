@@ -7,24 +7,27 @@ const Checkout = require('../models/checkout');
 const User = require('../models/user');
 
 const test = async (req, res) => {
-    const userId = '66f2878b2b264fb0fa5061d8';
+    const userId = '66f2bdce2a73d77896f3815c';
 
     try {
-        const checkOut = await Checkout.find({ userId: userId });
-
+        //const checkOut = await Checkout.find({ userId: userId });
+        const checkOut = await Checkout.find({ userId });
         const user = await User.find({ _id: userId });
 
-        const cartItemLoop = checkOut.map((cart) => {
-            return {
-                cartItems: cart.cartItems,
-                time: cart.time,
-            };
-        });
         // [{'x':[{'x1': '', 'x2': '' }, 'time': '12-12-2024']}, {{'y':[{'y1': '', 'y2': ''}, 'time': '12-12-2024']}}]
 
-        //res.status(200).json({ message: 'Đặt hàng thành công', user, checkOut });
-        //console.log(cartItemLoop);
-        res.status(200).json({ message: 'Đặt hàng thành công', checkOut });
+        const userOrderedList = checkOut.map((item1) => {
+            return item1.cartItems.map((item2) => {
+                return {
+                    ...item2,
+                    time: item1.time,
+                };
+            });
+        });
+
+        console.log(userOrderedList);
+
+        res.status(200).json({ message: 'Đặt hàng thành công', userOrderedList, user });
     } catch (error) {
         res.status(500).json({ message: 'Đặt hàng thất bại', error });
     }
