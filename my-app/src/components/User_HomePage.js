@@ -1,11 +1,20 @@
 import { useEffect, useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 export default function User_HomePage() {
     const [user, setUser] = useState([]);
     const [dataHTML, setDataHTML] = useState([]);
+    const userData = useSelector((state) => state.user);
+    const navigate = useNavigate();
+    console.log(userData.userInfo.details._id);
+
     useEffect(() => {
+        if (!userData.userInfo.isLogin) {
+            navigate('/');
+        }
+
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/api/test');
+            const response = await fetch(`http://localhost:5000/api/user/HomePage/${userData.userInfo.details._id}`);
             const data = await response.json();
             const { userOrderedList, user } = data;
             setUser(user[0]);
