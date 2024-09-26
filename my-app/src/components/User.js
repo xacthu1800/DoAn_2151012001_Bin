@@ -9,17 +9,24 @@ import HomePage from './User_HomePage.js';
 import YourAccount from './User_YourAccount.js';
 import ChangePassword from './User_ChangePassword.js';
 import Membershipclass from './User_MembershipoClass.js';
-
+import { useNavigate } from 'react-router-dom';
 const menuItems = [
     { icon: IoHomeOutline, text: 'Home page', path: 'Homepage' },
     { icon: MdOutlineManageAccounts, text: 'Your account', path: 'YourAccount' },
     { icon: PiMedal, text: 'Membership class', path: 'Membershipclass' },
     { icon: PiLink, text: 'Account link', path: 'Accountlink' },
     { icon: MdPassword, text: 'Change password', path: 'Changepassword' },
-    { icon: TbLogout2, text: 'Logout', path: 'Logout' },
 ];
 
 export default function User() {
+    const navigate = useNavigate();
+    const clearLocalStorage = (event) => {
+        event.preventDefault();
+
+        localStorage.clear();
+        //window.location.reload();
+        navigate('/');
+    };
     return (
         <div className="User-background">
             <div className="section-wrapping">
@@ -32,6 +39,12 @@ export default function User() {
                             </Link>
                         </div>
                     ))}
+                    <div className="section" key="Logout">
+                        <TbLogout2 className="icon" />
+                        <Link to="/" className="linkFont" onClick={clearLocalStorage}>
+                            <h3>Logout</h3>
+                        </Link>
+                    </div>
                 </div>
                 <div className="section-right">
                     <Routes>
