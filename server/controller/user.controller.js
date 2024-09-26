@@ -136,7 +136,7 @@ const getHomePage = async (req, res) => {
             });
         });
 
-        console.log(userOrderedList);
+        //console.log(userOrderedList);
 
         res.status(200).json({ message: 'Đặt hàng thành công', userOrderedList, user });
     } catch (error) {
