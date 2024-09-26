@@ -80,15 +80,15 @@ const LoginForm = () => {
                     />
                     <RiLockPasswordLine className="icon" />
                 </div>
-                <div className="remember-forgot">
+                {/* <div className="remember-forgot">
                     <label>
                         <input type="checkbox" />
                         Remember me
                     </label>
                     <a href="#">Forgot Password ?</a>
-                </div>
+                </div> */}
 
-                <button type="submit" onClick={_handleSubmit}>
+                <button type="submit" onClick={_handleSubmit} className="loginPage-Login-button">
                     Login
                 </button>
                 <div className="register-link">

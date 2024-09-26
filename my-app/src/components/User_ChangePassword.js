@@ -1,12 +1,15 @@
 import { MdPassword } from 'react-icons/md';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 export default function User_ChangePassword() {
     const [oldPass, setOldPass] = useState('');
     const [newPass, setNewPass] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
     const userData = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user);
 
     const checkPass = () => {
         if (newPass !== confirmPass) {
@@ -44,6 +47,11 @@ export default function User_ChangePassword() {
         }
     };
 
+    useEffect(() => {
+        if (!user.userInfo.isLogin) {
+            navigate('/');
+        }
+    }, [user]);
     return (
         <>
             <div className="changepassword-cont">
