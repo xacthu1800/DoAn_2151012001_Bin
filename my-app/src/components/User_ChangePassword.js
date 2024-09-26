@@ -1,6 +1,49 @@
 import { MdPassword } from 'react-icons/md';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function User_ChangePassword() {
+    const [oldPass, setOldPass] = useState('');
+    const [newPass, setNewPass] = useState('');
+    const [confirmPass, setConfirmPass] = useState('');
+    const userData = useSelector((state) => state.user);
+
+    const checkPass = () => {
+        if (newPass !== confirmPass) {
+            alert('Mật khẩu không khớp');
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Di chuyển lên đầu để ngăn chặn hành vi mặc định
+
+        if (!checkPass()) return;
+
+        try {
+            const response = await fetch(
+                `http://localhost:5000/api/user/ChangePassword/${userData.userInfo.details._id}`,
+                {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ oldPass, newPass }),
+                },
+            );
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const { status, message } = await response.json();
+            alert(message);
+        } catch (error) {
+            alert('Có lỗi xảy ra: ' + error.message);
+        }
+    };
+
     return (
         <>
             <div className="changepassword-cont">
@@ -13,10 +56,28 @@ export default function User_ChangePassword() {
                                 <MdPassword className="icon" />
                             </div>
                         </div>
-                        <input className="cont-section" placeholder="Old Pass" name="oldPass" />
-                        <input className="cont-section" placeholder="New Pass" name="newPass" />
-                        <input className="cont-section" placeholder="Pass Confirm" />
-                        <button type="sudmit" className="update">
+                        <input
+                            className="cont-section"
+                            placeholder="Old Pass"
+                            name="oldPass"
+                            value={oldPass}
+                            onChange={(e) => setOldPass(e.target.value)}
+                        />
+                        <input
+                            className="cont-section"
+                            placeholder="New Pass"
+                            name="newPass"
+                            value={newPass}
+                            onChange={(e) => setNewPass(e.target.value)}
+                        />
+                        <input
+                            className="cont-section"
+                            placeholder="Pass Confirm"
+                            name="confirmPass"
+                            value={confirmPass}
+                            onChange={(e) => setConfirmPass(e.target.value)}
+                        />
+                        <button type="sudmit" className="update" onClick={handleSubmit}>
                             Update password
                         </button>
                     </form>

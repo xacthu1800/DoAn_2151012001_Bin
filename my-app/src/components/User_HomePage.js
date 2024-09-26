@@ -6,34 +6,28 @@ export default function User_HomePage() {
     const [dataHTML, setDataHTML] = useState([]);
     const userData = useSelector((state) => state.user);
     const navigate = useNavigate();
-    console.log(userData.userInfo.details._id);
+
+    const fetchData = async () => {
+        const response = await fetch(`http://localhost:5000/api/user/HomePage/${userData.userInfo.details._id}`);
+        const data = await response.json();
+        const { userOrderedList, user } = data;
+        setUser(user[0]);
+        const dataHTML = [];
+        userOrderedList.forEach((item) => {
+            item.forEach((item2) => {
+                dataHTML.push(item2);
+            });
+        });
+
+        setDataHTML(dataHTML.reverse());
+    };
 
     useEffect(() => {
         if (!userData.userInfo.isLogin) {
             navigate('/');
             return;
-        } else {
-            const fetchData = async () => {
-                const response = await fetch(
-                    `http://localhost:5000/api/user/HomePage/${userData.userInfo.details._id}`,
-                );
-                const data = await response.json();
-                const { userOrderedList, user } = data;
-                setUser(user[0]);
-                const dataHTML = [];
-                userOrderedList.forEach((item) => {
-                    item.forEach((item2) => {
-                        dataHTML.push(item2);
-                    });
-                });
-
-                setDataHTML(dataHTML.reverse());
-
-                /* console.log('LIST: ', userOrderedList);
-            console.log('USER: ', user[0]); */
-            };
-            fetchData();
         }
+        fetchData();
     }, []);
     return (
         <>

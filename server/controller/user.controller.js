@@ -144,12 +144,40 @@ const getHomePage = async (req, res) => {
     }
 };
 
+const changePassword = async (req, res) => {
+    const { oldPass, newPass } = req.body;
+    const userId = req.params.id;
+    try {
+        const user = await User.find({ _id: userId });
+        if (user) {
+            if (user[0].password == oldPass) {
+                console.log('Đổi mật khẩu thành công');
+                await User.updateOne({ _id: userId }, { password: newPass });
+                res.status(200).json({ status: 'ok', message: 'Đổi mật khẩu thành công' });
+            } else {
+                console.log('Mật khẩu cũ không đúng');
+                res.json({ status: 'error', message: 'Mật khẩu cũ không đúng' });
+            }
+        }
+        // Test userId, oldPass, newPass, user[0].password
+        {
+            /* console.log(user);
+            console.log(user[0].password);
+            console.log(oldPass);
+            console.log(newPass); */
+        }
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Đổi mật khẩu thất bại', error });
+    }
+};
+
 module.exports = {
     regisUser,
     loginUser,
     getUser,
     checkoutUser,
     getHomePage,
+    changePassword,
 };
 
 const getCurrentTime = () => {
