@@ -6,6 +6,10 @@ export default function Bill_detail() {
     const { id } = useParams();
     const [dataDetail, setDataDetail] = useState(null);
 
+    const [pendingList, setPendingList] = useState({});
+    const [processingList, setProcessingList] = useState({});
+    const [completedList, setCompletedList] = useState({});
+
     const fetchBillDetailData = async () => {
         const { statusCode, data } = await Api.getRequest(`/api/admin/bill/${id}`);
         const { status, message, billDetail } = JSON.parse(data);
@@ -22,7 +26,11 @@ export default function Bill_detail() {
 
     useEffect(() => {
         fetchBillDetailData();
-    }, [dataDetail]);
+        console.log(dataDetail);
+        console.log(pendingList);
+        console.log(processingList);
+        console.log(completedList);
+    }, [id]);
 
     /*   if (!billData) {
         return <div>Loading...</div>;

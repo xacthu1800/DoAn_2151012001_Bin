@@ -16,6 +16,7 @@ export default function Bill() {
 
 function BillList() {
     const [listBill, setListBill] = useState([]);
+    const [state, setState] = useState(true);
 
     const fetchBillList = async () => {
         const { statusCode, data } = await Api.getRequest('/api/admin/bill');
@@ -32,9 +33,20 @@ function BillList() {
         return '';
     };
 
+    const handleChangeState = async (id, newState) => {
+        const { statusCode, data } = await Api.putRequest(`/api/admin/bill/${id}`, { state: newState });
+        const { status, message } = JSON.parse(data);
+        if (status === 200) {
+            fetchBillList();
+        }
+        setState(!state);
+    };
+
     useEffect(() => {
         fetchBillList();
-    }, []);
+    }, [state]);
+
+    useEffect(() => {}, [listBill]);
 
     return (
         <>
@@ -42,7 +54,7 @@ function BillList() {
                 <div className="title-cont">
                     <div className="title">Bill</div>
                     <div className="state">
-                        <select className="list-state" name="type-state">
+                        {/* <select className="list-state" name="type-state">
                             <option value="PEN" style={{ color: 'orange' }}>
                                 PENDING
                             </option>
@@ -52,7 +64,7 @@ function BillList() {
                             <option value="PRO" style={{ color: 'blue' }}>
                                 PROCESSING
                             </option>
-                        </select>
+                        </select> */}
                     </div>
                 </div>
                 <div className="bill-list-cont">
@@ -71,7 +83,7 @@ function BillList() {
                             <div className="grid-container ">
                                 <div className="bill-item">{index + 1}</div>
                                 <div className="bill-item">
-                                    <Link to={`Bill_detail/${bill._id}`} className="content">
+                                    <Link to={`Bill_detail/${bill._id}`} className="content hover">
                                         {bill._id}
                                     </Link>
                                 </div>
@@ -96,16 +108,43 @@ function BillList() {
                                     {bill.state}
                                 </div>
                                 <div className="bill-item">
-                                    <select className="list-state" name="type-state">
-                                        <option value="PEN" style={{ color: 'orange' }}>
-                                            PENDING
+                                    <select
+                                        className="list-state"
+                                        name="type-state"
+                                        onChange={(e) => handleChangeState(bill._id, e.target.value)}
+                                    >
+                                        <option
+                                            value={bill.state}
+                                            style={{
+                                                color:
+                                                    bill.state === 'pending'
+                                                        ? 'orange'
+                                                        : bill.state === 'processing'
+                                                        ? 'blue'
+                                                        : 'green',
+                                            }}
+                                        >
+                                            {bill.state === 'pending'
+                                                ? 'PENDING'
+                                                : bill.state === 'completed'
+                                                ? 'COMPLETED'
+                                                : 'PROCESSING'}
                                         </option>
-                                        <option value="COM" style={{ color: 'green' }}>
-                                            COMPLETED
-                                        </option>
-                                        <option value="PRO" style={{ color: 'blue' }}>
-                                            PROCESSING
-                                        </option>
+                                        {bill.state !== 'pending' && (
+                                            <option value="pending" style={{ color: 'orange' }}>
+                                                PENDING
+                                            </option>
+                                        )}
+                                        {bill.state !== 'completed' && (
+                                            <option value="completed" style={{ color: 'green' }}>
+                                                COMPLETED
+                                            </option>
+                                        )}
+                                        {bill.state !== 'processing' && (
+                                            <option value="processing" style={{ color: 'blue' }}>
+                                                PROCESSING
+                                            </option>
+                                        )}
                                     </select>
                                 </div>
                             </div>

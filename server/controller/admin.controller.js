@@ -44,8 +44,19 @@ const getBillDetail = async (req, res) => {
     }
 };
 
+const changeState = async (req, res) => {
+    try {
+        await Checkout.findByIdAndUpdate(req.params.id, { state: req.body.state });
+        console.log('sucesss');
+        res.status(200).json({ status: 'success', message: 'Change state successful' });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Change state failed', error });
+    }
+};
+
 module.exports = {
     loginAdmin,
     getBillList,
     getBillDetail,
+    changeState,
 };
