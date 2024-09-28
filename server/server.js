@@ -5,6 +5,7 @@ const cors = require('cors');
 const userRoute = require('./routes/user_Route');
 const productRoute = require('./routes/product_Route');
 const cartRoute = require('./routes/cart_Route');
+const adminRoute = require('./routes/admin_Route');
 //test
 const testRoute = require('./routes/test_Route');
 connectDB();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/user', userRoute);
+app.use('/api/admin', adminRoute);
 app.use('/api/product', productRoute);
 app.use('/api/cart', cartRoute);
 

@@ -17,6 +17,8 @@ import Cart from './Pages/user/Page.Cart';
 import Checkout from './Pages/user/Page.checkout';
 import User from './Pages/user/Page.User';
 import Admin from './Pages/admin/Page.Admin';
+import Login_Admin from './Pages/admin/Login_Admin';
+
 import { fetchCart } from './redux/actions/cartAction';
 import { setUserDeatils } from './redux/actions/userAction';
 
@@ -35,14 +37,12 @@ const App = () => {
                     <Route path="Categories" element={<Products />} />
                     <Route path="Cart" element={<Cart />} />
                     <Route path="Checkout" element={<Checkout />} />
-                    <Route path="Admin" element={<Admin />} />
                     <Route path="User/*" element={<User />} />
                     <Route path="Login" element={<Login />} />
                     <Route path="Register" element={<Register />} />
                 </Route>
-                <Route path="/Admin/*" element={<Admin />}>
-                    <Route index element={<Admin />} />
-                </Route>
+                <Route path="/Login_Admin" element={<Login_Admin />} />
+                <Route path="/Admin/*" element={<Admin />} />
             </Routes>
         </>
     );
