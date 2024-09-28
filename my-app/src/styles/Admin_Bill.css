@@ -63,6 +63,9 @@
 }
 
 .bill-cont .bill-list-cont .bill-list .grid-container .bill-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none; /* Example border for grid items */
     border-radius: 0;
     padding: 10px; /* Padding inside each grid item */
@@ -74,6 +77,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 200px;
+    height: auto;
+}
+
+.bill-cont .bill-list-cont .bill-list .grid-container .bill-item .content {
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .bill-cont .bill-list-cont .bill-list .grid-container .list-state {

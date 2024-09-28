@@ -1,93 +1,107 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Api } from '../../utils/Api';
 
 export default function Bill_detail() {
     const { id } = useParams();
-    const [billData, setBillData] = useState(null);
+    const [dataDetail, setDataDetail] = useState(null);
+
+    const fetchBillDetailData = async () => {
+        const { statusCode, data } = await Api.getRequest(`/api/admin/bill/${id}`);
+        const { status, message, billDetail } = JSON.parse(data);
+        setDataDetail(billDetail);
+    };
+
+    const formattedDate = () => {
+        if (dataDetail && dataDetail.time) {
+            const [year, month, day, hour, minute, second] = dataDetail.time.split('-');
+            return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+        }
+        return '';
+    };
 
     useEffect(() => {
-        // Fetch bill data here (replace with actual API call)
-        // For now, we'll just set some dummy data
-        setBillData({ id: id, amount: 100, date: '2023-04-15' });
-    }, [id]);
+        fetchBillDetailData();
+    }, [dataDetail]);
 
-    if (!billData) {
+    /*   if (!billData) {
         return <div>Loading...</div>;
-    }
+    } */
 
-    return (
+    return dataDetail ? (
         <div className="bill-cont">
             <div className="title-cont">
-                <div className="title">Bill</div>
-                <div className="order-code">Oder code: 31234123123</div>
+                <div className="order-code">Oder detail</div>
             </div>
             <div className="billDetail-cont">
                 <div className="info-item">
-                    <div className="item">
-                        <div className="img-cont">
-                            <img src={require('../../resources/Phone/iphone-15-plus_1__1.webp')} alt="" />
-                        </div>
-                        <div className="item-info">
-                            <div className="item-name">Iphone 15 Plus</div>
-                            <div className="item-price">Price: 20.000.000</div>
-                            <div className="item-quantity">Quantity: 2</div>
-                            <div className="item-total">
-                                <div>Total:</div>
-                                <div>40.000.000</div>
+                    {dataDetail.cartItems.map((item) => (
+                        <div className="item">
+                            <div className="img-cont">
+                                <img src={item.imageUrl} alt="" />
+                            </div>
+                            <div className="item-info">
+                                <div className="item-name">{item.name}</div>
+                                <div className="item-price">Price: {Number(item.price).toLocaleString('vi-VN')} đ</div>
+                                <div className="item-quantity">Quantity: {item.qty}</div>
+                                <div className="item-total">
+                                    <div>Total:</div>
+                                    <div>{(Number(item.price) * Number(item.qty)).toLocaleString('vi-VN')} đ</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="item">
-                        <div className="img-cont">
-                            <img src={require('../../resources/Phone/iphone-15-plus_1__1.webp')} alt="" />
-                        </div>
-                        <div className="item-info">
-                            <div className="item-name">Iphone 15 Plus</div>
-                            <div className="item-price">Price: 20.000.000</div>
-                            <div className="item-quantity">Quantity: 2</div>
-                            <div className="item-total">
-                                <div>Total:</div>
-                                <div>40.000.000</div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
+
                     <div className="total-price">
                         <div className="total-price-text">Total price</div>
-                        <div className="total-price-value">20.000.000</div>
+                        <div className="total-price-value">{Number(dataDetail.sumPrice).toLocaleString('vi-VN')} đ</div>
                     </div>
                 </div>
                 <div className="customer-shipping-info">
                     <div className="customer-info">
                         <div className="info-item item">
-                            Họ và tên: <strong>QTV</strong>
+                            Họ và tên: <strong>{dataDetail.userFullname}</strong>
                         </div>
                         <div className="info-item item">
-                            Địa chỉ: <strong>Xã Hùng Sơn, Huyện Hiệp Hòa, Tỉnh Bắc Giang</strong>
+                            Địa chỉ: <strong>{dataDetail.userAddress}</strong>
                         </div>
 
                         <div className="info-item item">
-                            Số điện thoại: <strong>0336216546</strong>
+                            Số điện thoại: <strong>{dataDetail.userPhoneNumber}</strong>
                         </div>
                         <div className="info-item item">
-                            Ghi chú: <strong>gói hàng kĩ</strong>
+                            Ghi chú: <strong>{dataDetail.userNote}</strong>
                         </div>
                     </div>
                     <div className="shipping-info">
                         <div className="order-info">
-                            <div>Mã đơn hàng: 2024072806155766A5E21D4F2E5</div>
+                            <div>Mã đơn hàng: {id}</div>
                             <div>
-                                Trạng thái đơn hàng: <span className="status">pending</span>
+                                Trạng thái đơn hàng:{' '}
+                                <span
+                                    className="status"
+                                    style={{
+                                        color:
+                                            dataDetail.state === 'pending'
+                                                ? 'orange'
+                                                : dataDetail.state === 'completed'
+                                                ? 'green'
+                                                : 'blue',
+                                    }}
+                                >
+                                    {dataDetail.state}
+                                </span>
                             </div>
-                            <div>Ngày: 28/07/2024</div>
-                            <div>Tổng cộng: 58.180.000₫</div>
+                            <div>Ngày: {formattedDate()}</div>
                             <div>
-                                Phương thức thanh toán:{' '}
-                                <span className="payment-method">Trả tiền mặt khi nhận hàng</span>
+                                Phương thức thanh toán: <span className="payment-method">{dataDetail.userPayment}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    ) : (
+        <div>Loading...</div>
     );
 }

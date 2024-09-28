@@ -102,6 +102,7 @@ function Checkout(props) {
             shipping: shipping.toString(),
             cartItems,
             sumPrice: sumPrice.toString(),
+            state: 'pending',
         });
         console.log(statusCode);
         if (statusCode == 200) {

@@ -58,6 +58,7 @@ const checkoutUser = async (req, res) => {
             shipping: req.body.shipping,
             sumPrice: req.body.sumPrice,
             time: String(getCurrentTime()),
+            state: req.body.state,
         });
 
         const user = await User.find({ _id: req.params.id });

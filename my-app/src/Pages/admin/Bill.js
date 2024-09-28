@@ -1,6 +1,10 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Bill_detail from './Bill_detail';
 
+import { useNavigate } from 'react-router-dom';
+import { Api } from '../../utils/Api';
+import { useState, useEffect } from 'react';
+
 export default function Bill() {
     return (
         <Routes>
@@ -11,6 +15,27 @@ export default function Bill() {
 }
 
 function BillList() {
+    const [listBill, setListBill] = useState([]);
+
+    const fetchBillList = async () => {
+        const { statusCode, data } = await Api.getRequest('/api/admin/bill');
+        //console.log(data);
+        const { status, message, billList } = JSON.parse(data);
+        setListBill(billList);
+    };
+
+    const formattedDate = (x) => {
+        if (x) {
+            const [year, month, day] = x.split('-');
+            return `${day}/${month}/${year}`;
+        }
+        return '';
+    };
+
+    useEffect(() => {
+        fetchBillList();
+    }, []);
+
     return (
         <>
             <div className="bill-cont">
@@ -42,32 +67,49 @@ function BillList() {
                             <div className="bill-item">Change State</div>
                         </div>
 
-                        <div className="grid-container ">
-                            <div className="bill-item">1</div>
-                            <div className="bill-item">
-                                <Link to="Bill_detail/31234123123">31234123123</Link>
+                        {listBill.map((bill, index) => (
+                            <div className="grid-container ">
+                                <div className="bill-item">{index + 1}</div>
+                                <div className="bill-item">
+                                    <Link to={`Bill_detail/${bill._id}`} className="content">
+                                        {bill._id}
+                                    </Link>
+                                </div>
+                                <div className="bill-item">
+                                    <div className="content">{bill.userId}</div>
+                                </div>
+                                <div className="bill-item">{formattedDate(bill.time)}</div>
+                                <div className="bill-item">{Number(bill.sumPrice).toLocaleString('vi-VN')} đ</div>
+                                <div
+                                    className="bill-item"
+                                    style={{
+                                        color:
+                                            bill.state === 'pending'
+                                                ? 'orange'
+                                                : bill.state === 'processing'
+                                                ? 'blue'
+                                                : 'green',
+
+                                        fontWeight: 'bolder',
+                                    }}
+                                >
+                                    {bill.state}
+                                </div>
+                                <div className="bill-item">
+                                    <select className="list-state" name="type-state">
+                                        <option value="PEN" style={{ color: 'orange' }}>
+                                            PENDING
+                                        </option>
+                                        <option value="COM" style={{ color: 'green' }}>
+                                            COMPLETED
+                                        </option>
+                                        <option value="PRO" style={{ color: 'blue' }}>
+                                            PROCESSING
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="bill-item">
-                                <div className="name">Nguyen Van Bin</div>
-                                <div className="phoneNum">0932960437</div>
-                            </div>
-                            <div className="bill-item">20/7/2022</div>
-                            <div className="bill-item">20.000.000</div>
-                            <div className="bill-item">Processing</div>
-                            <div className="bill-item">
-                                <select className="list-state" name="type-state">
-                                    <option value="PEN" style={{ color: 'orange' }}>
-                                        PENDING
-                                    </option>
-                                    <option value="COM" style={{ color: 'green' }}>
-                                        COMPLETED
-                                    </option>
-                                    <option value="PRO" style={{ color: 'blue' }}>
-                                        PROCESSING
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

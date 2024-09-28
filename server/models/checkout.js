@@ -47,6 +47,10 @@ const checkoutSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        state: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,

@@ -1,4 +1,5 @@
 const Admin = require('../models/admin');
+const Checkout = require('../models/checkout');
 const { newToken_Admin } = require('../utils/utility.function');
 
 const loginAdmin = async (req, res) => {
@@ -23,6 +24,28 @@ const loginAdmin = async (req, res) => {
     }
 };
 
+const getBillList = async (req, res) => {
+    try {
+        const billList = await Checkout.find();
+        //console.log(billList);
+        res.status(200).json({ status: 'success', message: 'Get bill list successful', billList });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get bill list failed', error });
+    }
+};
+
+const getBillDetail = async (req, res) => {
+    try {
+        const billDetail = await Checkout.findById(req.params.id);
+
+        res.status(200).json({ status: 'success', message: 'Get bill detail successful', billDetail });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get bill detail failed', error });
+    }
+};
+
 module.exports = {
     loginAdmin,
+    getBillList,
+    getBillDetail,
 };
