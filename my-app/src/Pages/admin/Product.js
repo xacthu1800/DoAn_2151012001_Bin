@@ -73,6 +73,7 @@ export default function Product() {
 
 function ProductList() {
     const [productList, setProductList] = useState([]);
+    const [optionList, setOptionList] = useState([]); // Đảm bảo optionList là một mảng
 
     const fetchProduct = async () => {
         const { statusCode, data } = await Api.getRequest('/api/admin/product');
@@ -82,9 +83,31 @@ function ProductList() {
         }
     };
 
+    const handleCheckboxChange = (productId) => {
+        setOptionList((prevList) => {
+            // Kiểm tra xem productId đã có trong optionList chưa
+            if (prevList.includes(productId)) {
+                // Nếu đã có, xóa khỏi danh sách
+                return prevList.filter((id) => id !== productId);
+            } else {
+                // Nếu chưa có, thêm vào danh sách
+                return [...prevList, productId];
+            }
+        });
+    };
+
+    const handleDeleteProduct = async () => {
+        const { statusCode, data } = await Api.deleteRequest('/api/admin/product', { productIdList: optionList });
+        if (statusCode === 200) {
+            console.log('Delete successful');
+            fetchProduct();
+        }
+    };
+
     useEffect(() => {
         fetchProduct();
-    }, []);
+        console.log(optionList); // In ra optionList mỗi khi nó thay đổi
+    }, [optionList, productList]);
 
     return (
         <div className="bill-cont">
@@ -95,7 +118,9 @@ function ProductList() {
                 <div className="admin_product-cont">
                     <div className="product-actions">
                         <button className="btn">Chọn Tất Cả</button>
-                        <button className="btn">Xóa</button>
+                        <button className="btn" onClick={handleDeleteProduct}>
+                            Xóa
+                        </button>
                         <button className="btn">Thêm Giảm Giá</button>
                         <button className="btn">
                             <Link to="Product/Add_product" className="Add-Link">
@@ -119,7 +144,12 @@ function ProductList() {
                             {productList.map((product) => (
                                 <tr key={product._id}>
                                     <td>
-                                        <input type="checkbox" className="checkbox" />
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                            checked={optionList.includes(product._id)} // Kiểm soát trạng thái checkbox
+                                            onChange={() => handleCheckboxChange(product._id)} // Gọi hàm khi checkbox thay đổi
+                                        />
                                     </td>
                                     <td className="img-td">
                                         <img src={product.productImage} alt="product" />

@@ -61,6 +61,26 @@ const DeleteRequest = async (path) => {
     }
 };
 
+const deleteRequest = async (path, body) => {
+    try {
+        const params = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + getToken(),
+            },
+            body: JSON.stringify(body),
+        };
+
+        const res = await fetch(config.baseURL + path, params);
+
+        const data = await res.text();
+        return { statusCode: res.status, data };
+    } catch (e) {
+        console.log(`error in Delete Request (${path}) :- `, e);
+    }
+};
+
 const putRequest = async (path, body) => {
     try {
         const params = {
@@ -86,4 +106,5 @@ export const Api = {
     postRequest,
     DeleteRequest,
     putRequest,
+    deleteRequest,
 };

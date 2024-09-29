@@ -13,6 +13,7 @@ const Product = (props) => {
         .filter((product) => {
             return product.productType === productType;
         })
+        .reverse()
         .slice(0, 4);
     /*console.log('Phone Data:');
             console.log(dataFilterType); */

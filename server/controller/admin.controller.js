@@ -97,6 +97,18 @@ const getProductDetail = async (req, res) => {
     }
 };
 
+const deleteProduct = async (req, res) => {
+    try {
+        console.log(req.body.productIdList);
+        for (const productId of req.body.productIdList) {
+            await Product.findByIdAndDelete(productId);
+        }
+        res.status(200).json({ status: 'success', message: 'Delete product successful' });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Delete product failed', error });
+    }
+};
+
 module.exports = {
     loginAdmin,
     getBillList,
@@ -106,4 +118,5 @@ module.exports = {
     addProduct,
     editProduct,
     getProductDetail,
+    deleteProduct,
 };

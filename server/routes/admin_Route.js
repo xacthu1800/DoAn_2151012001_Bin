@@ -10,6 +10,7 @@ const {
     addProduct,
     editProduct,
     getProductDetail,
+    deleteProduct,
 } = require('../controller/admin.controller');
 
 router.post('/Login', loginAdmin);
@@ -21,5 +22,6 @@ router.get('/product', getProductList);
 router.get('/product/:id', getProductDetail);
 router.post('/product', addProduct);
 router.put('/editProduct/:id', editProduct);
+router.delete('/product', deleteProduct);
 
 module.exports = router;

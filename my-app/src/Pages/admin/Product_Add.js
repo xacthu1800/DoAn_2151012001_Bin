@@ -58,6 +58,7 @@ function ProductAdd_template() {
         const { statusCode, data } = await Api.postRequest('/api/admin/product', productData);
         if (statusCode === 200) {
             alert('Add product successful');
+            window.location.reload();
         }
     };
 
