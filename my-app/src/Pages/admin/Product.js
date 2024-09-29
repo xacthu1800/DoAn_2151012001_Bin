@@ -2,6 +2,11 @@ import React from 'react';
 import iphoneImage from '../../resources/Phone/iphone-15-plus_1__1.webp';
 import { Routes, Route, Link } from 'react-router-dom';
 import Product_Add from './Product_Add';
+import Product_Edit from './Product_Edit';
+
+import { useNavigate } from 'react-router-dom';
+import { Api } from '../../utils/Api';
+import { useState, useEffect } from 'react';
 
 const products = [
     {
@@ -61,11 +66,26 @@ export default function Product() {
         <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="Product/Add_product" element={<Product_Add />} />
+            <Route path="Product/Edit_product/:id" element={<Product_Edit />} />
         </Routes>
     );
 }
 
 function ProductList() {
+    const [productList, setProductList] = useState([]);
+
+    const fetchProduct = async () => {
+        const { statusCode, data } = await Api.getRequest('/api/admin/product');
+        if (statusCode === 200) {
+            const parsedData = JSON.parse(data).productList;
+            setProductList(parsedData);
+        }
+    };
+
+    useEffect(() => {
+        fetchProduct();
+    }, []);
+
     return (
         <div className="bill-cont">
             <div className="title-cont">
@@ -93,27 +113,30 @@ function ProductList() {
                                 <th>Product Type</th>
                                 <th>Quantity</th>
                                 <th>State</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product) => (
-                                <tr key={product.id}>
+                            {productList.map((product) => (
+                                <tr key={product._id}>
                                     <td>
                                         <input type="checkbox" className="checkbox" />
                                     </td>
                                     <td className="img-td">
-                                        <img src={product.img} alt="product" />
+                                        <img src={product.productImage} alt="product" />
                                     </td>
-                                    <td className="name-td">{product.name}</td>
-                                    <td>{product.price}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.quantity}</td>
-                                    <td>
-                                        <button className="status-btn">{product.status}</button>
+                                    <td className="name-td">{product.productName}</td>
+                                    <td className="price-td">
+                                        {Number(product.productPrice).toLocaleString('vi-VN')}₫
                                     </td>
-                                    <td>
-                                        <button className="edit-btn">Edit</button>
+                                    <td>{product.productType}</td>
+                                    <td>{product.productCountInStock}</td>
+
+                                    <td className="edit-td">
+                                        <button className="edit-btn">
+                                            <Link to={`Product/Edit_product/${product._id}`} className="Add-Link">
+                                                Edit
+                                            </Link>
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

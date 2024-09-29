@@ -1,5 +1,6 @@
 const Admin = require('../models/admin');
 const Checkout = require('../models/checkout');
+const Product = require('../models/product');
 const { newToken_Admin } = require('../utils/utility.function');
 
 const loginAdmin = async (req, res) => {
@@ -54,9 +55,55 @@ const changeState = async (req, res) => {
     }
 };
 
+const getProductList = async (req, res) => {
+    try {
+        const productList = await Product.find();
+        //console.log(productList);
+        res.status(200).json({
+            status: 'success',
+            message: 'Get product list successful',
+            productList: productList.reverse(),
+        });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get product list failed', error });
+    }
+};
+
+const addProduct = async (req, res) => {
+    try {
+        const product = await Product.create(req.body);
+        //console.log(product);
+        res.status(200).json({ status: 'success', message: 'Add product successful', product });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Add product failed', error });
+    }
+};
+
+const editProduct = async (req, res) => {
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({ status: 'success', message: 'Edit product successful', product });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Edit product failed', error });
+    }
+};
+
+const getProductDetail = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        res.status(200).json({ status: 'success', message: 'Get product detail successful', product });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get product detail failed', error });
+    }
+};
+
 module.exports = {
     loginAdmin,
     getBillList,
     getBillDetail,
     changeState,
+    getProductList,
+    addProduct,
+    editProduct,
+    getProductDetail,
 };
