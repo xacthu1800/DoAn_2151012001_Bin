@@ -20,6 +20,7 @@ export default function User_HomePage() {
         });
 
         setDataHTML(dataHTML.reverse());
+        console.log(dataHTML);
     };
 
     useEffect(() => {
@@ -68,7 +69,9 @@ export default function User_HomePage() {
                                         <div className="name">{item.name}</div>
                                         <div className="dateOrder">{item.time}</div>
                                     </div>
-                                    <div className="item-sec stateOrder">Pending</div>
+                                    <div className={`item-sec stateOrder ${item.state.toLowerCase()}`}>
+                                        {item.state}
+                                    </div>
                                     <div className="item-sec price">{Number(item.price).toLocaleString('vi-VN')} Đ</div>
                                 </div>
                                 <div className="right-infor"></div>

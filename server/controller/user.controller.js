@@ -133,15 +133,17 @@ const getHomePage = async (req, res) => {
                 return {
                     ...item2,
                     time: item1.time,
+                    state: item1.state,
                 };
             });
         });
+        /*  console.log(checkOut);
+        console.log('0------------------------------------------');
+        console.log(userOrderedList); */
 
-        //console.log(userOrderedList);
-
-        res.status(200).json({ message: 'Đặt hàng thành công', userOrderedList, user });
+        res.status(200).json({ message: 'getHompage success', userOrderedList, user });
     } catch (error) {
-        res.status(500).json({ message: 'Đặt hàng thất bại', error });
+        res.status(500).json({ message: 'getHompage fail', error });
     }
 };
 

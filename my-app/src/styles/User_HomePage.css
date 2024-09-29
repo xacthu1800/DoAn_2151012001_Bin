@@ -1,5 +1,17 @@
 /* Home Page --------------------------------------------------------------------------- */
 
+.pending {
+    color: orange;
+}
+
+.processing {
+    color: blue; /* xanh lá */
+}
+
+.completed {
+    color: green;
+}
+
 .Homepage {
     width: 100%;
     height: auto;

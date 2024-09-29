@@ -9,6 +9,7 @@ export const convertToCartData = (carts) => {
             qty: c.count,
             _id: c._id,
             productType: c.productType,
+            sate: c.state,
         };
     });
 };
