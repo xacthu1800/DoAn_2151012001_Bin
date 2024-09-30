@@ -107,7 +107,7 @@ function ProductList() {
     useEffect(() => {
         fetchProduct();
         console.log(optionList); // In ra optionList mỗi khi nó thay đổi
-    }, [optionList, productList]);
+    }, [optionList]);
 
     return (
         <div className="bill-cont">
@@ -117,7 +117,6 @@ function ProductList() {
             <div className="cap-below">
                 <div className="admin_product-cont">
                     <div className="product-actions">
-                        <button className="btn">Chọn Tất Cả</button>
                         <button className="btn" onClick={handleDeleteProduct}>
                             Xóa
                         </button>

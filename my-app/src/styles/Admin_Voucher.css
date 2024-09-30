@@ -5,6 +5,7 @@
 
 .voucher-cont .voucher-table th,
 .voucher-cont .voucher-table td {
+    min-width: 100px;
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;

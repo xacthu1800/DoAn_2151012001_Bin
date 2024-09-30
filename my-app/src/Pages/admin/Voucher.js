@@ -1,50 +1,41 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Voucher_Add from './Voucher_Add';
 import Voucher_Update from './Voucher_Update';
+import { useState, useEffect } from 'react';
+import { Api } from '../../utils/Api';
 
 export default function Voucher() {
     return (
         <Routes>
             <Route path="/" element={<Voucher_template />} />
             <Route path="Voucher/Voucher_Add" element={<Voucher_Add />} />
-            <Route path="Voucher/Voucher_Update" element={<Voucher_Update />} />
+            <Route path="Voucher/Voucher_Update/:id" element={<Voucher_Update />} />
         </Routes>
     );
 }
 
 function Voucher_template() {
-    const vouchers = [
-        {
-            id: 1,
-            code: 'GIAMGIA20',
-            startDate: '2024-06-17',
-            endDate: '2024-06-30',
-            quantity: 50,
-            used: 8,
-            discount: '20%',
-            maxDiscount: '500.000đ',
-        },
-        {
-            id: 2,
-            code: 'HET',
-            startDate: '2024-06-20',
-            endDate: '2024-06-21',
-            quantity: 1,
-            used: 0,
-            discount: '50%',
-            maxDiscount: '1.000.000đ',
-        },
-        {
-            id: 3,
-            code: 'km2024',
-            startDate: '2024-07-24',
-            endDate: '2024-08-01',
-            quantity: 10,
-            used: 1,
-            discount: '5%',
-            maxDiscount: '1.000.000đ',
-        },
-    ];
+    const [voucherList, setVoucherList] = useState([]);
+
+    useEffect(() => {
+        fetchVouchers();
+    }, [voucherList]);
+
+    const fetchVouchers = async () => {
+        const { statusCode, data } = await Api.getRequest('/api/admin/voucher');
+        const { voucherList } = JSON.parse(data);
+        setVoucherList(voucherList);
+        console.log(voucherList);
+    };
+
+    const handleDeleteVoucher = async (e, id) => {
+        e.preventDefault();
+        const { statusCode, data } = await Api.deleteRequest(`/api/admin/voucher/${id}`);
+        if (statusCode === 200) {
+            alert('Xóa thành công');
+            fetchVouchers();
+        }
+    };
 
     return (
         <div className="bill-cont">
@@ -65,31 +56,36 @@ function Voucher_template() {
                             <tr>
                                 <th>STT</th>
                                 <th>CODE</th>
-                                <th>NGÀY BẮT ĐẦU</th>
-                                <th>NGÀY KẾT THÚC</th>
-                                <th>SỐ LƯỢNG</th>
-                                <th>ĐÃ DÙNG</th>
-                                <th>GIẢM GIÁ (%)</th>
-                                <th>GIẢM TỐI ĐA</th>
-                                <th>HÀNH ĐỘNG</th>
+                                <th>DATE START</th>
+                                <th>DATE END</th>
+                                <th>QUANTITY</th>
+                                <th>USED</th>
+                                <th>DISCOUNT (%)</th>
+                                <th>MAX DISCOUNT</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {vouchers.map((voucher, index) => (
-                                <tr key={voucher.id}>
+                            {voucherList.map((voucher, index) => (
+                                <tr key={voucher._id}>
                                     <td>{index + 1}</td>
                                     <td>{voucher.code}</td>
                                     <td>{voucher.startDate}</td>
                                     <td>{voucher.endDate}</td>
                                     <td>{voucher.quantity}</td>
                                     <td>{voucher.used}</td>
-                                    <td>{voucher.discount}</td>
-                                    <td>{voucher.maxDiscount}</td>
+                                    <td>{voucher.discountPercentage}</td>
+                                    <td>{Number(voucher.maxDiscount).toLocaleString('vi-VN')} đ</td>
                                     <td>
                                         <button className="edit-btn">
-                                            <Link to="Voucher/Voucher_Update">SỬA</Link>
+                                            <Link to={`Voucher/Voucher_Update/${voucher._id}`}>SỬA</Link>
                                         </button>
-                                        <button className="delete-btn">XÓA</button>
+                                        <button
+                                            className="delete-btn"
+                                            onClick={(e) => handleDeleteVoucher(e, voucher._id)}
+                                        >
+                                            XÓA
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

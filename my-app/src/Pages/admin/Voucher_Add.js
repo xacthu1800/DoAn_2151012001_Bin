@@ -2,6 +2,9 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
 import Voucher from './Voucher';
+import { useState, useEffect } from 'react';
+import { Api } from '../../utils/Api';
+
 export default function Voucher_Add() {
     return (
         <Routes>
@@ -12,6 +15,38 @@ export default function Voucher_Add() {
 }
 
 function Voucher_Add_template() {
+    const [code, setCode] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [discountPercentage, setDiscountPercentage] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [maxDiscount, setMaxDiscount] = useState('');
+    const [used, setUsed] = useState('0');
+
+    useEffect(() => {}, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Chuyển đổi định dạng ngày từ yyyy-mm-dd sang dd-mm-yyyy
+
+        const { statusCode, data } = await Api.postRequest('/api/admin/voucher', {
+            code: code.toUpperCase().toString(),
+            quantity: quantity.toString(),
+            discountPercentage: discountPercentage.toString(),
+            startDate: startDate.toString(),
+            endDate: endDate.toString(),
+            used: used.toString(),
+            maxDiscount: maxDiscount.toString(),
+        });
+        if (statusCode === 200) {
+            alert('Thêm mã giảm giá thành công');
+            window.location.reload();
+        } else {
+            alert('Thêm mã giảm giá thất bại');
+        }
+    };
+
     return (
         <div className="bill-cont">
             <div className="title-cont">
@@ -30,33 +65,58 @@ function Voucher_Add_template() {
                         <div className="left">
                             <div className="form-group">
                                 <label>Code</label>
-                                <input type="text" name="code" />
+                                <input type="text" name="code" value={code} onChange={(e) => setCode(e.target.value)} />
                             </div>
                             <div className="form-group">
                                 <label>Số lượng</label>
-                                <input type="number" name="quantity" />
+                                <input
+                                    type="number"
+                                    name="quantity"
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(e.target.value)}
+                                />
                             </div>
                             <div className="form-group">
                                 <label>Giảm giá (%)</label>
-                                <input type="number" name="discount_percentage" />
+                                <input
+                                    type="number"
+                                    name="discount_percentage"
+                                    value={discountPercentage}
+                                    onChange={(e) => setDiscountPercentage(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="right">
                             <div className="form-group">
                                 <label>Ngày bắt đầu</label>
-                                <input type="date" name="start_date" />
+                                <input
+                                    type="date"
+                                    name="start_date"
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                />
                             </div>
                             <div className="form-group">
                                 <label>Ngày kết thúc</label>
-                                <input type="date" name="end_date" />
+                                <input
+                                    type="date"
+                                    name="end_date"
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Giảm tối đa</label>
-                                <input type="number" name="max_discount" />
+                                <input
+                                    type="number"
+                                    name="max_discount"
+                                    value={maxDiscount}
+                                    onChange={(e) => setMaxDiscount(e.target.value)}
+                                />
                             </div>
                         </div>
-                        <button type="submit" className="add-btn">
+                        <button type="submit" className="add-btn" onClick={handleSubmit}>
                             Add
                         </button>
                     </form>

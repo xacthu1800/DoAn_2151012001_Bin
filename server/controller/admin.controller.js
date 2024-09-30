@@ -1,6 +1,8 @@
 const Admin = require('../models/admin');
 const Checkout = require('../models/checkout');
 const Product = require('../models/product');
+const Voucher = require('../models/voucher');
+
 const { newToken_Admin } = require('../utils/utility.function');
 
 const loginAdmin = async (req, res) => {
@@ -109,6 +111,56 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+const addVoucher = async (req, res) => {
+    try {
+        const voucher = await Voucher.create(req.body);
+
+        res.status(200).json({ status: 'success', message: 'Add voucher successful', voucher });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Add voucher failed', error });
+    }
+};
+
+const getVoucherList = async (req, res) => {
+    try {
+        const voucherList = await Voucher.find();
+        res.status(200).json({
+            status: 'success',
+            message: 'Get voucher list successful',
+            voucherList: voucherList.reverse(),
+        });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get voucher list failed', error });
+    }
+};
+
+const getVoucherDetail = async (req, res) => {
+    try {
+        const voucher = await Voucher.findById(req.params.id);
+        res.status(200).json({ status: 'success', message: 'Get voucher detail successful', voucher });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Get voucher detail failed', error });
+    }
+};
+
+const updateVoucher = async (req, res) => {
+    try {
+        const voucher = await Voucher.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({ status: 'success', message: 'Update voucher successful', voucher });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Update voucher failed', error });
+    }
+};
+
+const deleteVoucher = async (req, res) => {
+    try {
+        await Voucher.findByIdAndDelete(req.params.id);
+        res.status(200).json({ status: 'success', message: 'Delete voucher successful' });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: 'Delete voucher failed', error });
+    }
+};
+
 module.exports = {
     loginAdmin,
     getBillList,
@@ -119,4 +171,9 @@ module.exports = {
     editProduct,
     getProductDetail,
     deleteProduct,
+    addVoucher,
+    getVoucherList,
+    getVoucherDetail,
+    updateVoucher,
+    deleteVoucher,
 };
