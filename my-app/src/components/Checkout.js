@@ -13,9 +13,10 @@ import useLogin from '../utils/hooks/useLogin';
 function Checkout(props) {
     const [isForm2Visible, setForm2Visible] = useState(false);
     const [sumPrice, setSumPrice] = useState(0);
-    const [coupon, setCoupon] = useState('');
+    const [voucher, setVoucher] = useState('');
     const [discount, setDiscount] = useState('0');
     const [shipping, setShipping] = useState('20000');
+    const [voucherData, setVoucherData] = useState(null);
 
     const [userFullname, setUserFullname] = useState('');
     const [userAddress, setUserAddress] = useState('');
@@ -47,20 +48,38 @@ function Checkout(props) {
         console.log('everything still Ok');
         console.log(user.userInfo.details._id);
         sumCaculate();
-    }, [cartItems]);
+    }, [cartItems, voucherData]);
 
     //-----------------------  FUNCTION  ---------------------//
 
     // hàm tính total price
     function sumCaculate() {
         let total = 0;
-        cartItems.forEach((item) => {
-            if (item.price && item.qty) {
-                // Kiểm tra giá và số lượng
-                total += Number(item.price) * Number(item.qty);
+        if (voucherData != null && voucherData.length > 0) {
+            cartItems.forEach((item) => {
+                if (item.price && item.qty) {
+                    // Kiểm tra giá và số lượng
+                    total += Number(item.price) * Number(item.qty);
+                }
+            });
+            total = total + Number(shipping);
+            if (Number(voucherData[0].maxDiscount) < (total * Number(voucherData[0].discountPercentage)) / 100) {
+                total = total - Number(voucherData[0].maxDiscount);
+            } else {
+                total = total - (total * Number(voucherData[0].discountPercentage)) / 100;
             }
-        });
-        total = total + Number(shipping);
+        } else {
+            cartItems.forEach((item) => {
+                if (item.price && item.qty) {
+                    // Kiểm tra giá và số lượng
+                    total += Number(item.price) * Number(item.qty);
+                }
+            });
+            total = total + Number(shipping);
+        }
+
+        console.log('total: ', total);
+
         setSumPrice(total);
     }
 
@@ -111,6 +130,24 @@ function Checkout(props) {
             alert('Đặt hàng thất bại');
         }
         navigate('/', { replace: true });
+    };
+
+    const handleVoucher = async (e) => {
+        e.preventDefault();
+        const { statusCode, data } = await Api.postRequest(`/api/user/voucher`, {
+            voucherCode: voucher.toString(),
+        });
+        console.log('statusCode: ', statusCode);
+        if (statusCode == 200) {
+            const { voucherData } = JSON.parse(data);
+            setVoucherData(voucherData);
+            alert('Mã giảm giá hợp lệ');
+        } else if (statusCode == 404) {
+            alert('Mã giảm giá không hợp lệ');
+            setVoucherData(null); // Đặt voucherData về null nếu mã không hợp lệ
+        } else {
+            console.log(`Unexpected status code: ${statusCode}`); // Ghi lại mã trạng thái không mong đợi
+        }
     };
 
     return (
@@ -270,11 +307,11 @@ function Checkout(props) {
 
                             <input
                                 type="text"
-                                value={coupon}
-                                placeholder="Enter The Product Name"
-                                onChange={(e) => setCoupon(e.target.value.toUpperCase())}
+                                value={voucher}
+                                placeholder="Enter The Voucher"
+                                onChange={(e) => setVoucher(e.target.value.toUpperCase())}
                             ></input>
-                            <button onClick={vi}>Apply</button>
+                            <button onClick={(e) => handleVoucher(e)}>Apply</button>
                         </div>
 
                         <div className="table-pricing box">
@@ -288,7 +325,11 @@ function Checkout(props) {
                             </div>
                             <div className="coupon table-section">
                                 <label className="font-1">voucher</label>
-                                <div className="coupon-value font-1">-20%</div>
+                                <div className="coupon-value font-1">
+                                    {voucherData != null && voucherData.length > 0
+                                        ? `-${voucherData[0].discountPercentage}%`
+                                        : '-0%'}
+                                </div>
                             </div>
                             <div className="finalPrice table-section">
                                 <label className="font-2"> Total</label>

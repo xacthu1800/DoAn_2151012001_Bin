@@ -1,8 +1,9 @@
 const User = require('../models/user');
 const Checkout = require('../models/checkout');
 const Cart = require('../models/cart');
+const Voucher = require('../models/voucher');
 
-const { checkPassword, newToken } = require('../utils/utility.function');
+const { newToken } = require('../utils/utility.function');
 
 const regisUser = async (req, res) => {
     const { userName, password } = req.body;
@@ -174,6 +175,18 @@ const changePassword = async (req, res) => {
     }
 };
 
+const checkVoucher = async (req, res) => {
+    const { voucherCode } = req.body;
+    //console.log(voucherCode);
+    const findVoucher = await Voucher.find({ code: voucherCode });
+    console.log('findVoucher: ', findVoucher);
+    if (findVoucher.length > 0) {
+        res.status(200).json({ status: 'ok', message: 'Mã giảm giá hợp lệ', voucherData: findVoucher });
+    } else {
+        res.status(404).json({ status: 'error', message: 'Mã giảm giá không hợp lệ' });
+    }
+};
+
 module.exports = {
     regisUser,
     loginUser,
@@ -181,6 +194,7 @@ module.exports = {
     checkoutUser,
     getHomePage,
     changePassword,
+    checkVoucher,
 };
 
 const getCurrentTime = () => {
