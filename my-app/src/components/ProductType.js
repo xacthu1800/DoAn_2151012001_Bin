@@ -48,7 +48,7 @@ const ProductType = (props) => {
                             <MdOutlineLaptopMac className="icon" />
                         </div>
                     </div>
-                    <div className="box">
+                    {/*   <div className="box">
                         <div className="icon_box" onClick={() => filterPhone('HEADPHONE')}>
                             <FaHeadphonesAlt className="icon" />
                         </div>
@@ -57,7 +57,7 @@ const ProductType = (props) => {
                         <div className="icon_box" onClick={() => filterPhone('WATCH')}>
                             <BsSmartwatch className="icon" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
