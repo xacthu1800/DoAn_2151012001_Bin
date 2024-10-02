@@ -17,11 +17,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 const menuItems = [
-    { icon: IoHomeOutline, text: 'Dashboard', path: '/Admin/Dashboard' },
     { icon: PiMedal, text: 'Bill', path: '/Admin/Bill' },
     { icon: PiLink, text: 'Product', path: '/Admin/Product' },
     { icon: MdPassword, text: 'Voucher', path: '/Admin/Voucher' },
 ];
+
+/* { icon: IoHomeOutline, text: 'Dashboard', path: '/Admin/Dashboard' }, */
 
 export default function Admin() {
     const navigate = useNavigate();
@@ -62,8 +63,8 @@ export default function Admin() {
                 </div>
                 <div className="section-right">
                     <Routes>
-                        <Route index element={<Dashboard />} />
-                        <Route path="Dashboard" element={<Dashboard />} />
+                        <Route index element={<Bill />} />
+                        {/* <Route path="Dashboard" element={<Dashboard />} /> */}
                         <Route path="Bill/*" element={<Bill />} />
                         <Route path="Product/*" element={<Product />} />
                         <Route path="Voucher/*" element={<Voucher />} />
