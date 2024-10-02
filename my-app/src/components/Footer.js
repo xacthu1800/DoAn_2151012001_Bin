@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="foot-container hidden-on-mobile">
                 <div className="container-item col-shadow">
                     <h1>CellphoneB</h1>
-                    <h4>Website bán lẻ điện thoại, laptop, tai nghe, đồng hồ thông minh</h4>
+                    <h4>Website bán lẻ điện thoại, laptop</h4>
                 </div>
                 <div className="container-item col-shadow">
                     <img src={ouIcon} />
