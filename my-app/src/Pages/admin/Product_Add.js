@@ -2,7 +2,7 @@ import iphoneImage from '../../resources/Phone/iphone-15-plus_1__1.webp';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Api } from '../../utils/Api';
 import { useState, useEffect } from 'react';
-
+import { toast } from 'react-toastify';
 export default function Product_Add() {
     return (
         <Routes>
@@ -57,8 +57,10 @@ function ProductAdd_template() {
 
         const { statusCode, data } = await Api.postRequest('/api/admin/product', productData);
         if (statusCode === 200) {
-            alert('Add product successful');
+            toast.success('Add product successful');
             window.location.reload();
+        } else {
+            toast.error('Add product failed');
         }
     };
 

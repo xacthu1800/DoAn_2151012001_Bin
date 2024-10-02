@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart } from '../redux/actions/cartAction';
 import { useState, useEffect } from 'react';
 import { addToCart, removeFromCart, deleteFromCart } from '../redux/actions/cartAction';
+import { toast } from 'react-toastify';
+
 import useLogin from '../utils/hooks/useLogin';
 
 export default function Cart() {
@@ -56,7 +58,7 @@ export default function Cart() {
             setState((prev) => prev + 1); // Đảm bảo rằng trạng thái được cập nhật để kích hoạt useEffect
             dispatch(fetchCart()); // Fetch cart after adding an item
         } else {
-            alert('You need to first login.');
+            toast.error('You need to first login.');
         }
     }
 
@@ -66,7 +68,7 @@ export default function Cart() {
             setState((prev) => prev + 1); // Đảm bảo rằng trạng thái được cập nhật để kích hoạt useEffect
             dispatch(fetchCart()); // Fetch cart after removing an item
         } else {
-            alert('You need to first login.');
+            toast.error('You need to first login.');
         }
     }
 
@@ -76,7 +78,7 @@ export default function Cart() {
             setState((prev) => prev + 1); // Đảm bảo rằng trạng thái được cập nhật để kích hoạt useEffect
             dispatch(fetchCart()); // Fetch cart after removing an item
         } else {
-            alert('You need to first login.');
+            toast.error('You need to first login.');
         }
     }
 

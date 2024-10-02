@@ -3,6 +3,7 @@ import Voucher_Add from './Voucher_Add';
 import Voucher_Update from './Voucher_Update';
 import { useState, useEffect } from 'react';
 import { Api } from '../../utils/Api';
+import { toast } from 'react-toastify';
 
 export default function Voucher() {
     return (
@@ -32,7 +33,7 @@ function Voucher_template() {
         e.preventDefault();
         const { statusCode, data } = await Api.deleteRequest(`/api/admin/voucher/${id}`);
         if (statusCode === 200) {
-            alert('Xóa thành công');
+            toast.success('Xóa thành công');
             fetchVouchers();
         }
     };

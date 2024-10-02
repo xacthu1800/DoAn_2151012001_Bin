@@ -4,7 +4,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Api } from '../../utils/Api';
-
+import { toast } from 'react-toastify';
 const LoginForm = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
@@ -23,10 +23,10 @@ const LoginForm = () => {
                 });
                 if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
                     setLoading(false);
-                    alert(data);
+                    toast.error('Fail to register');
                     return;
                 }
-                alert(data);
+                toast.success('Register successfully');
                 navigate('/Login', { replace: true });
             }
         },

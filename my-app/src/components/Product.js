@@ -1,6 +1,7 @@
 import Caption from './Caption';
 import { useState, useEffect } from 'react';
 import ProductDetail from './ProductDetail';
+import { toast } from 'react-toastify';
 
 const Product = (props) => {
     const [close, setClose] = useState(false);

@@ -2,6 +2,8 @@ import { MdPassword } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 export default function User_ChangePassword() {
     const [oldPass, setOldPass] = useState('');
     const [newPass, setNewPass] = useState('');
@@ -13,7 +15,7 @@ export default function User_ChangePassword() {
 
     const checkPass = () => {
         if (newPass !== confirmPass) {
-            alert('Mật khẩu không khớp');
+            toast.error('Mật khẩu không khớp');
             return false;
         }
         return true;
@@ -41,9 +43,13 @@ export default function User_ChangePassword() {
             }
 
             const { status, message } = await response.json();
-            alert(message);
+            if (status === 'ok') {
+                toast.success(message);
+            } else {
+                toast.error(message);
+            }
         } catch (error) {
-            alert('Có lỗi xảy ra: ' + error.message);
+            toast.error('Có lỗi xảy ra: ' + error.message);
         }
     };
 

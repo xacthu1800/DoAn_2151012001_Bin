@@ -22,6 +22,9 @@ import Login_Admin from './Pages/admin/Login_Admin';
 import { fetchCart } from './redux/actions/cartAction';
 import { setUserDeatils } from './redux/actions/userAction';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -54,6 +57,7 @@ const MainLayout = () => {
             <Nav />
             <Outlet />
             <Footer />
+            <ToastContainer />
         </>
     );
 };

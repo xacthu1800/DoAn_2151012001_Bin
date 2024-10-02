@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 import { IoMdArrowBack } from 'react-icons/io';
 import { Api } from '../../utils/Api';
+import { toast } from 'react-toastify';
 
 export default function Voucher_Update() {
     return (
@@ -32,7 +33,9 @@ function Voucher_Update_template() {
         e.preventDefault();
         const { statusCode, data } = await Api.putRequest(`/api/admin/voucher/${id}`, voucherData);
         if (statusCode === 200) {
-            alert('Cập nhật thành công');
+            toast.success('Cập nhật thành công');
+        } else {
+            toast.error('Cập nhật thất bại');
         }
     };
 

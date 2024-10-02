@@ -4,7 +4,7 @@ import { IoMdArrowBack } from 'react-icons/io';
 import Voucher from './Voucher';
 import { useState, useEffect } from 'react';
 import { Api } from '../../utils/Api';
-
+import { toast } from 'react-toastify';
 export default function Voucher_Add() {
     return (
         <Routes>
@@ -40,10 +40,10 @@ function Voucher_Add_template() {
             maxDiscount: maxDiscount.toString(),
         });
         if (statusCode === 200) {
-            alert('Thêm mã giảm giá thành công');
+            toast.success('Thêm mã giảm giá thành công');
             window.location.reload();
         } else {
-            alert('Thêm mã giảm giá thất bại');
+            toast.error('Thêm mã giảm giá thất bại');
         }
     };
 

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Api } from '../../utils/Api';
 import { setToken, isLogin } from '../../utils/localstorage';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
     // const [email, setEmail] = useState('');
@@ -37,16 +38,17 @@ const LoginForm = () => {
                 });
                 if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
                     setLoading(false);
-                    alert(data);
+                    toast.error('Fail to login');
                     return;
                 }
 
                 console.log(data);
                 const { status, token } = JSON.parse(data);
                 if (status != 'ok') {
-                    alert('user name or password is wrong');
+                    toast.error('user name or password is wrong');
                     return;
                 } else {
+                    toast.success('Login successfully');
                     setToken(token);
                     navigate('/'); // Navigate to home page
                 }

@@ -57,7 +57,7 @@
 
 .bill-cont .bill-list-cont .bill-list .grid-container {
     display: grid;
-    grid-template-columns: 70px 200px 150px 150px 180px 90px 140px; /* Define specific widths for each of the 7 columns */
+    grid-template-columns: 70px 300px 250px 150px 180px 90px 140px; /* Define specific widths for each of the 7 columns */
     gap: 1px; /* Optional: gap between grid items */
     padding: 1px; /* Optional: padding around the grid container */
 }
@@ -77,8 +77,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 200px;
-    height: auto;
 }
 
 .bill-cont .bill-list-cont .bill-list .grid-container .bill-item .hover {

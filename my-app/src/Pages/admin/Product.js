@@ -8,58 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Api } from '../../utils/Api';
 import { useState, useEffect } from 'react';
 
-const products = [
-    {
-        id: 1,
-        name: 'iPhone 13 Pro Max',
-        price: '21.000.000₫',
-        category: 'IPhone 13',
-        variant: 'Có',
-        quantity: 18,
-        status: 'Hiển Thị',
-        img: iphoneImage,
-    },
-    {
-        id: 2,
-        name: 'Iphone 13 Seri',
-        price: '18.990.000₫',
-        category: 'IPhone 13',
-        variant: 'Có',
-        quantity: 25,
-        status: 'Hiển Thị',
-        img: iphoneImage,
-    },
-    {
-        id: 3,
-        name: 'Ốp lưng MagSafe cho iPhone 15 Pro Max Nhựa trong Apple',
-        price: '1.169.000₫',
-        category: 'Phụ kiện',
-        variant: 'Không',
-        quantity: 25,
-        status: 'Hiển Thị',
-        img: iphoneImage,
-    },
-    {
-        id: 4,
-        name: 'AirPods Pro (2nd Gen) Lightning',
-        price: '5.390.000₫',
-        category: 'Phụ kiện',
-        variant: 'Không',
-        quantity: 25,
-        status: 'Hiển Thị',
-        img: iphoneImage,
-    },
-    {
-        id: 5,
-        name: 'AirPods 2 sạc Lightning',
-        price: '3.490.000₫',
-        category: 'Phụ kiện',
-        variant: 'Không',
-        quantity: 25,
-        status: 'Hiển Thị',
-        img: iphoneImage,
-    },
-];
+import { toast } from 'react-toastify';
 
 export default function Product() {
     return (
@@ -99,7 +48,7 @@ function ProductList() {
     const handleDeleteProduct = async () => {
         const { statusCode, data } = await Api.deleteRequest('/api/admin/product', { productIdList: optionList });
         if (statusCode === 200) {
-            console.log('Delete successful');
+            toast.success('Delete successful');
             fetchProduct();
         }
     };
@@ -120,7 +69,6 @@ function ProductList() {
                         <button className="btn" onClick={handleDeleteProduct}>
                             Xóa
                         </button>
-                        <button className="btn">Thêm Giảm Giá</button>
                         <button className="btn">
                             <Link to="Product/Add_product" className="Add-Link">
                                 Add new Product

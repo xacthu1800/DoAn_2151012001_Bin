@@ -3,6 +3,7 @@ import { LiaCartPlusSolid } from 'react-icons/lia';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/actions/cartAction';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 export default function ProductDetail({ productDetailData, close, setClose }) {
     // console.log(productDetailData);
@@ -15,9 +16,10 @@ export default function ProductDetail({ productDetailData, close, setClose }) {
     function addToCartHandler() {
         if (user.userInfo.isLogin) {
             dispatch(addToCart(productDetailData._id, qty));
+            toast.success('Add to cart successfully');
             return;
         } else {
-            alert('You need to first login.');
+            toast.error('You need to first login.');
         }
     }
 

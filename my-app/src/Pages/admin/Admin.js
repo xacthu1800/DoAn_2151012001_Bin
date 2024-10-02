@@ -13,7 +13,9 @@ import Product from './Product';
 import Voucher from './Voucher';
 import { useEffect } from 'react';
 import { isLogin_Admin } from '../../utils/localstorage';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 const menuItems = [
     { icon: IoHomeOutline, text: 'Dashboard', path: '/Admin/Dashboard' },
     { icon: PiMedal, text: 'Bill', path: '/Admin/Bill' },
@@ -28,6 +30,8 @@ export default function Admin() {
 
         localStorage.clear();
         //window.location.reload();
+        toast.success('Logout successful');
+
         navigate('/');
     };
 
@@ -64,6 +68,7 @@ export default function Admin() {
                         <Route path="Product/*" element={<Product />} />
                         <Route path="Voucher/*" element={<Voucher />} />
                     </Routes>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

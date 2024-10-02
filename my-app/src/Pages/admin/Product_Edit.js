@@ -2,7 +2,7 @@ import iphoneImage from '../../resources/Phone/iphone-15-plus_1__1.webp';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 import { Api } from '../../utils/Api';
 import { useState, useEffect } from 'react';
-
+import { toast } from 'react-toastify';
 export default function Product_Edit() {
     return (
         <Routes>
@@ -53,14 +53,17 @@ function ProductEdit_template() {
             chipset: product.chipset ? product.chipset.toString() : '', // Kiểm tra null
             ramCapacity: product.ramCapacity ? product.ramCapacity.toString() : '', // Kiểm tra null
             internalStorage: product.internalStorage ? product.internalStorage.toString() : '', // Kiểm tra null
-            productImage: imagePreview ? imagePreview.toString() : '', // Kiểm tra null
+            productImage:
+                imagePreview || defaultData.productImage ? (imagePreview || defaultData.productImage).toString() : '', // Kiểm tra null
         };
         console.log(productData);
 
         const { statusCode, data } = await Api.putRequest(`/api/admin/editProduct/${id}`, productData);
         if (statusCode === 200) {
-            alert('Edit product successful');
+            toast.success('Edit product successful');
             //console.log(data);
+        } else {
+            toast.error('Edit product failed');
         }
     };
 

@@ -10,6 +10,7 @@ import YourAccount from './User_YourAccount.js';
 import ChangePassword from './User_ChangePassword.js';
 import Membershipclass from './User_MembershipoClass.js';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const menuItems = [
     { icon: IoHomeOutline, text: 'Home page', path: 'Homepage' },
 
@@ -26,6 +27,7 @@ export default function User() {
 
         localStorage.clear();
         //window.location.reload();
+        toast.success('Logout successfully');
         navigate('/');
     };
     return (
