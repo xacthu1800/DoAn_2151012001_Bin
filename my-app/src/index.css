@@ -21,6 +21,7 @@
 @import './styles/Admin_product_Add.css';
 @import './styles/Admin_Voucher.css';
 @import './styles/Voucher_Add.css';
+@import './styles/Chatbot.css';
 
 * {
     padding: 0;

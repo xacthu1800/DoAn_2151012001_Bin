@@ -7,7 +7,7 @@ import { fetchCart } from '../redux/actions/cartAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Api } from '../utils/Api';
-
+import { toast } from 'react-toastify';
 import useLogin from '../utils/hooks/useLogin';
 
 function Checkout(props) {
@@ -130,6 +130,7 @@ function Checkout(props) {
             alert('Đặt hàng thất bại');
         }
         navigate('/', { replace: true });
+        toast.success('order successfully');
     };
 
     const handleVoucher = async (e) => {
@@ -141,9 +142,11 @@ function Checkout(props) {
         if (statusCode == 200) {
             const { voucherData } = JSON.parse(data);
             setVoucherData(voucherData);
-            alert('Mã giảm giá hợp lệ');
+
+            toast.success('Mã giảm giá hợp lệ');
         } else if (statusCode == 404) {
-            alert('Mã giảm giá không hợp lệ');
+            toast.error('Mã giảm giá không hợp lệ');
+
             setVoucherData(null); // Đặt voucherData về null nếu mã không hợp lệ
         } else {
             console.log(`Unexpected status code: ${statusCode}`); // Ghi lại mã trạng thái không mong đợi

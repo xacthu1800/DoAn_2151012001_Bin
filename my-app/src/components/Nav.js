@@ -6,8 +6,8 @@ import { CiLogout } from 'react-icons/ci';
 import { FaRegCircleUser } from 'react-icons/fa6';
 
 const Nav = (props) => {
-    const clearLocalStorage = () => {
-        localStorage.clear();
+    const openChatBot = () => {
+        props.setChatBot(!props.chatBot);
     };
 
     return (
@@ -53,7 +53,7 @@ const Nav = (props) => {
                                     Category
                                 </Link>
                             </li>
-                            <li onClick={() => clearLocalStorage()}>
+                            <li onClick={() => openChatBot()}>
                                 <Link to="/" className="link">
                                     Contact
                                 </Link>

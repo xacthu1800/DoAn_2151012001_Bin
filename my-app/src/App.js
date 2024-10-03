@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
+import ChatBot from './components/ChatBot';
 //pages
 import Products from './Pages/user/Products';
 import Home from './Pages/user/Home';
@@ -52,9 +53,12 @@ const App = () => {
 };
 
 const MainLayout = () => {
+    const [chatBot, setChatBot] = useState(true);
+
     return (
         <>
-            <Nav />
+            <Nav chatBot={chatBot} setChatBot={setChatBot} />
+            <ChatBot chatBot={chatBot} setChatBot={setChatBot} />
             <Outlet />
             <Footer />
             <ToastContainer />
