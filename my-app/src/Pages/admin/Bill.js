@@ -23,7 +23,7 @@ function BillList() {
         const { statusCode, data } = await Api.getRequest('/api/admin/bill');
         //console.log(data);
         const { status, message, billList } = JSON.parse(data);
-        setListBill(billList);
+        setListBill(billList.reverse());
     };
 
     const formattedDate = (x) => {
