@@ -56,16 +56,16 @@ export default function Categories(props) {
     function filterPrice(state) {
         let filtered;
         switch (state) {
-            case '0-5.000.000':
-                filtered = [...productData].filter((a, b) => Number(a.productPrice) <= 5000000);
+            case '0-10.000.000':
+                filtered = [...productData].filter((a, b) => Number(a.productPrice) <= 10000000);
                 break;
-            case '5.000.000-10.000.000':
+            case '10.000.000-15.000.000':
                 filtered = [...productData].filter(
-                    (a, b) => Number(a.productPrice) >= 5000000 && Number(a.productPrice) <= 10000000,
+                    (a, b) => Number(a.productPrice) >= 10000000 && Number(a.productPrice) <= 15000000,
                 );
                 break;
-            case 'over 10.000.000':
-                filtered = [...productData].filter((a, b) => Number(a.productPrice) >= 10000000);
+            case 'over 15.000.000':
+                filtered = [...productData].filter((a, b) => Number(a.productPrice) >= 15000000);
                 break;
             default:
                 filtered = productData;
@@ -123,28 +123,28 @@ export default function Categories(props) {
                                     type="radio"
                                     value="1"
                                     name="Price1"
-                                    onClick={() => filterPrice('0-5.000.000')}
+                                    onClick={() => filterPrice('0-10.000.000')}
                                 />
-                                <div className="cap-norma2">0 - 5.000.000Đ</div>
+                                <div className="cap-norma2">0 - 10.000.000Đ</div>
                             </div>
                             <div className="price-option">
                                 <input
                                     type="radio"
                                     value="1"
                                     name="Price1"
-                                    onClick={() => filterPrice('5.000.000-10.000.000')}
+                                    onClick={() => filterPrice('10.000.000-15.000.000')}
                                 />
-                                <div className="cap-norma2">5.000.000 - 10.000.000Đ</div>
+                                <div className="cap-norma2">10.000.000 - 15.000.000Đ</div>
                             </div>
                             <div className="price-option">
                                 <input
                                     type="radio"
                                     value="1"
                                     name="Price1"
-                                    onClick={() => filterPrice('over 10.000.000')}
+                                    onClick={() => filterPrice('over 15.000.000')}
                                 />
 
-                                <div className="cap-norma2"> over 10.000.000Đ</div>
+                                <div className="cap-norma2"> over 15.000.000Đ</div>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ const Nav = (props) => {
                 <Link to="/Admin" className="site-title">
                     CellphoneB
                 </Link>
-                <div className="search-box">
+                {/*  <div className="search-box">
                     <CiSearch className="button" />
                     <input
                         type="text"
@@ -25,7 +25,7 @@ const Nav = (props) => {
                         placeholder="Enter The Product Name"
                         onChange={(e) => props.setInput(e.target.value)}
                     />
-                </div>
+                </div> */}
                 <ul>
                     <li>
                         <div style={{ display: 'none' }}>Hi Bin</div>
