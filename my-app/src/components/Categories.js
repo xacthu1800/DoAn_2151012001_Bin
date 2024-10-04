@@ -84,7 +84,7 @@ export default function Categories(props) {
 
     useEffect(() => {
         if (data) {
-            setFilterData(data);
+            setFilterData(data.reverse());
         } else {
             setFilterData(productData.reverse());
         }
