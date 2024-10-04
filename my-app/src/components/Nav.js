@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CiLogin } from 'react-icons/ci';
 import { CiLogout } from 'react-icons/ci';
 import { FaRegCircleUser } from 'react-icons/fa6';
+import { TbMessageChatbotFilled } from 'react-icons/tb';
 
 const Nav = (props) => {
     const openChatBot = () => {
@@ -53,13 +54,10 @@ const Nav = (props) => {
                                     Category
                                 </Link>
                             </li>
-                            <li onClick={() => openChatBot()}>
-                                <Link to="/" className="link">
-                                    Contact
-                                </Link>
-                            </li>
+                            <li></li>
                         </ul>
                         <div className="auth">
+                            <TbMessageChatbotFilled size={28} className="icon" onClick={() => openChatBot()} />
                             <Link to="/Login">
                                 <CiLogin size={35} className="icon" />
                             </Link>

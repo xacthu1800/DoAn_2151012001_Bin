@@ -86,7 +86,7 @@ export default function Categories(props) {
         if (data) {
             setFilterData(data);
         } else {
-            setFilterData(productData);
+            setFilterData(productData.reverse());
         }
     }, [productData]);
 
