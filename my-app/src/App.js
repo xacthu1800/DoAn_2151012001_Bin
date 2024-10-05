@@ -53,7 +53,7 @@ const App = () => {
 };
 
 const MainLayout = () => {
-    const [chatBot, setChatBot] = useState(true);
+    const [chatBot, setChatBot] = useState(false);
 
     return (
         <>

@@ -5,11 +5,46 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Api } from '../../utils/Api';
 import { toast } from 'react-toastify';
+import { GoogleLogin } from '@react-oauth/google';
+
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
 const LoginForm = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const onSuccess = async (res) => {
+        console.log('Login Success: ' + JSON.stringify(res));
+        console.log('credential: ' + res.credential);
+        try {
+            const { statusCode, data } = await Api.postRequest('/api/user/RegisterWithGoogle', {
+                tokenId: res.credential,
+            });
+            if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
+                setLoading(false);
+                toast.error('Fail to register with Google');
+                return;
+            }
+
+            console.log(data);
+            const { status } = JSON.parse(data);
+            if (status != 'ok') {
+                toast.error('Fail to register');
+                return;
+            } else {
+                toast.success('Register successfully');
+                navigate('/Login', { replace: true });
+            }
+        } catch (error) {
+            toast.error('Fail to register');
+        }
+    };
+
+    const onFailure = (res) => {
+        console.log('Login Failed: ' + res);
+    };
 
     const _handleSubmit = useCallback(
         async (e) => {
@@ -59,6 +94,16 @@ const LoginForm = () => {
                     />
                     <RiLockPasswordLine className="icon" />
                 </div>
+                <div className="google-btn">
+                    <GoogleLogin
+                        clientId={clientId}
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        shape="circle"
+                        text="Register with Google"
+                    />
+                </div>
+
                 <div className="remember-forgot"></div>
 
                 <button type="submit" onClick={_handleSubmit}>

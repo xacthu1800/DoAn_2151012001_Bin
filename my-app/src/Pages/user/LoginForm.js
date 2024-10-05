@@ -6,6 +6,9 @@ import { Api } from '../../utils/Api';
 import { setToken, isLogin } from '../../utils/localstorage';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { toast } from 'react-toastify';
+import { GoogleLogin } from '@react-oauth/google';
+
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const LoginForm = () => {
     // const [email, setEmail] = useState('');
@@ -27,6 +30,39 @@ const LoginForm = () => {
     const handleSudmit = (e) => {
         e.preventDefault();
     };
+
+    const onSuccess = async (res) => {
+        console.log('Login Success: ' + JSON.stringify(res));
+        console.log('credential: ' + res.credential);
+        try {
+            const { statusCode, data } = await Api.postRequest('/api/user/LoginWithGoogle', {
+                tokenId: res.credential,
+            });
+            if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
+                setLoading(false);
+                toast.error('Fail to login with Google');
+                return;
+            }
+
+            console.log(data);
+            const { status, token } = JSON.parse(data);
+            if (status != 'ok') {
+                toast.error('Fail to login');
+                return;
+            } else {
+                toast.success('Login successfully');
+                setToken(token);
+                navigate('/'); // Navigate to home page
+            }
+        } catch (error) {
+            toast.error('Fail to login');
+        }
+    };
+
+    const onFailure = (res) => {
+        console.log('Login Failed: ' + res);
+    };
+
     const _handleSubmit = useCallback(
         async (e) => {
             e.preventDefault(); // Prevent default form submission
@@ -82,13 +118,9 @@ const LoginForm = () => {
                     />
                     <RiLockPasswordLine className="icon" />
                 </div>
-                {/* <div className="remember-forgot">
-                    <label>
-                        <input type="checkbox" />
-                        Remember me
-                    </label>
-                    <a href="#">Forgot Password ?</a>
-                </div> */}
+                <div className="google-btn">
+                    <GoogleLogin onSuccess={onSuccess} onFailure={onFailure} shape="circle" text="Login with Google" />
+                </div>
 
                 <button type="submit" onClick={_handleSubmit} className="loginPage-Login-button">
                     Login

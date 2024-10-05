@@ -99,3 +99,12 @@
 .loginPage-Login-button {
     margin-top: 20px;
 }
+
+.google-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    align-items: center !important;
+    display: flex;
+    justify-content: center;
+}

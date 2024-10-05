@@ -2,8 +2,21 @@ const User = require('../models/user');
 const Checkout = require('../models/checkout');
 const Cart = require('../models/cart');
 const Voucher = require('../models/voucher');
+const { OAuth2Client } = require('google-auth-library');
 
 const { newToken } = require('../utils/utility.function');
+const clientId = process.env.GOOGLE_CLIENT_ID;
+const client = new OAuth2Client(clientId);
+
+async function verify(tokenId) {
+    const ticket = await client.verifyIdToken({
+        idToken: tokenId,
+        audience: clientId,
+    });
+    const payload = ticket.getPayload();
+    console.log('payload:' + payload);
+    return payload;
+}
 
 const regisUser = async (req, res) => {
     const { userName, password } = req.body;
@@ -187,6 +200,37 @@ const checkVoucher = async (req, res) => {
     }
 };
 
+const loginWithGoogle = async (req, res) => {
+    const { tokenId } = req.body;
+    const ticket = await verify(tokenId);
+    console.log('ticket: ', ticket);
+    const user = await User.findOne({ userName: ticket.email });
+    if (user) {
+        let token = newToken(user);
+        //console.log(token);
+        return res.status(200).send({ status: 'ok', token });
+
+        /* console.log('success');
+            res.json({ message: 'success Login!!!' }); */
+    } else {
+        return res.status(404).json({ message: 'Tên người dùng không tồn tại' });
+    }
+};
+
+const registerWithGoogle = async (req, res) => {
+    const { tokenId } = req.body;
+    const ticket = await verify(tokenId);
+    console.log('ticket: ', ticket);
+    const user = await User.findOne({ userName: ticket.email });
+    if (user) {
+        return res.status(400).json({ message: 'Tên người dùng đã tồn tại' });
+    }
+    await User.create({ userName: ticket.email, password: '', ordered: '0', cumulativeTotal: '0', class: '0' });
+    const data = await User.find();
+    //console.log(data);
+    return res.status(200).send({ status: 'ok', message: 'Đăng ký thành công' });
+};
+
 module.exports = {
     regisUser,
     loginUser,
@@ -195,6 +239,8 @@ module.exports = {
     getHomePage,
     changePassword,
     checkVoucher,
+    loginWithGoogle,
+    registerWithGoogle,
 };
 
 const getCurrentTime = () => {

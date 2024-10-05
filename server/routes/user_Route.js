@@ -8,6 +8,8 @@ const {
     getHomePage,
     changePassword,
     checkVoucher,
+    loginWithGoogle,
+    registerWithGoogle,
 } = require('../controller/user.controller');
 const { verifyUser } = require('../middleware/middleware');
 
@@ -23,5 +25,9 @@ router.get('/HomePage/:id', getHomePage);
 router.put('/ChangePassword/:id', changePassword);
 
 router.post('/voucher', checkVoucher);
+
+router.post('/LoginWithGoogle', loginWithGoogle);
+
+router.post('/RegisterWithGoogle', registerWithGoogle);
 
 module.exports = router;
