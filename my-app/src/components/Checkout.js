@@ -125,12 +125,12 @@ function Checkout(props) {
         });
         console.log(statusCode);
         if (statusCode == 200) {
-            alert('Đặt hàng thành công');
+            navigate('/', { replace: true });
+            toast.success('order successfully');
         } else {
-            alert('Đặt hàng thất bại');
+            navigate('/', { replace: true });
+            toast.error('order failed');
         }
-        navigate('/', { replace: true });
-        toast.success('order successfully');
     };
 
     const handleVoucher = async (e) => {
