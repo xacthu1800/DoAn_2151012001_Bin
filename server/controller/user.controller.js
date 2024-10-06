@@ -87,6 +87,26 @@ const checkoutUser = async (req, res) => {
             },
         );
 
+        console.log('voucher: ' + req.body.voucher);
+
+        const findVoucher = await Voucher.find({ code: req.body.voucher });
+        if (findVoucher.length > 0) {
+            try {
+                if (Number(findVoucher[0].used) < Number(findVoucher[0].quantity)) {
+                    await Voucher.updateOne(
+                        { code: req.body.voucher },
+                        {
+                            used: (Number(findVoucher[0].used) + 1).toString(),
+                        },
+                    );
+                } else {
+                    console.log('Voucher đã hết hạn');
+                }
+            } catch (error) {
+                console.log('Cập nhật số lần sử dụng voucher thất bại');
+            }
+        }
+
         const cumulativeAfter = Number(user[0].cumulativeTotal) + Number(req.body.sumPrice);
 
         if (cumulativeAfter < 10000000) {
@@ -193,10 +213,13 @@ const checkVoucher = async (req, res) => {
     //console.log(voucherCode);
     const findVoucher = await Voucher.find({ code: voucherCode });
     console.log('findVoucher: ', findVoucher);
+    if (findVoucher[0].used >= findVoucher[0].quantity) {
+        return res.status(405).json({ status: 'error', message: 'Mã giảm giá đã hết hạn' });
+    }
     if (findVoucher.length > 0) {
-        res.status(200).json({ status: 'ok', message: 'Mã giảm giá hợp lệ', voucherData: findVoucher });
+        return res.status(200).json({ status: 'ok', message: 'Mã giảm giá hợp lệ', voucherData: findVoucher });
     } else {
-        res.status(404).json({ status: 'error', message: 'Mã giảm giá không hợp lệ' });
+        return res.status(404).json({ status: 'error', message: 'Mã giảm giá không hợp lệ' });
     }
 };
 

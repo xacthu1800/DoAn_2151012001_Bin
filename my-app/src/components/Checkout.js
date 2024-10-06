@@ -122,6 +122,7 @@ function Checkout(props) {
             cartItems,
             sumPrice: sumPrice.toString(),
             state: 'pending',
+            voucher: voucherData.length > 0 ? voucherData[0].code.toString() : '',
         });
         console.log(statusCode);
         if (statusCode == 200) {
@@ -147,6 +148,9 @@ function Checkout(props) {
         } else if (statusCode == 404) {
             toast.error('Mã giảm giá không hợp lệ');
 
+            setVoucherData(null); // Đặt voucherData về null nếu mã không hợp lệ
+        } else if (statusCode == 405) {
+            toast.error('Mã giảm giá đã hết hạn');
             setVoucherData(null); // Đặt voucherData về null nếu mã không hợp lệ
         } else {
             console.log(`Unexpected status code: ${statusCode}`); // Ghi lại mã trạng thái không mong đợi
