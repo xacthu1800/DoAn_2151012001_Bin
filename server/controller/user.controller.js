@@ -213,6 +213,9 @@ const checkVoucher = async (req, res) => {
     //console.log(voucherCode);
     const findVoucher = await Voucher.find({ code: voucherCode });
     console.log('findVoucher: ', findVoucher);
+    if (findVoucher.length == 0) {
+        return res.status(404).json({ status: 'error', message: 'Mã giảm giá không hợp lệ' });
+    }
     if (findVoucher[0].used >= findVoucher[0].quantity) {
         return res.status(405).json({ status: 'error', message: 'Mã giảm giá đã hết hạn' });
     }
