@@ -122,7 +122,7 @@ function Checkout(props) {
             cartItems,
             sumPrice: sumPrice.toString(),
             state: 'pending',
-            voucher: voucherData.length > 0 ? voucherData[0].code.toString() : '',
+            voucher: voucherData == null ? '' : voucherData[0].code.toString(),
         });
         console.log(statusCode);
         if (statusCode == 200) {
