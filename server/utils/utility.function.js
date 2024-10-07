@@ -40,4 +40,26 @@ const verifyToken_Admin = (token) =>
         });
     });
 
-module.exports = { checkPassword, newToken, verifyToken, newToken_Admin, verifyToken_Admin };
+const newToken_Agent = (user) => {
+    return jwt.sign({ id: user._id }, JWT.jwt_Admin, {
+        expiresIn: JWT.jwtExp,
+    });
+};
+
+const verifyToken_Agent = (token) =>
+    new Promise((resolve, reject) => {
+        jwt.verify(token, JWT.jwt_Admin, (err, payload) => {
+            if (err) return reject(err);
+            resolve(payload);
+        });
+    });
+
+module.exports = {
+    checkPassword,
+    newToken,
+    verifyToken,
+    newToken_Admin,
+    verifyToken_Admin,
+    newToken_Agent,
+    verifyToken_Agent,
+};

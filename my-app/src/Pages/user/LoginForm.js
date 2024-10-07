@@ -71,8 +71,14 @@ const LoginForm = () => {
                 const { statusCode, data } = await Api.postRequest('/api/user/Login', {
                     userName,
                     password,
+                    role: 'user',
                 });
-                if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
+                if (statusCode === 200) {
+                    toast.success('Login successfully');
+                    setToken(token);
+                    localStorage.setItem('role', 'user');
+                    navigate('/'); // Navigate to home page
+                } else {
                     setLoading(false);
                     toast.error('Fail to login');
                     return;

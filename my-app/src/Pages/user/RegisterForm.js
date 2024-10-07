@@ -55,6 +55,7 @@ const LoginForm = () => {
                 const { statusCode, data } = await Api.postRequest('/api/user/Register', {
                     userName,
                     password,
+                    role: 'user',
                 });
                 if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
                     setLoading(false);

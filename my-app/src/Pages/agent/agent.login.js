@@ -71,22 +71,19 @@ const LoginForm = () => {
                 const { statusCode, data } = await Api.postRequest('/api/user/Login', {
                     userName,
                     password,
+                    role: 'agent',
                 });
-                if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
+                const { status, token } = JSON.parse(data);
+
+                if (statusCode === 200) {
+                    toast.success('Login successfully');
+                    setToken(token);
+                    localStorage.setItem('role', 'agent');
+                    navigate('/agent/home'); // Navigate to home page
+                } else {
                     setLoading(false);
                     toast.error('Fail to login');
                     return;
-                }
-
-                console.log(data);
-                const { status, token } = JSON.parse(data);
-                if (status != 'ok') {
-                    toast.error('user name or password is wrong');
-                    return;
-                } else {
-                    toast.success('Login successfully');
-                    setToken(token);
-                    navigate('/'); // Navigate to home page
                 }
             }
         },

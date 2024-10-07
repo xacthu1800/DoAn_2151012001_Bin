@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     ordered: String,
     cumulativeTotal: String,
     class: String,
+    role: String,
 });
 
 const User = mongoose.model('users', userSchema);

@@ -7,6 +7,7 @@ import { setToken, isLogin } from '../../utils/localstorage';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { toast } from 'react-toastify';
 import { GoogleLogin } from '@react-oauth/google';
+import { ToastContainer } from 'react-toastify';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -51,8 +52,7 @@ const Register_Agent = () => {
                 return;
             } else {
                 toast.success('Login successfully');
-                setToken(token);
-                navigate('/'); // Navigate to home page
+                navigate('/Login_Agent'); // Navigate to home page
             }
         } catch (error) {
             toast.error('Fail to login');
@@ -68,25 +68,19 @@ const Register_Agent = () => {
             e.preventDefault(); // Prevent default form submission
             if (userName.length > 2 && password.length > 2) {
                 setLoading(true);
-                const { statusCode, data } = await Api.postRequest('/api/user/Login', {
+                const { statusCode } = await Api.postRequest('/api/user/Register', {
                     userName,
                     password,
+                    role: 'agent',
                 });
-                if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
-                    setLoading(false);
-                    toast.error('Fail to login');
-                    return;
-                }
+                if (statusCode === 200) {
+                    toast.success('Register successfully');
+                    alert('Register successfully');
 
-                console.log(data);
-                const { status, token } = JSON.parse(data);
-                if (status != 'ok') {
-                    toast.error('user name or password is wrong');
-                    return;
+                    navigate('/Login_Agent');
                 } else {
-                    toast.success('Login successfully');
-                    setToken(token);
-                    navigate('/'); // Navigate to home page
+                    setLoading(false);
+                    toast.error('Fail to Register');
                 }
             }
         },
@@ -123,7 +117,7 @@ const Register_Agent = () => {
                 </div>
 
                 <button type="submit" onClick={_handleSubmit} className="loginPage-Login-button">
-                    Login
+                    Register
                 </button>
                 <div className="register-link">
                     <p>

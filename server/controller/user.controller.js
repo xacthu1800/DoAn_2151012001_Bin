@@ -4,7 +4,8 @@ const Cart = require('../models/cart');
 const Voucher = require('../models/voucher');
 const { OAuth2Client } = require('google-auth-library');
 
-const { newToken } = require('../utils/utility.function');
+const { newToken, newToken_Agent } = require('../utils/utility.function');
+
 const clientId = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(clientId);
 
@@ -19,26 +20,43 @@ async function verify(tokenId) {
 }
 
 const regisUser = async (req, res) => {
-    const { userName, password } = req.body;
+    const { userName, password, role } = req.body;
     //console.log(req.body);
 
-    await User.create({ userName, password, ordered: '0', cumulativeTotal: '0', class: '0' });
+    const user = await User.findOne({ userName, role });
+    try {
+        if (user) {
+            return res.status(400).json({ status: 'error', message: 'Tên người dùng đã tồn tại' });
+        }
+
+        if (role === 'user') {
+            await User.create({ userName, password, ordered: '0', cumulativeTotal: '0', class: '0', role: 'user' });
+        } else if (role === 'agent') {
+            await User.create({ userName, password, ordered: '0', cumulativeTotal: '0', class: '0', role: 'agent' });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ status: 'error', message: 'Đăng ký thất bại' });
+    }
     const data = await User.find();
     //console.log(data);
-    res.json(data);
+    res.status(200).json({ status: 'ok', message: 'Đăng ký thành công' });
 };
 
 const loginUser = async (req, res) => {
-    const { userName, password } = req.body;
-    const user = await User.findOne({ userName });
-    if (user) {
+    const { userName, password, role } = req.body;
+    const user = await User.findOne({ userName, role });
+    if (role == 'agent' && user) {
+        let token = newToken_Agent(user);
+        res.status(200).send({ status: 'ok', token });
+    } else {
+        res.status(401).json({ message: 'Mật khẩu không đúng' });
+    }
+
+    if (role == 'user' && user) {
         if (user.password === password) {
             let token = newToken(user);
-            //console.log(token);
             res.status(200).send({ status: 'ok', token });
-
-            /* console.log('success');
-            res.json({ message: 'success Login!!!' }); */
         } else {
             res.status(401).json({ message: 'Mật khẩu không đúng' });
         }
