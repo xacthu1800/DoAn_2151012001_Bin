@@ -21,7 +21,7 @@ import Admin from './Pages/admin/Page.Admin';
 import Login_Admin from './Pages/admin/Login_Admin';
 import Login_Agent from './Pages/agent/agent.login';
 import Register_Agent from './Pages/agent/agent.Register';
-import AgentHome from './Pages/agent/agent.home';
+
 import ProductDetail_User_Homepage from './components/ProductDetail_User_Homepage';
 
 import { fetchCart } from './redux/actions/cartAction';
@@ -54,7 +54,6 @@ const App = () => {
                 <Route path="/Admin/*" element={<Admin />} />
                 <Route path="/Login_Agent" element={<Login_Agent />} />
                 <Route path="/Register_Agent" element={<Register_Agent />} />
-                <Route path="/agent/*" element={<AgentHome />} />
             </Routes>
         </>
     );
