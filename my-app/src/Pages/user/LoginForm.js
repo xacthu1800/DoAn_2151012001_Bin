@@ -73,6 +73,8 @@ const LoginForm = () => {
                     password,
                     role: 'user',
                 });
+                const { status, token } = JSON.parse(data);
+
                 if (statusCode === 200) {
                     toast.success('Login successfully');
                     setToken(token);
@@ -85,7 +87,6 @@ const LoginForm = () => {
                 }
 
                 console.log(data);
-                const { status, token } = JSON.parse(data);
                 if (status != 'ok') {
                     toast.error('user name or password is wrong');
                     return;

@@ -45,24 +45,22 @@ const regisUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     const { userName, password, role } = req.body;
+    console.log(req.body);
     const user = await User.findOne({ userName, role });
     if (role == 'agent' && user) {
         let token = newToken_Agent(user);
-        res.status(200).send({ status: 'ok', token });
-    } else {
-        res.status(401).json({ message: 'Mật khẩu không đúng' });
+        console.log(token);
+        return res.status(200).send({ status: 'ok', token });
     }
-
     if (role == 'user' && user) {
         if (user.password === password) {
             let token = newToken(user);
-            res.status(200).send({ status: 'ok', token });
+            return res.status(200).send({ status: 'ok', token });
         } else {
-            res.status(401).json({ message: 'Mật khẩu không đúng' });
+            return res.status(401).json({ message: 'Mật khẩu không đúng' });
         }
-    } else {
-        res.status(404).json({ message: 'Tên người dùng không tồn tại' });
     }
+    return res.status(404).json({ message: 'Tên người dùng không tồn tại' });
 };
 
 const getUser = async (req, res) => {

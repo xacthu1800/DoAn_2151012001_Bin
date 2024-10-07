@@ -41,14 +41,14 @@ const verifyToken_Admin = (token) =>
     });
 
 const newToken_Agent = (user) => {
-    return jwt.sign({ id: user._id }, JWT.jwt_Admin, {
+    return jwt.sign({ id: user._id }, JWT.jwt_Agent, {
         expiresIn: JWT.jwtExp,
     });
 };
 
 const verifyToken_Agent = (token) =>
     new Promise((resolve, reject) => {
-        jwt.verify(token, JWT.jwt_Admin, (err, payload) => {
+        jwt.verify(token, JWT.jwt_Agent, (err, payload) => {
             if (err) return reject(err);
             resolve(payload);
         });

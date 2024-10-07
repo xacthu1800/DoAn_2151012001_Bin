@@ -52,7 +52,7 @@ const LoginForm = () => {
             } else {
                 toast.success('Login successfully');
                 setToken(token);
-                navigate('/'); // Navigate to home page
+                navigate('/HomePage_Agent'); // Navigate to home page
             }
         } catch (error) {
             toast.error('Fail to login');
@@ -73,14 +73,16 @@ const LoginForm = () => {
                     password,
                     role: 'agent',
                 });
-                const { status, token } = JSON.parse(data);
-
+                const { token } = JSON.parse(data);
+                console.log(data);
                 if (statusCode === 200) {
                     toast.success('Login successfully');
                     setToken(token);
                     localStorage.setItem('role', 'agent');
-                    navigate('/agent/home'); // Navigate to home page
+                    navigate('/HomePage_Agent'); // Navigate to home page
                 } else {
+                    console.log(JSON.parse(data).message);
+                    alert(JSON.parse(data).message);
                     setLoading(false);
                     toast.error('Fail to login');
                     return;
@@ -89,6 +91,13 @@ const LoginForm = () => {
         },
         [userName, password, navigate],
     );
+
+    useEffect(() => {
+        if (localStorage.getItem('role') === 'agent') {
+            navigate('/HomePage_Agent');
+        }
+    }, []);
+
     return (
         <div className="wrapper-agent">
             <form action="" className="form-login" onSubmit={handleSudmit}>

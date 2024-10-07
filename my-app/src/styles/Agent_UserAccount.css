@@ -1,0 +1,56 @@
+/* my-app/src/Pages/admin/UserAccount.css */
+.user-account-cont table {
+    margin-top: 40px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-account-cont table .user-id {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-account-cont th,
+.user-account-cont td {
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 8px;
+    text-align: left;
+}
+
+.user-account-cont th {
+    background-color: #f2f2f2 !important;
+}
+
+.user-account-cont .tr-grid {
+}
+
+.user-account-cont .tr-grid-item {
+    max-width: 100px;
+}
+
+.user-account-cont .user-action {
+    display: flex;
+    width: 150px;
+    gap: 10px;
+}
+
+.user-account-cont .user-id {
+    width: 400px;
+}
+
+.user-account-cont .user-name {
+    width: 250px;
+}
+
+.user-account-cont .delete {
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}

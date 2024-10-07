@@ -25,6 +25,8 @@
 @import './styles/Product_User_Homepage.css';
 @import './styles/ProductDetail_User_Homepage.css';
 @import './styles/agent.Login_Register.css';
+@import './styles/Agent_UserAccount.css';
+@import './styles/Agent_oder.css';
 * {
     padding: 0;
     margin: 0;

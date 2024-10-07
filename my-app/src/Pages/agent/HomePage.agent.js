@@ -1,32 +1,25 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { IoHomeOutline } from 'react-icons/io5';
 import { MdOutlineManageAccounts, MdPassword } from 'react-icons/md';
 import { PiMedal, PiLink } from 'react-icons/pi';
 import { TbLogout2 } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import Dashboard from './Dashboard';
-import Category from './Category';
-import UserAccount from './userAccount';
-import Order from './Order';
-
+import Bill from './Bill';
 import Product from './Product';
 import Voucher from './Voucher';
 
-import { useEffect } from 'react';
-import { isLogin_Admin } from '../../utils/localstorage';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
 const menuItems = [
-    { icon: PiMedal, text: 'User Account', path: '/Admin/UserAccount' },
-    { icon: PiLink, text: 'Ordered', path: '/Admin/Order' },
+    { icon: PiMedal, text: 'Bill', path: '/HomePage_Agent/Bill' },
+    { icon: PiLink, text: 'Product', path: '/HomePage_Agent/Product' },
+    { icon: MdPassword, text: 'Voucher', path: '/HomePage_Agent/Voucher' },
 ];
 
-/* { icon: IoHomeOutline, text: 'Dashboard', path: '/Admin/Dashboard' }, */
-
-export default function Admin() {
+export default function HomePage_Agent() {
     const navigate = useNavigate();
     const clearLocalStorage = (event) => {
         event.preventDefault();
@@ -37,12 +30,11 @@ export default function Admin() {
 
         navigate('/');
     };
-
     useEffect(() => {
-        if (!isLogin_Admin()) {
-            navigate('/Login_Admin');
+        if (localStorage.getItem('role') !== 'agent') {
+            navigate('/Login_Agent');
         }
-    }, [navigate]);
+    }, []);
 
     return (
         <div className="User-background">
@@ -65,10 +57,11 @@ export default function Admin() {
                 </div>
                 <div className="section-right">
                     <Routes>
-                        <Route index element={<UserAccount />} />
+                        <Route index element={<Bill />} />
                         {/* <Route path="Dashboard" element={<Dashboard />} /> */}
-                        <Route path="UserAccount/*" element={<UserAccount />} />
-                        <Route path="Order/*" element={<Order />} />
+                        <Route path="Bill/*" element={<Bill />} />
+                        <Route path="Product/*" element={<Product />} />
+                        <Route path="Voucher/*" element={<Voucher />} />
                     </Routes>
                     <ToastContainer />
                 </div>

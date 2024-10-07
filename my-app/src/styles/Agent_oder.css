@@ -1,0 +1,103 @@
+.bill-cont2 {
+    width: 100%;
+    height: 100%;
+    background-color: var(--grey1);
+}
+
+.bill-cont2 .title-cont {
+    background-color: #333;
+    width: 80%;
+    height: 100px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    position: relative;
+    bottom: -30px;
+    left: -20px;
+}
+
+.bill-cont2 .title-cont .title {
+    letter-spacing: 1px;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.bill-cont2 .title-cont .order-code {
+    color: white;
+    font-weight: 400;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+.bill-cont2 .title-cont .list-state {
+    width: 230px;
+    height: auto;
+    height: auto;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+.bill-cont2 .bill-list-cont {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+}
+
+.bill-cont2 .bill-list-cont .bill-list {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container {
+    display: grid;
+    grid-template-columns: 70px 300px 300px 300px 100px; /* Define specific widths for each of the 7 columns */
+    gap: 1px; /* Optional: gap between grid items */
+    padding: 1px; /* Optional: padding around the grid container */
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container .bill-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; /* Example border for grid items */
+    border-radius: 0;
+    padding: 10px; /* Padding inside each grid item */
+    transition: 1s;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container .bill-item .hover {
+    transition: 0.5s;
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container .bill-item .hover:hover {
+    transform: scale(1.05);
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container .bill-item .content {
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.bill-cont2 .bill-list-cont .bill-list .grid-container .list-state {
+    font-size: 14px;
+    padding: 5px 10px;
+    font-weight: 400;
+}
