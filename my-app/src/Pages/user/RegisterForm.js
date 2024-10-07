@@ -71,7 +71,7 @@ const LoginForm = () => {
     return (
         <div className="wrapper">
             <form action="" className="form-login">
-                <h1>Register</h1>
+                <h1>User Register</h1>
                 <div className="input-box">
                     <input
                         type="text"

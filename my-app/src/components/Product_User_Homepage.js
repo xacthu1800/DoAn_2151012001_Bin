@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 const Product_User_Homepage = (props) => {
     return (
         <div>
-            <h1>Product</h1>
             <div className="product_User_Homepage-wrapper">
                 <div className="Product_User_Homepage-grid-container">
                     {testData.map((item, index) => (

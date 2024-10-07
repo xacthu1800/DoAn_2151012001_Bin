@@ -93,9 +93,9 @@ const LoginForm = () => {
         [userName, password, navigate],
     );
     return (
-        <div className="wrapper">
+        <div className="wrapper-agent">
             <form action="" className="form-login" onSubmit={handleSudmit}>
-                <h1>User Login</h1>
+                <h1>Agent Login</h1>
                 <div className="input-box">
                     <input
                         type="text"
@@ -127,7 +127,10 @@ const LoginForm = () => {
                 </button>
                 <div className="register-link">
                     <p>
-                        Don't have an account ? <Link to="/Register">register</Link>
+                        Don't have an account ?{' '}
+                        <Link to="/Register_Agent" style={{ color: 'black' }}>
+                            register
+                        </Link>
                     </p>
                 </div>
             </form>

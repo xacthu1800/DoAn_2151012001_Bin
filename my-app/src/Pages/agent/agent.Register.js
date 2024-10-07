@@ -10,7 +10,7 @@ import { GoogleLogin } from '@react-oauth/google';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
-const LoginForm = () => {
+const Register_Agent = () => {
     // const [email, setEmail] = useState('');
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
@@ -93,9 +93,9 @@ const LoginForm = () => {
         [userName, password, navigate],
     );
     return (
-        <div className="wrapper">
+        <div className="wrapper-agent">
             <form action="" className="form-login" onSubmit={handleSudmit}>
-                <h1>User Login</h1>
+                <h1>Agent Register</h1>
                 <div className="input-box">
                     <input
                         type="text"
@@ -127,7 +127,10 @@ const LoginForm = () => {
                 </button>
                 <div className="register-link">
                     <p>
-                        Don't have an account ? <Link to="/Register">register</Link>
+                        Already have an account ?{' '}
+                        <Link to="/Login_Agent" style={{ color: 'black' }}>
+                            Login
+                        </Link>
                     </p>
                 </div>
             </form>
@@ -135,4 +138,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default Register_Agent;

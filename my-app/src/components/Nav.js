@@ -17,15 +17,7 @@ const Nav = (props) => {
                 <Link to="/Admin" className="site-title">
                     CellphoneB
                 </Link>
-                {/*  <div className="search-box">
-                    <CiSearch className="button" />
-                    <input
-                        type="text"
-                        value={props.inputValue}
-                        placeholder="Enter The Product Name"
-                        onChange={(e) => props.setInput(e.target.value)}
-                    />
-                </div> */}
+
                 <ul>
                     <li>
                         <div style={{ display: 'none' }}>Hi Bin</div>
@@ -44,6 +36,12 @@ const Nav = (props) => {
                 <div className="container">
                     <div className="nav-below">
                         <ul>
+                            <li>
+                                <Link to="/Login_Agent" className="link">
+                                    Agent side
+                                </Link>
+                            </li>
+
                             <li>
                                 <Link to="/" className="link">
                                     Home

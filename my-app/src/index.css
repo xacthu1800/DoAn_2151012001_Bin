@@ -6,7 +6,7 @@
 @import './styles/ProductType.css';
 @import './styles/Footer.css';
 @import './styles/Categories.css';
-/* @import './styles/ProductDetail.css'; */
+@import './styles/ProductDetail.css';
 @import './styles/Cart.css';
 @import './styles//Checkout.css';
 @import './styles//User.css';
@@ -24,6 +24,7 @@
 @import './styles/Chatbot.css';
 @import './styles/Product_User_Homepage.css';
 @import './styles/ProductDetail_User_Homepage.css';
+@import './styles/agent.Login_Register.css';
 * {
     padding: 0;
     margin: 0;
