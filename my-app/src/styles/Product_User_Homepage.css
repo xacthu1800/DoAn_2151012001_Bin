@@ -1,0 +1,40 @@
+.product_User_Homepage-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+.Product_User_Homepage-grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: repeat(8, auto); /* 8 rows */
+    gap: 10px; /* Space between items */
+    justify-items: center; /* Căn giữa các item theo chiều ngang */
+    align-items: center; /* Căn giữa các item theo chiều dọc */
+}
+.Product_User_Homepage-grid-container .grid-item {
+    max-width: 230px;
+    border: 1px solid #ccc; /* Optional: border for items */
+    padding: 10px; /* Padding inside items */
+    text-align: center; /* Center text */
+    background-color: #f9f9f9; /* Background color */
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Product_User_Homepage-grid-container .grid-item:hover {
+    transform: scale(1.05);
+}
+
+.Product_User_Homepage-grid-container .grid-item h2 {
+    font-size: 15px;
+    overflow: hidden; /* Ẩn phần chữ vượt quá */
+    white-space: nowrap; /* Không cho chữ xuống dòng */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm */
+    max-width: 100%; /* Giới hạn chiều rộng */
+}
+
+.Product_User_Homepage-grid-container .grid-item img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
