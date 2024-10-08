@@ -1,26 +1,47 @@
-import Caption from './Caption';
 import { useState, useEffect } from 'react';
-import ProductDetail from './ProductDetail';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import ProductDetail from './ProductDetail';
 
 const Product_User_Homepage = (props) => {
+    const { products } = props;
+    const [close, setClose] = useState(false);
+    const [productDetailData, setProductDetailData] = useState(null);
+    useEffect(() => {}, [products]);
+    function setSateProduct(productId) {
+        const data = products.filter((product) => {
+            return product._id === productId;
+        });
+        console.log(data[0]);
+        setProductDetailData(data[0]);
+    }
     return (
-        <div>
-            <div className="product_User_Homepage-wrapper">
-                <div className="Product_User_Homepage-grid-container">
-                    {testData.map((item, index) => (
-                        <Link to={`/product/${item.id}`} key={index}>
-                            <div className="grid-item" key={index}>
-                                <img src={item.image} alt={item.product} />
-                                <h2>{item.product}</h2>
-                                <p>Price: {item.price} VND</p>
+        <>
+            <ProductDetail productDetailData={productDetailData} close={close} setClose={setClose} />
+
+            <div>
+                <div className="product_User_Homepage-wrapper">
+                    <div className="Product_User_Homepage-grid-container">
+                        {products.map((item, index) => (
+                            //<Link to={`/product/${item._id}`} key={index}>
+                            <div
+                                className="grid-item"
+                                key={index}
+                                onClick={() => {
+                                    setSateProduct(item._id);
+                                    setClose(!close);
+                                }}
+                            >
+                                <img src={item.productImage} alt={item.productName} />
+                                <h2>{item.productName}</h2>
+                                <p>Price: {item.productPrice} VND</p>
                             </div>
-                        </Link>
-                    ))}
+                            //</Link>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

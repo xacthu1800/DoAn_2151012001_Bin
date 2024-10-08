@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "67041226bab83ca271726d59"
+  },
+  "userName": "age",
+  "password": "age",
+  "ordered": "0",
+  "cumulativeTotal": "0",
+  "class": "0",
+  "role": "agent",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "670416d5bab83ca271727272"
+  },
+  "userName": "user",
+  "password": "user",
+  "ordered": "0",
+  "cumulativeTotal": "0",
+  "class": "0",
+  "role": "user",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67041bfe1fa97fab7ab83765"
+  },
+  "userName": "nguyenvanbin.9a10@gmail.com",
+  "password": "",
+  "ordered": "1",
+  "cumulativeTotal": "200020000",
+  "class": "3",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6704b27e92bda62034e6b804"
+  },
+  "userName": "Phucs",
+  "password": "phuc",
+  "ordered": "0",
+  "cumulativeTotal": "0",
+  "class": "0",
+  "role": "agent",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6704b29992bda62034e6b80a"
+  },
+  "userName": "phucc",
+  "password": "phucc",
+  "ordered": "0",
+  "cumulativeTotal": "0",
+  "class": "0",
+  "role": "agent",
+  "__v": 0
+}]

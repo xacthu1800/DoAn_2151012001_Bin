@@ -7,6 +7,7 @@ const getProduct = async (req, res) => {
 };
 
 const getProductById = async (req, res) => {
+    console.log('clicked');
     try {
         const product = await Product.findById(req.params.id);
 

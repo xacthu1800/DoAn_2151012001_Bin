@@ -1,154 +1,493 @@
-[{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c3c"
-  },
-  "productName": "Laptop Vaio FE 14 VWNC51427-BL",
-  "productType": "LAPTOP",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_16__1_51.png",
-  "productPrice": "13990000",
-  "screenSize": "14.1 inches",
-  "displayTech": "Tấm nền IPS, 1920 x 1080 pixels (FullHD)",
-  "chipset": "Intel Core i5 - 1235U Gen 12 (up to 4.4 GHz, 12 MB)",
-  "ramCapacity": "8GB",
-  "internalStorage": "512 GB"
-},
-{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c35"
-  },
-  "productName": "iphone 12 128GB",
-  "productType": "PHONE",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-12-128gb_2.png",
-  "productPrice": "13000000",
-  "screenSize": "6.1 inches",
-  "displayTech": "Super Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone",
-  "chipset": "Apple A14 Bionic (5 nm)",
-  "ramCapacity": "4 GB",
-  "internalStorage": "128GB"
-},
-{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c37"
-  },
-  "productName": "iphone 14 Pro 128GB",
-  "productType": "PHONE",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png",
-  "productPrice": "22990000",
-  "screenSize": "6.1 inches",
-  "displayTech": "Super Retina XDR OLED",
-  "chipset": "Apple A16",
-  "ramCapacity": "6 GB",
-  "internalStorage": "128GB"
-},
-{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c3b"
-  },
-  "productName": "Laptop LG Gram 2024 17Z90S-G.AH78A5",
-  "productType": "LAPTOP",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_5__2_1.png",
-  "productPrice": "48790000",
-  "screenSize": "17 inches",
-  "displayTech": "Tỉ lệ 16:10, Độ phủ màu DCI-P3 99%, Màn hình chống chói, Độ sáng 350 nit",
-  "chipset": "Intel Core Ultra U7-155H",
-  "ramCapacity": "LPDDR5X 7467MHz Onboard",
-  "internalStorage": "1TB M.2(2280) Dual SSD slots, Gen4"
-},
-{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c36"
-  },
-  "productName": "iphone 13 256GB",
-  "productType": "PHONE",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/1/11_3_12_2_1_6.jpg",
-  "productPrice": "17000000",
-  "screenSize": "6.1 inches",
-  "displayTech": "Super Retina XDR OLED",
-  "chipset": "Apple A15",
-  "ramCapacity": "4 GB",
-  "internalStorage": "256GB"
-},
-{
-  "_id": {
-    "$oid": "66eeb290783a487489a08c38"
-  },
-  "productName": "iPhone 15 Pro Max 1TB ",
-  "productType": "PHONE",
-  "productCountInStock": 10,
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-256gb_1.png",
-  "productPrice": "22990000",
-  "screenSize": "6.7 inches",
-  "displayTech": "Super Retina XDR OLED",
-  "chipset": "Apple A17 Pro 6-core",
-  "ramCapacity": "8 GB",
-  "internalStorage": "1TB"
-},
-{
-  "_id": {
-    "$oid": "66f9a3993e4bf9370940d5d7"
-  },
-  "productName": "Apple MacBook Air M1 256GB 2020",
-  "productType": "LAPTOP",
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5_1.png",
-  "productPrice": "17990000",
-  "screenSize": "13.3 inches",
-  "displayTech": "Retina ",
-  "chipset": "M1",
-  "ramCapacity": "8gb",
-  "internalStorage": "SSD 256gb",
-  "productCountInStock": 12,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66f9a4e53e4bf9370940e2af"
-  },
-  "productName": "MacBook Air M3 13 inch 2024 8GB - 256GB",
-  "productType": "LAPTOP",
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__5.png",
-  "productPrice": "26890000",
-  "screenSize": "13.6 inches",
-  "displayTech": "Retina",
-  "chipset": "M3",
-  "ramCapacity": "8gb",
-  "internalStorage": "SSD 256gb",
-  "productCountInStock": 100,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66f9a5873e4bf9370940e555"
-  },
-  "productName": "Apple MacBook Pro 13 Touch Bar M1 16GB 256GB 2020",
-  "productType": "LAPTOP",
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5__3.png",
-  "productPrice": "36990000",
-  "screenSize": "13.3 inches",
-  "displayTech": "IPS",
-  "chipset": "M!",
-  "ramCapacity": "8gb",
-  "internalStorage": "SSD 256gb",
-  "productCountInStock": 11,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66f9a5de3e4bf9370940e559"
-  },
-  "productName": "Apple MacBook Air M2 2022 16GB 512GB",
-  "productType": "LAPTOP",
-  "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_533_1.png",
-  "productPrice": "33690000",
-  "screenSize": "13.6 inches",
-  "displayTech": "Liquid Retina Display",
-  "chipset": "M2",
-  "ramCapacity": "16gb",
-  "internalStorage": "SSD 512gb",
-  "productCountInStock": 12,
-  "__v": 0
-}]
+[
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c35"
+        },
+        "productName": "iphone 12 128GB",
+        "productType": "PHONE",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-12-128gb_2.png",
+        "productPrice": "13000000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone",
+        "chipset": "Apple A14 Bionic (5 nm)",
+        "ramCapacity": "4 GB",
+        "internalStorage": "128GB"
+    },
+    {
+        "_id": {
+            "$oid": "66f9a3993e4bf9370940d5d7"
+        },
+        "productName": "Apple MacBook Air M1 256GB 2020",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5_1.png",
+        "productPrice": "17990000",
+        "screenSize": "13.3 inches",
+        "displayTech": "Retina ",
+        "chipset": "M1",
+        "ramCapacity": "8gb",
+        "internalStorage": "SSD 256gb",
+        "productCountInStock": 12,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66f9a5873e4bf9370940e555"
+        },
+        "productName": "Apple MacBook Pro 13 Touch Bar M1 16GB 256GB 2020",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/b/mbp-spacegray-select-202011_4.jpg",
+        "productPrice": "37890000",
+        "screenSize": "13.3 inches",
+        "displayTech": "IPS",
+        "chipset": "M!",
+        "ramCapacity": "8gb",
+        "internalStorage": "SSD 256gb",
+        "productCountInStock": 12,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c3c"
+        },
+        "productName": "Laptop Vaio FE 14 VWNC51427-BL",
+        "productType": "LAPTOP",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_16__1_51.png",
+        "productPrice": "13990000",
+        "screenSize": "14.1 inches",
+        "displayTech": "Tấm nền IPS, 1920 x 1080 pixels (FullHD)",
+        "chipset": "Intel Core i5 - 1235U Gen 12 (up to 4.4 GHz, 12 MB)",
+        "ramCapacity": "8GB",
+        "internalStorage": "512 GB"
+    },
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c36"
+        },
+        "productName": "iphone 13 256GB",
+        "productType": "PHONE",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/1/11_3_12_2_1_6.jpg",
+        "productPrice": "17000000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A15",
+        "ramCapacity": "4 GB",
+        "internalStorage": "256GB"
+    },
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c37"
+        },
+        "productName": "iphone 14 Pro 128GB",
+        "productType": "PHONE",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro_2__4.png",
+        "productPrice": "22990000",
+        "screenSize": "6.1 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A16",
+        "ramCapacity": "6 GB",
+        "internalStorage": "128GB"
+    },
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c3b"
+        },
+        "productName": "Laptop LG Gram 2024 17Z90S-G.AH78A5",
+        "productType": "LAPTOP",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_5__2_1.png",
+        "productPrice": "48790000",
+        "screenSize": "17 inches",
+        "displayTech": "Tỉ lệ 16:10, Độ phủ màu DCI-P3 99%, Màn hình chống chói, Độ sáng 350 nit",
+        "chipset": "Intel Core Ultra U7-155H",
+        "ramCapacity": "LPDDR5X 7467MHz Onboard",
+        "internalStorage": "1TB M.2(2280) Dual SSD slots, Gen4",
+        "agentName": "age"
+    },
+    {
+        "_id": {
+            "$oid": "66f9a4e53e4bf9370940e2af"
+        },
+        "productName": "MacBook Air M3 13 inch 2024 8GB - 256GB",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__5.png",
+        "productPrice": "26890000",
+        "screenSize": "13.6 inches",
+        "displayTech": "Retina",
+        "chipset": "M3",
+        "ramCapacity": "8gb",
+        "internalStorage": "SSD 256gb",
+        "productCountInStock": 19,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66eeb290783a487489a08c38"
+        },
+        "productName": "iPhone 15 Pro Max 1TB ",
+        "productType": "PHONE",
+        "productCountInStock": 10,
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-256gb_1.png",
+        "productPrice": "22990000",
+        "screenSize": "6.7 inches",
+        "displayTech": "Super Retina XDR OLED",
+        "chipset": "Apple A17 Pro 6-core",
+        "ramCapacity": "8 GB",
+        "internalStorage": "1TB",
+        "agentName": "age"
+    },
+    {
+        "_id": {
+            "$oid": "66fffae978675bbcf59989c6"
+        },
+        "productName": "Laptop ASUS ExpertBook B1 B1502CBA-NJ1261W",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop_dell_xps_13_9300_25_.png",
+        "productPrice": "14590000",
+        "screenSize": "15.6 inches",
+        "displayTech": "Độ sáng 250nits Độ phủ màu 45% NTSC Màn hình chống chói",
+        "chipset": "Intel Core i3-1215U (1.2 GHz, 10M Cache, up to 4.4 GHz, 6 lõi)",
+        "ramCapacity": "8GB",
+        "internalStorage": "256GB M.2 NVMe PCIe 4.0 SSD",
+        "productCountInStock": 10,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffb4078675bbcf59989ca"
+        },
+        "productName": "Laptop ASUS Vivobook GO 15 E1504FA-NJ454W",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_3_5.png",
+        "productPrice": "14490000",
+        "screenSize": "15.6 inches",
+        "displayTech": "Độ sáng 250 nits Độ phủ màu 45% NTSC Màn hình chống chói TÜV Rheinland-certified",
+        "chipset": "AMD Ryzen 5 7520U (4 lõi / 8 luồng, 4MB cache, up to 4.3 GHz max boost)",
+        "ramCapacity": "16GB",
+        "internalStorage": "512GB M.2 NVMe PCIe 3.0 SSD",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffb9f78675bbcf59989ce"
+        },
+        "productName": "Laptop ASUS Vivobook 15X OLED M3504YA-L1332W",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_4_2.png",
+        "productPrice": "15990000",
+        "screenSize": "15.6 inches",
+        "displayTech": "Thời gian phản hồi 0.2ms Độ sáng tối đa 600nits HDR Độ phủ màu 100% DCI-P3 Gamut mapping HDR True Black 600 1.07 tỷ màu Giảm ánh sáng xanh 70% TÜV Rheinland-certified",
+        "chipset": "AMD Ryzen 7-7730U (2.0GHz, 8 lõi / 16 luồng, 16MB cache, up to 4.5 GHz max boost)",
+        "ramCapacity": "16GB",
+        "internalStorage": "512GB M.2 NVMe PCIe 3.0 SSD",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffbf478675bbcf59989d2"
+        },
+        "productName": "Laptop ASUS Gaming VivoBook K3605ZU-RP296W",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_509_46_.png",
+        "productPrice": "28990000",
+        "screenSize": " 16 inches",
+        "displayTech": "Tỷ lệ 16:10 Độ sáng 300 nits Màn hình chống chói Độ phủ màu 45% NTSC TÜV Rheinland-certified",
+        "chipset": "Intel Core i5-12500H Processor 2.5 GHz (18M Cache, up to 4.5 GHz, 4P+8E lõi)",
+        "ramCapacity": "16GB",
+        "internalStorage": "512GB M.2 NVMe PCIe 4.0 SSD",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffc4078675bbcf59989d6"
+        },
+        "productName": "Laptop ASUS Vivobook S 15 S5507QA-MA092WS Copilot+ X Plus",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_565_5_.png",
+        "productPrice": "25490000",
+        "screenSize": " 15.6 inches",
+        "displayTech": "Thời gian phản hồi 0.2ms Độ sáng tối đa 600nits HDR Độ phủ màu 100% DCI-P3 1.07 tỷ màu Display HDR True Black 600 TÜV Rheinland-certified SGS Eye Care Display Giảm 70% ánh sáng xanh có hại",
+        "chipset": "Snapdragon X Plus X1P 42 100 up to 3.4GHz",
+        "ramCapacity": "16GB",
+        "internalStorage": "512GB M.2 NVMe PCIe 4.0 SSD",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffc9b78675bbcf59989da"
+        },
+        "productName": "iPhone 11 64GB | Chính hãng VN/A",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-11.png",
+        "productPrice": "8990000",
+        "screenSize": "6.1 inches",
+        "displayTech": " IPS LCD",
+        "chipset": " A13 Bionic",
+        "ramCapacity": " 4 GB",
+        "internalStorage": "64 GB",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffcff78675bbcf59989de"
+        },
+        "productName": "MacBook Pro 14 M3 8GB - 512GB | Chính hãng Apple Việt Nam",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_560_1.png",
+        "productPrice": "37590000",
+        "screenSize": " 14.2 inches",
+        "displayTech": "Độ sáng XDR: 1000 nit liên tục ở chế độ toàn màn hình Độ sáng đỉnh 1600 nit (chỉ nội dung HDR) True Tone ProMotion",
+        "chipset": "Apple M3 8 nhân",
+        "ramCapacity": " 8GB",
+        "internalStorage": "512GB",
+        "productCountInStock": 20,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffe4b78675bbcf59989e9"
+        },
+        "productName": "Laptop LG Gram 2023 14Z90RS-G.AH54A5",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/4/14z90rs-ah54a5.png",
+        "productPrice": "38990000",
+        "screenSize": "14 inches",
+        "displayTech": "Màn hình chống chói Độ sáng 400 nits Tần số quét 60Hz Độ phủ màu DCI-P3 100% Thời gian phản hồi 0.2ms",
+        "chipset": "Intel Core i5-1340P (up to 4.6 GHz, 12MB, 12 lõi/luồng)",
+        "ramCapacity": "16GB",
+        "internalStorage": " 512GB SSD NVMe Gen 4 (1 khe cắm SSD M.2 trống)",
+        "productCountInStock": 20,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffe8378675bbcf59989eb"
+        },
+        "productName": "Laptop LG Gram 2023 15Z90RT-G.AH55A5",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop-lg-gram-2023-15z90rt-g-ah55a5.png",
+        "productPrice": "42990000",
+        "screenSize": " 15.6 inches",
+        "displayTech": "Màn hình chống chói Thời gian phản hồi 0.2 ms Độ sáng 350 nits Công nghệ Eye care Độ phủ màu DCI-P3 100%",
+        "chipset": " Intel Core i5-1340P 1.9 GHz (up to 4.6 GHz, 12MB Cache, 12 lõi/luồng)",
+        "ramCapacity": "16GB",
+        "internalStorage": " 512GB SSD NVMe Gen 4 (1 khe cắm SSD M.2 trống)",
+        "productCountInStock": 10,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66fffeee78675bbcf59989ed"
+        },
+        "productName": "Laptop HP 15S-FQ5231TU 8U241PA",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_2__4_21.png",
+        "productPrice": "9490000",
+        "screenSize": "15.6 inches",
+        "displayTech": "1080 x 1920 pixels (FullHD)",
+        "chipset": " Core i3 1215U 1.2GHz, Turbo tối đa 4.4ghz (6 nhân, 8 luồng)",
+        "ramCapacity": " 8GB",
+        "internalStorage": "256GB M.2 NVMe PCIe",
+        "productCountInStock": 20,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66ffff3c78675bbcf59989f1"
+        },
+        "productName": "Laptop HP Gaming Victus 15-FB1023AX 94F20PA",
+        "productType": "LAPTOP",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/h/p/hp_victus_1.png",
+        "productPrice": "16990000",
+        "screenSize": "15.6 inches",
+        "displayTech": "Micro-edge Chống chói Độ sáng tối đa 250 nits Độ phủ màu 45% NTSC",
+        "chipset": "AMD Ryzen 5 7535HS (16MB Cache, up to 4.5 GHz, 6 lõi / 12 luồng)",
+        "ramCapacity": "8GB",
+        "internalStorage": "512 GB PCIe Gen4 NVMe TLC M.2 SSD",
+        "productCountInStock": 20,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "670005b678675bbcf5998b9d"
+        },
+        "productName": "Samsung Galaxy M55 (12GB 256GB)",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-m55.png",
+        "productPrice": "10490000",
+        "screenSize": "6.7 inches",
+        "displayTech": "Super AMOLED Plus",
+        "chipset": " 1x2.4 GHz Cortex-A710 & 3x2.36 GHz Cortex-A710 & 4x1.8 GHz Cortex-A510",
+        "ramCapacity": " 12 GB",
+        "internalStorage": "256 GB",
+        "productCountInStock": 10,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6700061778675bbcf5998b9f"
+        },
+        "productName": "Samsung Galaxy A55 5G 8GB 128GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/m/sm-a556_galaxy_a55_awesome_iceblue_ui.png",
+        "productPrice": "9690000",
+        "screenSize": "6.6 inches",
+        "displayTech": "Super AMOLED",
+        "chipset": " 4 nhân 2.7 GHz & 4 nhân 2.0 GHz",
+        "ramCapacity": "8 GB",
+        "internalStorage": " 128 GB",
+        "productCountInStock": 12,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6700066f78675bbcf5998ba3"
+        },
+        "productName": "Samsung Galaxy S24 FE 5G 8GB 128GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s24-fe_3__4.png",
+        "productPrice": "16990000",
+        "screenSize": " hình  6.7 inches",
+        "displayTech": "Dynamic AMOLED",
+        "chipset": "Exynos 2400e (4nm)",
+        "ramCapacity": "8 GB",
+        "internalStorage": "128 GB",
+        "productCountInStock": 15,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "670006b978675bbcf5998ba5"
+        },
+        "productName": "Samsung Galaxy S24 Ultra 12GB 256GB",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/s/ss-s24-ultra-den-600.png",
+        "productPrice": "27990000",
+        "screenSize": "6.8 inches",
+        "displayTech": "Dynamic AMOLED 2X",
+        "chipset": " 3.39GHz,3.1GHz,2.9GHz,2.2GHz",
+        "ramCapacity": " 12 GB",
+        "internalStorage": "256 GB",
+        "productCountInStock": 30,
+        "agentName": "age",
+
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6704afe9f11eeb27932adb3b"
+        },
+        "productName": "1",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro_1.png",
+        "productPrice": "1",
+        "screenSize": "1",
+        "displayTech": "1",
+        "chipset": "234",
+        "ramCapacity": "4",
+        "internalStorage": "54",
+        "productCountInStock": 1,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6704b0188b6fb2f4ff71f56c"
+        },
+        "productName": "1",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro_1.png",
+        "productPrice": "2",
+        "screenSize": "4",
+        "displayTech": "4",
+        "chipset": "4",
+        "ramCapacity": "4",
+        "internalStorage": "4",
+        "productCountInStock": 4,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6704b09d8b6fb2f4ff71f56e"
+        },
+        "productName": "1",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro_1.png",
+        "productPrice": "2",
+        "screenSize": "4",
+        "displayTech": "5",
+        "chipset": "6",
+        "ramCapacity": "67",
+        "internalStorage": "34",
+        "productCountInStock": 3,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6704b0cc305c6dabe7ccd736"
+        },
+        "productName": "1",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro_1.png",
+        "productPrice": "2",
+        "screenSize": "3",
+        "displayTech": "3",
+        "chipset": "3",
+        "ramCapacity": "3",
+        "internalStorage": "3",
+        "productCountInStock": 4,
+        "agentName": "age",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "6704b2af92bda62034e6b812"
+        },
+        "productName": "2",
+        "productType": "PHONE",
+        "productImage": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro_1.png",
+        "productPrice": "2",
+        "screenSize": "2",
+        "displayTech": "2",
+        "chipset": "2",
+        "ramCapacity": "2",
+        "internalStorage": "2",
+        "productCountInStock": 2,
+        "agentName": "phucc",
+        "__v": 0
+    }
+]

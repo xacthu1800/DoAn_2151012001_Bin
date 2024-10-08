@@ -37,7 +37,7 @@ export default function Home({ close, setClose }) {
     return (
         <>
             {/* <ProductType productData={products} /> */}
-            <Product_User_Homepage />
+            <Product_User_Homepage products={products} close={close} setClose={setClose} />
             {/* <Product cap="Phone" productType="PHONE" productData={products} close={close} setClose={setClose} />
             <Product cap="Laptop" productType="LAPTOP" productData={products} close={close} setClose={setClose} /> */}
         </>

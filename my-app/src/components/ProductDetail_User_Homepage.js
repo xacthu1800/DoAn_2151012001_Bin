@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
-
-const ProductDetail = () => {
+import { Api } from '../utils/Api';
+import { useParams } from 'react-router-dom';
+const ProductDetail_User_Homepage = () => {
+    const { productId } = useParams();
     const product = {
         image: 'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1_.png',
         name: 'Ghế Lưới Văn Phòng',
@@ -16,6 +18,11 @@ const ProductDetail = () => {
     };
 
     const [quantity, setQuantity] = useState(1); // State để quản lý số lượng sản phẩm
+
+    const getProductDetail = async () => {
+        const { statusCode, data } = await Api.getRequest(`/api/products/${productId}`);
+        console.log('data: ', data);
+    };
 
     const handleIncrease = () => {
         setQuantity(quantity + 1);
@@ -31,6 +38,10 @@ const ProductDetail = () => {
         // Logic để thêm sản phẩm vào giỏ hàng
         console.log(`Thêm ${quantity} sản phẩm vào giỏ hàng`);
     };
+
+    useEffect(() => {
+        getProductDetail();
+    }, []);
 
     return (
         <div className="product-detail">
@@ -82,4 +93,4 @@ const ProductDetail = () => {
     );
 };
 
-export default ProductDetail;
+export default ProductDetail_User_Homepage;
