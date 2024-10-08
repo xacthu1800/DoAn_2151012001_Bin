@@ -38,6 +38,7 @@ function Voucher_Add_template() {
             endDate: endDate.toString(),
             used: used.toString(),
             maxDiscount: maxDiscount.toString(),
+            agentName: localStorage.getItem('userName').toString(),
         });
         if (statusCode === 200) {
             toast.success('Thêm mã giảm giá thành công');

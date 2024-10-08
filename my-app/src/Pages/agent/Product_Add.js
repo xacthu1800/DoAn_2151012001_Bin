@@ -52,6 +52,7 @@ function ProductAdd_template() {
             ramCapacity: product.ramCapacity.toString(),
             internalStorage: product.internalStorage.toString(),
             productImage: imagePreview.toString(),
+            agentName: localStorage.getItem('userName').toString(),
         };
         console.log(productData);
 

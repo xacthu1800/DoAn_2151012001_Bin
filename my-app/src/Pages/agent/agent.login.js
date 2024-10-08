@@ -79,6 +79,7 @@ const LoginForm = () => {
                     toast.success('Login successfully');
                     setToken(token);
                     localStorage.setItem('role', 'agent');
+                    localStorage.setItem('userName', userName);
                     navigate('/HomePage_Agent'); // Navigate to home page
                 } else {
                     console.log(JSON.parse(data).message);

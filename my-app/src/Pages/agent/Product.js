@@ -25,7 +25,9 @@ function ProductList() {
     const [optionList, setOptionList] = useState([]); // Đảm bảo optionList là một mảng
 
     const fetchProduct = async () => {
-        const { statusCode, data } = await Api.getRequest('/api/admin/product');
+        const { statusCode, data } = await Api.postRequest('/api/admin/getProduct', {
+            agentName: localStorage.getItem('userName'),
+        });
         if (statusCode === 200) {
             const parsedData = JSON.parse(data).productList;
             setProductList(parsedData);

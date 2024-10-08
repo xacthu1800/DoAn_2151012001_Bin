@@ -20,10 +20,12 @@ function Voucher_template() {
 
     useEffect(() => {
         fetchVouchers();
-    }, [voucherList]);
+    }, []);
 
     const fetchVouchers = async () => {
-        const { statusCode, data } = await Api.getRequest('/api/admin/voucher');
+        const { statusCode, data } = await Api.postRequest('/api/admin/getVoucher', {
+            agentName: localStorage.getItem('userName'),
+        });
         const { voucherList } = JSON.parse(data);
         setVoucherList(voucherList);
         console.log(voucherList);

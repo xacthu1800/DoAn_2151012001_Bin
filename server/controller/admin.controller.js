@@ -59,7 +59,7 @@ const changeState = async (req, res) => {
 
 const getProductList = async (req, res) => {
     try {
-        const productList = await Product.find();
+        const productList = await Product.find({ agentName: req.body.agentName });
         //console.log(productList);
         res.status(200).json({
             status: 'success',
@@ -72,9 +72,10 @@ const getProductList = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
+    console.log(req.body);
     try {
         const product = await Product.create(req.body);
-        //console.log(product);
+        console.log(product);
         res.status(200).json({ status: 'success', message: 'Add product successful', product });
     } catch (error) {
         res.status(500).json({ status: 'error', message: 'Add product failed', error });
@@ -112,6 +113,7 @@ const deleteProduct = async (req, res) => {
 };
 
 const addVoucher = async (req, res) => {
+    console.log(req.body);
     try {
         const voucher = await Voucher.create(req.body);
 
@@ -123,7 +125,7 @@ const addVoucher = async (req, res) => {
 
 const getVoucherList = async (req, res) => {
     try {
-        const voucherList = await Voucher.find();
+        const voucherList = await Voucher.find({ agentName: req.body.agentName });
         res.status(200).json({
             status: 'success',
             message: 'Get voucher list successful',

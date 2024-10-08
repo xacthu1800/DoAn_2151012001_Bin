@@ -23,14 +23,14 @@ router.get('/bill', getBillList);
 router.get('/bill/:id', getBillDetail);
 router.put('/bill/:id', changeState);
 
-router.get('/product', getProductList);
+router.post('/getProduct', getProductList);
 router.get('/product/:id', getProductDetail);
 router.post('/product', addProduct);
 router.put('/editProduct/:id', editProduct);
 router.delete('/product', deleteProduct);
 
 router.post('/voucher', addVoucher);
-router.get('/voucher', getVoucherList);
+router.post('/getVoucher', getVoucherList);
 router.get('/voucher/:id', getVoucherDetail);
 router.put('/voucher/:id', updateVoucher);
 router.delete('/voucher/:id', deleteVoucher);

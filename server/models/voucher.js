@@ -8,6 +8,7 @@ const voucherSchema = new mongoose.Schema({
     endDate: String,
     maxDiscount: String,
     used: String,
+    agentName: String,
 });
 
 const Voucher = mongoose.model('vouchers', voucherSchema);
