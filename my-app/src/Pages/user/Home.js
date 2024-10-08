@@ -4,6 +4,8 @@ import { isLogin } from '../../utils/localstorage';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Api } from '../../utils/Api';
+
 // Components
 import ProductDetail from '../../components/ProductDetail';
 import ProductType from '../../components/ProductType';
@@ -20,8 +22,13 @@ export default function Home({ close, setClose }) {
     const getProducts = useSelector((state) => state.getProducts);
     const { products, loading, error } = getProducts;
     //console.log(products);
+    /*     async function fetchProducts() {
+        const { statusCode, data } = await Api.getRequest('/api/product');
+        console.log(data);
+    } */
 
     useEffect(() => {
+        //fetchProducts();
         if (isLogin()) {
             navigate('/');
         }

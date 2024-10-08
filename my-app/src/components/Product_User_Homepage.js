@@ -5,9 +5,13 @@ import ProductDetail from './ProductDetail';
 
 const Product_User_Homepage = (props) => {
     const { products } = props;
+    const [productData, setProductData] = useState(products);
     const [close, setClose] = useState(false);
     const [productDetailData, setProductDetailData] = useState(null);
-    useEffect(() => {}, [products]);
+
+    useEffect(() => {
+        setProductData(products.reverse());
+    }, [products]);
     function setSateProduct(productId) {
         const data = products.filter((product) => {
             return product._id === productId;
@@ -22,7 +26,7 @@ const Product_User_Homepage = (props) => {
             <div>
                 <div className="product_User_Homepage-wrapper">
                     <div className="Product_User_Homepage-grid-container">
-                        {products.map((item, index) => (
+                        {productData.map((item, index) => (
                             //<Link to={`/product/${item._id}`} key={index}>
                             <div
                                 className="grid-item"

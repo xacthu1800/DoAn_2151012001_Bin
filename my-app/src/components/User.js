@@ -15,7 +15,6 @@ const menuItems = [
     { icon: IoHomeOutline, text: 'Home page', path: 'Homepage' },
 
     { icon: PiMedal, text: 'Membership class', path: 'Membershipclass' },
-    { icon: PiLink, text: 'Account link', path: 'Accountlink' },
     { icon: MdPassword, text: 'Change password', path: 'Changepassword' },
 ];
 //  { icon: MdOutlineManageAccounts, text: 'Your account', path: 'YourAccount' },

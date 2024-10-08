@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Checkout = require('../models/checkout');
 const Cart = require('../models/cart');
 const Voucher = require('../models/voucher');
+const Product = require('../models/product');
 const { OAuth2Client } = require('google-auth-library');
 
 const { newToken, newToken_Agent } = require('../utils/utility.function');
@@ -75,96 +76,87 @@ const checkoutUser = async (req, res) => {
     console.log(req.body);
     console.log(req.params.id); */
 
+    const createListObject = async (cartItems) => {
+        const listObject = await Promise.all(
+            cartItems.map(async (item) => {
+                const product = await Product.findById(item.product); // Assuming Product is your Mongoose model
+                return {
+                    agentName: product ? product.agentName : null, // Get agentName or null if not found
+                    ...item, // Spread the cart item properties
+                };
+            }),
+        );
+        return listObject;
+    };
+
+    const listObject = await createListObject(cartItems);
+    const listAgent = [...new Set(listObject.map((item) => item.agentName))];
+    /*  console.log(listObject);
+    console.log(listAgent); */
+
     try {
-        await Checkout.create({
-            userId: req.params.id,
-            cartItems,
-            userFullname: req.body.userFullname,
-            userAddress: req.body.userAddress,
-            userPhoneNumber: req.body.userPhoneNumber,
-            userNote: req.body.userNote,
-            userPayment: req.body.userPayment,
-            discount: req.body.discount,
-            shipping: req.body.shipping,
-            sumPrice: req.body.sumPrice,
-            time: String(getCurrentTime()),
-            state: req.body.state,
-        });
+        await Promise.all(
+            listAgent.map(async (agent) => {
+                // Use Promise.all to handle all agent processing
+                const listProductAgent = listObject.filter((item) => item.agentName === agent);
+                const sumPriceAfter = listProductAgent.reduce(
+                    (total, item) => total + Number(item.price) * Number(item.qty),
+                    0,
+                );
 
-        const user = await User.find({ _id: req.params.id });
+                try {
+                    await Checkout.create({
+                        userId: req.params.id,
+                        agentName: agent,
+                        cartItems: listProductAgent,
+                        userFullname: req.body.userFullname,
+                        userAddress: req.body.userAddress,
+                        userPhoneNumber: req.body.userPhoneNumber,
+                        userNote: req.body.userNote,
+                        userPayment: req.body.userPayment,
+                        discount: req.body.discount,
+                        shipping: req.body.shipping,
+                        sumPrice: sumPriceAfter,
+                        time: String(getCurrentTime()),
+                        state: req.body.state,
+                    });
+                } catch (error) {
+                    console.error(`Error creating checkout for agent ${agent}:`, error); // More specific error logging
+                }
+            }),
+        );
 
-        // IF chỗ này điều kiện nếu cumulative trên các bậc thì cập nhật thăng class cho user
-
+        const user = await User.findById(req.params.id); // Use findById for clarity
         await User.updateOne(
             { _id: req.params.id },
             {
-                ordered: (Number(user[0].ordered) + totalItem).toString(),
-                cumulativeTotal: (Number(user[0].cumulativeTotal) + Number(req.body.sumPrice)).toString(),
+                ordered: (Number(user.ordered) + totalItem).toString(),
+                cumulativeTotal: (Number(user.cumulativeTotal) + Number(req.body.sumPrice)).toString(),
             },
         );
 
-        console.log('voucher: ' + req.body.voucher);
+        const cumulativeAfter = Number(user.cumulativeTotal) + Number(req.body.sumPrice);
 
-        const findVoucher = await Voucher.find({ code: req.body.voucher });
-        if (findVoucher.length > 0) {
-            try {
-                if (Number(findVoucher[0].used) < Number(findVoucher[0].quantity)) {
-                    await Voucher.updateOne(
-                        { code: req.body.voucher },
-                        {
-                            used: (Number(findVoucher[0].used) + 1).toString(),
-                        },
-                    );
-                } else {
-                    console.log('Voucher đã hết hạn');
-                }
-            } catch (error) {
-                console.log('Cập nhật số lần sử dụng voucher thất bại');
-            }
-        }
-
-        const cumulativeAfter = Number(user[0].cumulativeTotal) + Number(req.body.sumPrice);
-
+        // Update user class based on cumulative total
+        let userClass;
         if (cumulativeAfter < 10000000) {
-            await User.updateOne(
-                { _id: req.params.id },
-                {
-                    class: '0',
-                },
-            );
+            userClass = '0';
+        } else if (cumulativeAfter < 50000000) {
+            userClass = '1';
+        } else if (cumulativeAfter < 100000000) {
+            userClass = '2';
+        } else {
+            userClass = '3';
         }
-        if (cumulativeAfter >= 10000000 && cumulativeAfter < 50000000) {
-            await User.updateOne(
-                { _id: req.params.id },
-                {
-                    class: '1',
-                },
-            );
-        }
-        if (cumulativeAfter >= 50000000 && cumulativeAfter < 100000000) {
-            await User.updateOne(
-                { _id: req.params.id },
-                {
-                    class: '2',
-                },
-            );
-        }
-        if (cumulativeAfter >= 100000000) {
-            await User.updateOne(
-                { _id: req.params.id },
-                {
-                    class: '3',
-                },
-            );
-        }
+        await User.updateOne({ _id: req.params.id }, { class: userClass });
+
         await Cart.deleteMany({ userId: req.params.id });
 
         console.log('Đặt hàng thành công - SERVER');
         res.status(200).send({ status: 'ok', message: 'Đặt hàng thành công' });
     } catch (error) {
-        console.log('Đặt hàng thất bại - SERVER');
-        console.log(error);
-        res.status(500).send({ status: 'error', message: error.message });
+        console.error('Error during checkout process:', error); // General error logging for the entire process
+        res.status(500).send({ status: 'error', message: 'Đặt hàng thất bại', error: error.message });
     }
 };
 

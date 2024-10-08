@@ -7,6 +7,7 @@ const sendResponseError = (statusCode, msg, res) => {
 
 const verifyUser = async (req, res, next) => {
     const { authorization } = req.headers;
+    console.log('authorization: -------------------------', authorization);
     if (!authorization) {
         sendResponseError(400, 'You are not authorized ', res);
         return;
