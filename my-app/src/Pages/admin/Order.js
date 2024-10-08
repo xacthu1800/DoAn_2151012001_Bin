@@ -5,10 +5,13 @@ import { Api } from '../../utils/Api';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
+import Order_detail from './Order_detail';
+
 export default function Bill() {
     return (
         <Routes>
             <Route path="/" element={<OrderList />} />
+            <Route path="Order_detail/:id" element={<Order_detail />} />
         </Routes>
     );
 }
@@ -71,8 +74,8 @@ function OrderList() {
                         <div className="grid-container ">
                             <div className="bill-item">STT</div>
                             <div className="bill-item">Order Code</div>
-                            <div className="bill-item">Customer</div>
-                            <div className="bill-item">Agent</div>
+                            <div className="bill-item">CustomerID</div>
+                            <div className="bill-item">Agent Name</div>
                             <div className="bill-item">State</div>
                         </div>
 
@@ -80,7 +83,7 @@ function OrderList() {
                             <div className="grid-container ">
                                 <div className="bill-item">{index + 1}</div>
                                 <div className="bill-item">
-                                    <Link to={`Bill_detail/${bill._id}`} className="content hover">
+                                    <Link to={`Order_detail/${bill._id}`} className="content hover">
                                         {bill._id}
                                     </Link>
                                 </div>
@@ -88,7 +91,7 @@ function OrderList() {
                                     <div className="content">{bill.userId}</div>
                                 </div>
                                 <div className="bill-item">
-                                    <div className="content">{bill.agentId}</div>
+                                    <div className="content">{bill.agentName}</div>
                                 </div>
                                 <div
                                     className="bill-item"

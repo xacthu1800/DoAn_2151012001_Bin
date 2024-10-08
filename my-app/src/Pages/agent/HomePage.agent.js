@@ -16,7 +16,7 @@ import Voucher from './Voucher';
 const menuItems = [
     { icon: PiMedal, text: 'Bill', path: '/HomePage_Agent/Bill' },
     { icon: PiLink, text: 'Product', path: '/HomePage_Agent/Product' },
-    { icon: MdPassword, text: 'Voucher', path: '/HomePage_Agent/Voucher' },
+    /* { icon: MdPassword, text: 'Voucher', path: '/HomePage_Agent/Voucher' }, */
 ];
 
 export default function HomePage_Agent() {
