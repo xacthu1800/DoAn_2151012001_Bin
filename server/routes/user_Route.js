@@ -11,6 +11,7 @@ const {
     loginWithGoogle,
     registerWithGoogle,
     getAllUser,
+    deleteUser,
 } = require('../controller/user.controller');
 const { verifyUser } = require('../middleware/middleware');
 
@@ -32,5 +33,7 @@ router.post('/LoginWithGoogle', loginWithGoogle);
 router.post('/RegisterWithGoogle', registerWithGoogle);
 
 router.get('/get-all', getAllUser);
+
+router.delete('/delete/:id', deleteUser);
 
 module.exports = router;

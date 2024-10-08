@@ -271,6 +271,17 @@ const getAllUser = async (req, res) => {
     return res.status(200).json({ status: 'ok', users });
 };
 
+const deleteUser = async (req, res) => {
+    const id = req.params.id;
+    const { role } = req.body;
+    try {
+        await User.deleteOne({ _id: id, role });
+        return res.status(200).json({ status: 'ok', message: 'Xóa người dùng thành công' });
+    } catch (error) {
+        return res.status(500).json({ status: 'error', message: 'Xóa người dùng thất bại', error });
+    }
+};
+
 module.exports = {
     regisUser,
     loginUser,
@@ -282,6 +293,7 @@ module.exports = {
     loginWithGoogle,
     registerWithGoogle,
     getAllUser,
+    deleteUser,
 };
 
 const getCurrentTime = () => {
