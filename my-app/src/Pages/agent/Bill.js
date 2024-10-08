@@ -23,7 +23,11 @@ function BillList() {
         const { statusCode, data } = await Api.getRequest('/api/admin/bill');
         //console.log(data);
         const { status, message, billList } = JSON.parse(data);
-        setListBill(billList.reverse());
+        const filterBillList = billList.filter((bill) => bill.agentName == localStorage.getItem('userName'));
+        console.log('billList:', billList);
+        console.log('agentName:', localStorage.getItem('userName'));
+        console.log(filterBillList);
+        setListBill(filterBillList.reverse());
     };
 
     const formattedDate = (x) => {
