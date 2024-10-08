@@ -252,17 +252,23 @@ const loginWithGoogle = async (req, res) => {
 };
 
 const registerWithGoogle = async (req, res) => {
-    const { tokenId } = req.body;
+    const { tokenId, role } = req.body;
     const ticket = await verify(tokenId);
     console.log('ticket: ', ticket);
-    const user = await User.findOne({ userName: ticket.email });
+    const user = await User.findOne({ userName: ticket.email, role });
     if (user) {
         return res.status(400).json({ message: 'Tên người dùng đã tồn tại' });
     }
-    await User.create({ userName: ticket.email, password: '', ordered: '0', cumulativeTotal: '0', class: '0' });
+    await User.create({ userName: ticket.email, password: '', ordered: '0', cumulativeTotal: '0', class: '0', role });
     const data = await User.find();
     //console.log(data);
     return res.status(200).send({ status: 'ok', message: 'Đăng ký thành công' });
+};
+
+const getAllUser = async (req, res) => {
+    const users = await User.find();
+    console.log('users: ', users);
+    return res.status(200).json({ status: 'ok', users });
 };
 
 module.exports = {
@@ -275,6 +281,7 @@ module.exports = {
     checkVoucher,
     loginWithGoogle,
     registerWithGoogle,
+    getAllUser,
 };
 
 const getCurrentTime = () => {

@@ -23,7 +23,15 @@ function UserAccountList() {
     const [listUserAccount, setListUserAccount] = useState([]);
     const [state, setState] = useState(true);
 
-    useEffect(() => {}, [state]);
+    async function fetchAccount() {
+        const { statusCode, data } = await Api.getRequest('/api/user/get-all');
+        console.log('all account: ', JSON.parse(data).users);
+        setListUserAccount(JSON.parse(data).users);
+    }
+
+    useEffect(() => {
+        fetchAccount();
+    }, []);
 
     return (
         <>
@@ -49,15 +57,18 @@ function UserAccountList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((account, index) => (
+                            {listUserAccount.map((account, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td className="user-id">{account.id}</td>
-                                    <td className="user-name">{account.name}</td>
-                                    <td>{account.type}</td>
-                                    <td className="user-action">
+                                    <td className="user-id">{account._id}</td>
+                                    <td className="user-name">{account.userName}</td>
+                                    <td>{account.role}</td>
+                                    <td
+                                        className="user-action"
+                                        style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}
+                                    >
                                         <button className="delete">Delete</button>
-                                        <button className="delete">Edit</button>
+                                        {/*  <button className="delete">Edit</button> */}
                                     </td>
                                 </tr>
                             ))}

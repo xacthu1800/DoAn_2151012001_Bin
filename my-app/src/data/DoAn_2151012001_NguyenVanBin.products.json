@@ -12,7 +12,8 @@
         "displayTech": "Super Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone",
         "chipset": "Apple A14 Bionic (5 nm)",
         "ramCapacity": "4 GB",
-        "internalStorage": "128GB"
+        "internalStorage": "128GB",
+        "agentName": "age"
     },
     {
         "_id": {
@@ -28,7 +29,8 @@
         "ramCapacity": "8gb",
         "internalStorage": "SSD 256gb",
         "productCountInStock": 12,
-        "__v": 0
+        "__v": 0,
+        "agentName": "age"
     },
     {
         "_id": {
@@ -44,7 +46,8 @@
         "ramCapacity": "8gb",
         "internalStorage": "SSD 256gb",
         "productCountInStock": 12,
-        "__v": 0
+        "__v": 0,
+        "agentName": "age"
     },
     {
         "_id": {
@@ -59,7 +62,8 @@
         "displayTech": "Tấm nền IPS, 1920 x 1080 pixels (FullHD)",
         "chipset": "Intel Core i5 - 1235U Gen 12 (up to 4.4 GHz, 12 MB)",
         "ramCapacity": "8GB",
-        "internalStorage": "512 GB"
+        "internalStorage": "512 GB",
+        "agentName": "age"
     },
     {
         "_id": {
@@ -74,7 +78,8 @@
         "displayTech": "Super Retina XDR OLED",
         "chipset": "Apple A15",
         "ramCapacity": "4 GB",
-        "internalStorage": "256GB"
+        "internalStorage": "256GB",
+        "agentName": "age"
     },
     {
         "_id": {
@@ -89,7 +94,8 @@
         "displayTech": "Super Retina XDR OLED",
         "chipset": "Apple A16",
         "ramCapacity": "6 GB",
-        "internalStorage": "128GB"
+        "internalStorage": "128GB",
+        "agentName": "age"
     },
     {
         "_id": {
@@ -122,7 +128,6 @@
         "internalStorage": "SSD 256gb",
         "productCountInStock": 19,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -156,7 +161,6 @@
         "internalStorage": "256GB M.2 NVMe PCIe 4.0 SSD",
         "productCountInStock": 10,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -174,7 +178,6 @@
         "internalStorage": "512GB M.2 NVMe PCIe 3.0 SSD",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -192,7 +195,6 @@
         "internalStorage": "512GB M.2 NVMe PCIe 3.0 SSD",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -210,7 +212,6 @@
         "internalStorage": "512GB M.2 NVMe PCIe 4.0 SSD",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -228,7 +229,6 @@
         "internalStorage": "512GB M.2 NVMe PCIe 4.0 SSD",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -246,7 +246,6 @@
         "internalStorage": "64 GB",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -264,7 +263,6 @@
         "internalStorage": "512GB",
         "productCountInStock": 20,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -299,7 +297,6 @@
         "internalStorage": " 512GB SSD NVMe Gen 4 (1 khe cắm SSD M.2 trống)",
         "productCountInStock": 10,
         "agentName": "age",
-
         "__v": 0
     },
     {
@@ -402,7 +399,6 @@
         "internalStorage": "256 GB",
         "productCountInStock": 30,
         "agentName": "age",
-
         "__v": 0
     },
     {

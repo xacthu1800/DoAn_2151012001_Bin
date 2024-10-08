@@ -38,7 +38,19 @@ const LoginForm = () => {
             const { statusCode, data } = await Api.postRequest('/api/user/LoginWithGoogle', {
                 tokenId: res.credential,
             });
-            if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
+            console.log('statusCode: ', statusCode);
+            console.log('data: ', data);
+
+            if (statusCode === 200) {
+                toast.success('Login successfully');
+                setToken(data.token);
+                localStorage.setItem('role', 'agent');
+                localStorage.setItem('userName', userName);
+                navigate('/HomePage_Agent'); // Navigate to home page
+            } else {
+                toast.error('Fail to login');
+            }
+            /*  if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
                 setLoading(false);
                 toast.error('Fail to login with Google');
                 return;
@@ -53,7 +65,7 @@ const LoginForm = () => {
                 toast.success('Login successfully');
                 setToken(token);
                 navigate('/HomePage_Agent'); // Navigate to home page
-            }
+            } */
         } catch (error) {
             toast.error('Fail to login');
         }

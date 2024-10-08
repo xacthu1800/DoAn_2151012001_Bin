@@ -36,8 +36,9 @@ const Register_Agent = () => {
         console.log('Login Success: ' + JSON.stringify(res));
         console.log('credential: ' + res.credential);
         try {
-            const { statusCode, data } = await Api.postRequest('/api/user/LoginWithGoogle', {
+            const { statusCode, data } = await Api.postRequest('/api/user/RegisterWithGoogle', {
                 tokenId: res.credential,
+                role: 'agent',
             });
             if (statusCode === 400 || statusCode === 500 || statusCode === 403) {
                 setLoading(false);

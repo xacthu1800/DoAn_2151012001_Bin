@@ -10,6 +10,7 @@ const {
     checkVoucher,
     loginWithGoogle,
     registerWithGoogle,
+    getAllUser,
 } = require('../controller/user.controller');
 const { verifyUser } = require('../middleware/middleware');
 
@@ -29,5 +30,7 @@ router.post('/voucher', checkVoucher);
 router.post('/LoginWithGoogle', loginWithGoogle);
 
 router.post('/RegisterWithGoogle', registerWithGoogle);
+
+router.get('/get-all', getAllUser);
 
 module.exports = router;
