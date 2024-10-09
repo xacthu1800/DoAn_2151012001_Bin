@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import ProductDetail from './ProductDetail';
+import { Api } from '../utils/Api';
 
 const Product_User_Homepage = (props) => {
     const { products } = props;
@@ -12,6 +13,7 @@ const Product_User_Homepage = (props) => {
     useEffect(() => {
         setProductData(products.reverse());
     }, [products]);
+
     function setSateProduct(productId) {
         const data = products.filter((product) => {
             return product._id === productId;
@@ -19,6 +21,7 @@ const Product_User_Homepage = (props) => {
         console.log(data[0]);
         setProductDetailData(data[0]);
     }
+
     return (
         <>
             <ProductDetail productDetailData={productDetailData} close={close} setClose={setClose} />

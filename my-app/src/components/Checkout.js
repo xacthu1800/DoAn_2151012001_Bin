@@ -22,7 +22,7 @@ function Checkout(props) {
     const [userAddress, setUserAddress] = useState('');
     const [userPhoneNumber, setUserPhoneNumber] = useState('');
     const [userNote, setUserNote] = useState('_');
-    const [userPayment, setUserPayment] = useState('COD');
+    const [userPayment, setUserPayment] = useState('ZALOPAY');
 
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
@@ -49,6 +49,8 @@ function Checkout(props) {
         console.log(user.userInfo.details._id);
         sumCaculate();
     }, [cartItems, voucherData]);
+
+    useEffect(() => {}, []);
 
     //-----------------------  FUNCTION  ---------------------//
 
@@ -109,30 +111,136 @@ function Checkout(props) {
 
     const handleSubmit = async () => {
         // Đảm bảo userPayment có giá trị mặc định nếu chưa được chọn
-        const paymentMethod = userPayment || 'COD'; // Giá trị mặc định là "COD"
+        const paymentMethod = userPayment || 'ZALOPAY'; // Giá trị mặc định là "COD"
+        let transid = '';
 
-        const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
-            userFullname: userFullname.toString(),
-            userAddress: userAddress.toString(),
-            userPhoneNumber: userPhoneNumber.toString(),
-            userNote: userNote.toString(),
-            userPayment: paymentMethod.toString(), // Sử dụng paymentMethod
-            discount: discount.toString(),
-            shipping: shipping.toString(),
-            cartItems,
-            sumPrice: sumPrice.toString(),
-            state: 'pending',
-            voucher: voucherData == null ? '' : voucherData[0].code.toString(),
-        });
-        console.log(statusCode);
-        if (statusCode == 200) {
-            navigate('/', { replace: true });
-            toast.success('order successfully');
+        try {
+            const { statusCode, data } = await Api.postRequest(`/api/create-payment-zalo/`, {
+                userFullname: userFullname.toString(),
+                sumPrice: Number(sumPrice),
+            });
+            const { apptransid, result } = JSON.parse(data);
+            transid = apptransid;
+            localStorage.setItem('transid', apptransid);
+            localStorage.setItem('checkTranId', false);
+
+            const paymentUrl = JSON.parse(data).result.orderurl;
+            localStorage.setItem('callBack', 1);
+
+            try {
+                const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
+                    userFullname: userFullname.toString(),
+                    userAddress: userAddress.toString(),
+                    userPhoneNumber: userPhoneNumber.toString(),
+                    userNote: userNote.toString(),
+                    userPayment: 'ZALOPAY', // Sử dụng paymentMethod
+                    discount: discount.toString(),
+                    shipping: shipping.toString(),
+                    cartItems,
+                    sumPrice: sumPrice.toString(),
+                    state: 'pending',
+                    voucher: voucherData == null ? '' : voucherData[0].code.toString(),
+                });
+                console.log(statusCode);
+                if (statusCode == 200) {
+                    navigate('/', { replace: true });
+                    toast.success('order successfully');
+                } else {
+                    navigate('/', { replace: true });
+                    toast.error('order failed');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+
+            window.location.replace(paymentUrl);
+
+            return; // Prevent further execution after redirect
+        } catch (error) {
+            console.log(error);
+        }
+
+        // This part will not run if the payment URL is triggered
+        /*  const { statusCode, data } = await Api.postRequest(`/api/create-payment-zalo/order-status/${transid}`, {});
+        let returnCode = JSON.parse(data).returncode;
+
+        if (returnCode == 1) {
+            try {
+                const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
+                    userFullname: userFullname.toString(),
+                    userAddress: userAddress.toString(),
+                    userPhoneNumber: userPhoneNumber.toString(),
+                    userNote: userNote.toString(),
+                    userPayment: paymentMethod.toString(), // Sử dụng paymentMethod
+                    discount: discount.toString(),
+                    shipping: shipping.toString(),
+                    cartItems,
+                    sumPrice: sumPrice.toString(),
+                    state: 'pending',
+                    voucher: voucherData == null ? '' : voucherData[0].code.toString(),
+                });
+                console.log(statusCode);
+                if (statusCode == 200) {
+                    navigate('/', { replace: true });
+                    toast.success('order successfully');
+                } else {
+                    navigate('/', { replace: true });
+                    toast.error('order failed');
+                }
+            } catch (error) {
+                console.log(error);
+            }
         } else {
             navigate('/', { replace: true });
-            toast.error('order failed');
+            toast.success('order Failed');
+        } */
+    };
+
+    /*  const handleCallback = async () => {
+        const transid = localStorage.getItem('transid');
+        try {
+            const { statusCode, data } = await Api.postRequest(`/api/create-payment-zalo/order-status/${transid}`, {});
+            let returnCode = JSON.parse(data).returncode;
+            if (returnCode == 1) {
+                // Giao dịch thành công, gọi API checkout
+                await handleCheckout();
+            } else {
+                // Giao dịch thất bại
+                toast.error('Order Failed');
+                navigate('/', { replace: true });
+            }
+        } catch (error) {
+            console.log(error);
         }
     };
+
+    const handleCheckout = async () => {
+        try {
+            const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
+                userFullname: userFullname.toString(),
+                userAddress: userAddress.toString(),
+                userPhoneNumber: userPhoneNumber.toString(),
+                userNote: userNote.toString(),
+                userPayment: 'ZALOPAY',
+                discount: discount.toString(),
+                shipping: shipping.toString(),
+                cartItems,
+                sumPrice: sumPrice.toString(),
+                state: 'pending',
+                voucher: voucherData == null ? '' : voucherData[0].code.toString(),
+            });
+            console.log(statusCode);
+            if (statusCode == 200) {
+                navigate('/', { replace: true });
+                toast.success('order successfully');
+            } else {
+                navigate('/', { replace: true });
+                toast.error('order failed');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }; */
 
     const handleVoucher = async (e) => {
         e.preventDefault();
@@ -269,11 +377,9 @@ function Checkout(props) {
                                             name="payment-option"
                                             onChange={(e) => setUserPayment(e.target.value)}
                                         >
-                                            <option value="COD" selected>
-                                                COD (Thanh toán khi nhận hàng)
+                                            <option value="ZALOPAY" selected>
+                                                ZALOPAY
                                             </option>
-                                            <option value="VNPay">VNPay</option>
-                                            <option value="MoMo">MoMo</option>
                                         </select>
                                     </div>
 
