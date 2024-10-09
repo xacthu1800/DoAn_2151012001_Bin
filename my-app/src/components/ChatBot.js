@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { chatBotData } from '../data/chatBotData';
-import { Api } from '../utils/Api';
 
 export default function ChatBot({ chatBot, setChatBot }) {
     return (
@@ -11,7 +9,7 @@ export default function ChatBot({ chatBot, setChatBot }) {
                         width="350"
                         height="430"
                         allow="microphone;"
-                        src="https://console.dialogflow.com/api-client/demo/embedded/6fc80e6d-796b-4adc-84d8-34c95b0c7941"
+                        src="https://console.dialogflow.com/api-client/demo/embedded/0217c1c3-3d24-44ff-8896-0272ff4d374f"
                     ></iframe>
                 </div>
             )}
