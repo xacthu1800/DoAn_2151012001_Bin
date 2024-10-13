@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
 import ChatBot from './components/ChatBot';
+import CallbackCheckout from './components/CallbackCheckout';
 //pages
 import Products from './Pages/user/Products';
 import Home from './Pages/user/Home';
@@ -51,6 +52,7 @@ const App = () => {
                     <Route path="Login" element={<Login />} />
                     <Route path="Register" element={<Register />} />
                     <Route path="product/:id" element={<ProductDetail_User_Homepage />} />
+                    <Route path="callback-checkout" element={<CallbackCheckout />} />
                 </Route>
                 <Route path="/Login_Admin" element={<Login_Admin />} />
                 <Route path="/Admin/*" element={<Admin />} />

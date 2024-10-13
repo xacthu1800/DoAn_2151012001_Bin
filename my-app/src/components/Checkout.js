@@ -127,6 +127,20 @@ function Checkout(props) {
             const paymentUrl = JSON.parse(data).result.orderurl;
             localStorage.setItem('callBack', 1);
 
+            localStorage.setItem('userFullname', userFullname.toString());
+            localStorage.setItem('userAddress', userAddress.toString());
+            localStorage.setItem('userPhoneNumber', userPhoneNumber.toString());
+            localStorage.setItem('userNote', userNote.toString());
+            localStorage.setItem('userPayment', paymentMethod.toString());
+            localStorage.setItem('discount', discount.toString());
+            localStorage.setItem('shipping', shipping.toString());
+            localStorage.setItem('sumPrice', sumPrice.toString());
+            localStorage.setItem('state', 'pending');
+            localStorage.setItem('voucher', voucher);
+
+            localStorage.setItem('transid', transid);
+            localStorage.setItem('userId', userId);
+
             try {
                 const { statusCode } = await Api.postRequest(`/api/user/checkout/${userId}`, {
                     userFullname: userFullname.toString(),
@@ -144,10 +158,10 @@ function Checkout(props) {
                 console.log(statusCode);
                 if (statusCode == 200) {
                     navigate('/', { replace: true });
-                    toast.success('order successfully');
+                    //toast.success('order successfully');
                 } else {
                     navigate('/', { replace: true });
-                    toast.error('order failed');
+                    //toast.error('order failed');
                 }
             } catch (error) {
                 console.log(error);

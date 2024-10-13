@@ -4,6 +4,8 @@ const { v4: uuidv4 } = require('uuid'); // npm install uuid
 const moment = require('moment'); // npm install moment
 const qs = require('qs');
 
+const REDIRECT_URL = 'https://b084-2405-4802-801d-efb0-8001-92cf-48be-7ccf.ngrok-free.app';
+
 const config = {
     appid: process.env.ZALO_APP_ID,
     key1: process.env.ZALO_KEY1,
@@ -13,8 +15,9 @@ const config = {
 
 const createPaymentZalo = async (req, res) => {
     console.log('req.body: ', req.body);
+    const { sumPrice } = req.body;
     const embeddata = {
-        redirecturl: 'https://374c-2405-4802-9178-3af0-788b-c978-82fa-d793.ngrok-free.app/',
+        redirecturl: `${REDIRECT_URL}/callback-checkout`,
     };
 
     const items = [
@@ -33,10 +36,10 @@ const createPaymentZalo = async (req, res) => {
         apptime: Date.now(), // miliseconds
         item: JSON.stringify(items),
         embeddata: JSON.stringify(embeddata),
-        amount: 50000,
-        description: 'ZaloPay Integration Demo',
+        amount: sumPrice,
+        description: 'ZaloPay Integration ',
         bankcode: '',
-        CallbackURL: 'https://374c-2405-4802-9178-3af0-788b-c978-82fa-d793.ngrok-free.app/create-payment-zalo/callback',
+        CallbackURL: `${REDIRECT_URL}/create-payment-zalo/callback`,
     };
 
     // appid|apptransid|appuser|amount|apptime|embeddata|item
@@ -122,9 +125,10 @@ const orderStatus = async (req, res) => {
     try {
         const result = await axios(postConfig);
         console.log('result: ', result.data);
-        return res.status(200).send(result.data);
+        return res.status(200).send({ status: 'ok', result: result.data });
     } catch (error) {
         console.log(error);
+        return res.status(500).send({ status: 'error', message: error.message });
     }
     // Khi isprocessing = true
     // Khi returncode = -49 - người dùng chưa thanh toán đơn hàng (thành công / thất bại)
