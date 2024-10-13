@@ -4,8 +4,6 @@ const { v4: uuidv4 } = require('uuid'); // npm install uuid
 const moment = require('moment'); // npm install moment
 const qs = require('qs');
 
-const REDIRECT_URL = 'https://b084-2405-4802-801d-efb0-8001-92cf-48be-7ccf.ngrok-free.app';
-
 const config = {
     appid: process.env.ZALO_APP_ID,
     key1: process.env.ZALO_KEY1,
@@ -17,7 +15,7 @@ const createPaymentZalo = async (req, res) => {
     console.log('req.body: ', req.body);
     const { sumPrice } = req.body;
     const embeddata = {
-        redirecturl: `${REDIRECT_URL}/callback-checkout`,
+        redirecturl: `${process.env.REDIRECT_URL}/callback-checkout`,
     };
 
     const items = [
@@ -39,7 +37,7 @@ const createPaymentZalo = async (req, res) => {
         amount: sumPrice,
         description: 'ZaloPay Integration ',
         bankcode: '',
-        CallbackURL: `${REDIRECT_URL}/create-payment-zalo/callback`,
+        CallbackURL: `${process.env.REDIRECT_URL}/create-payment-zalo/callback`,
     };
 
     // appid|apptransid|appuser|amount|apptime|embeddata|item
